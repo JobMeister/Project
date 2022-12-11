@@ -1,6 +1,6 @@
 
 function loginSuccses(form) {
-        let x=localStorage.getItem("keynumber");
+        let x=Number(localStorage.getItem("keynumber"));
         for (let i = 0; i <=x; i++) { 
           if(form.username.value===localStorage.getItem("email"+i) && form.password.value===localStorage.getItem("password"+i)) {
                 alert ("Login successfully"); 

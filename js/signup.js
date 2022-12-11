@@ -1,4 +1,10 @@
-let count=0;
+let x=Number(localStorage.getItem("keynumber"));
+let count;
+if(x==null || x==0)
+    count=0;
+else
+    count=x;
+
 function SignUpCheck() {
     for (let i = 1; i <=9; i++) { 
         document.querySelector("#msg"+i).innerHTML="";
@@ -87,7 +93,8 @@ function SignUpSucces() {
                 localStorage.setItem("gender"+count,"Woman");
             localStorage.setItem("main occupation"+count,"Catgory-"+inputOcc);
             }
-        count++;
+
+        count++;  
         localStorage.setItem("keynumber",count);
         alert ("Registery successfully"); 
         window.location = "login.html"; // Redirecting to other page.
@@ -101,13 +108,13 @@ const Box_work2= document.getElementById('div-WS');
 
 function DisplayDivBySelector(val) {
     if(val==1) {
-        if(Box_work2.style.display = 'block') {
+        if(Box_work2.style.display == 'block') {
             Box_work2.style.display = 'none';
         }
         Box_work1.style.display = 'block';
     }
     else if(val==2){
-        if(Box_work1.style.display = 'block') {
+        if(Box_work1.style.display == 'block') {
             Box_work1.style.display = 'none';
         }
         Box_work2.style.display = 'block';

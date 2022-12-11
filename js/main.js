@@ -1,5 +1,7 @@
+
 (function ($) {
   "use strict";
+  
 
   // Spinner
   var spinner = function () {
@@ -11,8 +13,8 @@
   };
   spinner();
 
-  // Initiate the wowjs
-  new WOW().init();
+  // // Initiate the wowjs
+  // new WOW().init();
 
   // asif random pages
   function pic() {
@@ -48,5 +50,7 @@
     return false;
   });
 
-  
+ 
+
+
 })(jQuery);
