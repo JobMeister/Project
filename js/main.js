@@ -49,8 +49,12 @@
     $("html, body").animate({ scrollTop: 0 }, 1500, "easeInOutExpo");
     return false;
   });
+  
+   if(localStorage.getItem("About")!== null) {
+    $('#RealAbout').html(localStorage.getItem('About'));
 
- 
+   } 
+
 
 
 })(jQuery);
