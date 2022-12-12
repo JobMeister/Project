@@ -38,19 +38,19 @@
   });
 
   // Back to top button
-  $(window).scroll(function () {
-    if ($(this).scrollTop() > 300) {
-      $(".back-to-top").fadeIn("slow");
-    } else {
-      $(".back-to-top").fadeOut("slow");
-    }
-  });
-  $(".back-to-top").click(function () {
-    $("html, body").animate({ scrollTop: 0 }, 1500, "easeInOutExpo");
-    return false;
-  });
+  // $(window).scroll(function () {
+  //   if ($(this).scrollTop() > 300) {
+  //     $(".back-to-top").fadeIn("slow");
+  //   } else {
+  //     $(".back-to-top").fadeOut("slow");
+  //   }
+  // });
+  // $(".back-to-top").click(function () {
+  //   $("html, body").animate({ scrollTop: 0 }, 1500, "easeInOutExpo");
+  //   return false;
+  // });
   
-   if(localStorage.getItem("About")!== null) {
+   if(localStorage.getItem("About")!== null) { // Gets about content from the admin edit
     $('#RealAbout').html(localStorage.getItem('About'));
 
    } 
