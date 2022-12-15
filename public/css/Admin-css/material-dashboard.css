@@ -123,7 +123,7 @@ h6,
   margin-bottom: 0.5rem;
   font-weight: 400;
   line-height: 1.2;
-  color: #344767;
+  /* color: #344767; */
 }
 
 h1,
@@ -849,6 +849,7 @@ progress {
 .col-12 {
   flex: 0 0 auto;
   width: 100%;
+  
 }
 
 .offset-1 {
@@ -1084,6 +1085,152 @@ progress {
     flex: 0 0 auto;
     width: 25%;
   }
+
+  @import url(https://fonts.googleapis.com/css?family=Oswald:400);
+
+  .accessClass {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  img {
+    width: 25px;
+    border-radius: 50px;
+    float: left;
+  }
+
+
+
+.darkMode {
+  background-color: #111;
+  color: #eee;
+  
+  
+}
+
+.whiteMode {
+  background-color: #eee;
+  color: #111;
+  
+}
+
+  .access {
+    font-size: .8em;
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    right: -18px;
+    overflow: hidden;
+    letter-spacing: 3px;
+    /* opacity: 0; */
+    transition: opacity .45s;
+    -webkit-transition: opacity .35s;
+    
+  }
+  #darkMode{
+    position: relative; right: -70px; top:40px;
+    height: 20px;
+    width: 20px;
+  }
+  .buttonAccess {
+    position:fixed; right: 14px; top: 150px;
+    text-decoration: none;
+    float: right;
+    padding: 12px;
+    margin: 15px;
+    color: white;
+    width: 50px;
+    background-color: grey;
+    transition: width .35s;
+    -webkit-transition: width .35s;
+    overflow: hidden
+  }
+  #accessMenu{
+    position: fixed; right: 240px; top:164px;
+    background-color: #d2d0d0;
+    border-radius: 25px;
+    border-color: #000;
+    border-width: 4px;
+    height: 350px;
+    width: 450px;
+  }
+  
+  #acessability:hover {
+    color: white;
+    width: 180px;
+    
+  }
+  .widthAccess {
+
+    width: 180px;
+
+  }
+
+  a:hover .access{
+    opacity: .9;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  
+
+@import url(https://fonts.googleapis.com/css?family=Oswald:400);
+
+.navigation {
+  width: 100%;
+  background-color: grey;
+}
+
+img {
+  width: 25px;
+  border-radius: 50px;
+  float: left;
+}
+
+.logout {
+  font-size: .8em;
+  font-family: 'Oswald', sans-serif;
+	position: relative;
+  right: -18px;
+  bottom: -4px;
+  overflow: hidden;
+  letter-spacing: 3px;
+  opacity: 0;
+  transition: opacity .45s;
+  -webkit-transition: opacity .35s;
+  
+}
+
+.button {
+	text-decoration: none;
+	float: right;
+  padding: 12px;
+  margin: 15px;
+  position: fixed; top:770px;
+
+  color: white;
+  width: 50px;
+  background-color: grey;
+  transition: width .50s;
+  -webkit-transition: width .35s;
+  overflow: hidden
+}
+
+a:hover {
+  width: 150px;
+}
+
+a:hover .logout{
+  color: white;
+  opacity: .9;
+}
+
+a {
+  text-decoration: none;
+}
+
+
 
   .col-sm-4 {
     flex: 0 0 auto;
@@ -10534,6 +10681,18 @@ fieldset:disabled .btn {
 
 .text-wrap {
   white-space: normal !important;
+}
+
+.largeFont{
+  font-size: 26px;
+
+}
+.mediumFont{
+  font-size: 20px;
+
+}
+.largerH{
+  font-size: 90px;
 }
 
 .text-nowrap {
