@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="he">
+  <head>
+    <meta charset="utf-8" />
+    <title>JobMeister - יצירת מודעה</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+
+  </head>
+  
+  <body>
+    <script src="bundle.js"></script>
+    <!-- Spinner Start -->
+    <div
+      id="spinner"
+      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+    >
+      <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
+      <a href="index.html" class="navbar-brand d-flex align-items-center">
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto py-4 start -0 py-lg-0">
+          <a href="contact.html" class="nav-item nav-link"><b>צור קשר</b></a>
+          <a href="about.html" class="nav-item nav-link"><b>אודות</b></a>
+          <a href="createad.html" class="nav-item nav-link"><b>יצירת מודעה חדשה</b></a>
+          <a href="employeer.html" class="nav-item nav-link"><b>המודעות שלך</b></a>
+        </div>
+      </a>
+      <a href="employeer.html"
+        <h2 class="m-0 text-primary">
+          <img
+          class="img-fluid me-2"
+          src="img/fixedlogo.png"
+          alt=""
+          style="width: 210px"/>
+          </h2>
+  
+      </a>
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Header Start -->
+    <div class="container-xxl py-5 bg-light">
+        <div class="container">
+            <div class="row g-5 mb-1 wow fadeInUp text-md-end" data-wow-delay="0.1s">
+                <div class="col-lg">
+                    <h1 class="display-6">יצירת מודעה</h1>
+                    <p class="text-primary fs-5">אנא מלא את פרטי המודעה שלך</p>
+                </div>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-5 col-md-6 wow fadeInUp " data-wow-delay="0.1s">
+                    <img src="img/man.png"
+                    style="width: 550px;" alt="employeerphoto">
+                </div>
+                <div class="col-lg-7 col-md-6 wow fadeInUp text-md-end" data-wow-delay="0.5s">
+                    <p class="mb-4"></p>
+                    <form>
+                        <div class="row g-3 text-md-end">
+                            <div class="col-md-12">
+
+
+                              <div class="form-group mb-4">
+                                <label for="name"> כותרת המשרה</label>
+                                <input type="text" dir="rtl" class="form-control mt-1" id="adlocation" placeholder="כותרת המשרה (עד 40 תווים)" maxlength="40" >
+                                
+                              </div>
+                              
+                                <div class="form-group mb-4" dir="rtl">
+                                  <label for="floatingTextarea2">תיאור המשרה</label>
+                                    <textarea class="form-control"  dir="rtl"  placeholder="תיאור המשרה (עד 1000 תווים)" id="adinfo" maxlength="1000" style="height: 100px"></textarea>
+                               </div>
+                                
+                                <div class="form-group mb-4">
+                                  <label for="floatingTextarea2">דרישות המשרה</label>
+                                    <textarea class="form-control" dir="rtl"  placeholder="דרישות המשרה (עד 500 תווים)" id="adreqiure" maxlength="500"style="height: 80px"></textarea>
+                                  </div>
+                                 <div class = "row mb-5">
+                                  <div class="form-group col-md-6">
+                                    <label for="name"> מיקום המשרה</label>
+                                    <input type="text" dir="rtl" class="form-control" id="adlocation" placeholder="מיקום המשרה (עד 40 תווים)" maxlength="40" >
+                                </div>
+                                <div class="form-group col-md-6">
+                                  <label for="name"> תחום המשרה</label>
+                                    <select class="form-select col-md-6" dir = "rtl" input name="MainOccupation" id="admainocc" aria-label="Default select example">
+                                        <option selected value="">תחום עיסוק עיקרי</option>
+                                        <option value="1">אבטחה,שמירה ובטחון</option>
+                                        <option value="2">אומנות בידור ומדיה</option>
+                                        <option value="3">אופנה וטקסטיל</option>
+                                        <option value="4">בניין,בינוי ושיכון</option>
+                                        <option value="5">בתי קפה,מסעדות ואירועים</option>
+                                        <option value="6">הוראה,חינוך והדרכה</option>
+                                        <option value="7">הנדסה</option>
+                                        <option value="8">חשמל ואלקטרוניקה</option>
+                                        <option value="9">יופי,טיפוח וספא</option>
+                                        <option value="10">יזמות</option>
+                                        <option value="11">ייצור ותעשייה</option>
+                                        <option value="12">כספים וכלכלה</option>
+                                        <option value="13">מדעי החברה</option>
+                                        <option value="14">מחסנאות</option>
+                                        <option value="15">מכירות</option>
+                                        <option value="16">מערכות מידע</option>
+                                        <option value="17">משאבי אנוש</option>
+                                        <option value="18">משפטים</option>
+                                        <option value="19">נדל״ן</option>
+                                        <option value="20">נהגים ושליחים</option>
+                                        <option value="21">סטודנטים</option>
+                                        <option value="22">ספורט,כושר ואורח חיים</option>
+                                        <option value="23">רכב ומכונאות</option>
+                                        <option value="24">רפואה</option>
+                                        <option value="25">שירות לקוחות</option>
+                                        <option value="26">תוכנה</option>
+                                        <option value="27">תיירות ומלונאות</option>
+                                      </select>
+                                    </div>
+                                </div>
+                                
+                                <div class = "row mb-5">
+                                    <div class="col-6">
+                                        <button class="btn btn-primary py-3 px-4" type="submit" id="adSend">שלח פנייה</button>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                      <label for="name"> היקף המשרה</label>
+
+                                        <select class="form-select col-md-6" dir = "rtl" input name="MainOccupation" id="adscope" aria-label="Default select example">
+                                            <option selected value="">היקף משרה</option>
+                                            <option value="1">משרה מלאה</option>
+                                            <option value="2">חצי משרה</option>
+                                            <option value="3">משמרות</option>
+                                            <option value="4">פרילנסר</option>
+
+                                          </select>
+                                        </div>
+
+
+
+                                </div>
+                                </div>
+                            
+                           
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Footer Start -->
+    <div
+      class="footer container-fluid bg-white footer wow fadeIn"
+      data-wow-delay="0.1s">
+    
+    
+      <div class="container-fluid copyright">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+              &copy; <a href="#">JobMeister</a>, All Right Reserved.
+            </div>
+            <div class="col-md-6 text-center text-md-end">              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a
+      href="#"
+      class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"
+      ><i class="bi bi-arrow-up"></i
+    ></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="bundle.js"></script>
+    <script defer src="/src/createad.js"></script>
+    <script src="/src/main.js"></script>
+  </body>
+</html>
