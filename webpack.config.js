@@ -3,10 +3,22 @@ const path = require('path')
 module.exports = {
   
   mode: 'development',
-  entry: './src/fb.js',
+  entry:{
+    about:  './src/aboutFirebase.js',
+    contact: './src/contactFirebase.js',
+    createad: './src/createadFirebase.js',
+    employer: './src/employerFirebase.js',
+    login: './src/loginFirebase.js',
+    signup: './src/signupFirebase.js',
+    admin: './src/adminFirebase.js',
+    index: './src/indexFirebase.js',
+
+
+
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: "[name].bundle.js"
   },
   watch: true,
   

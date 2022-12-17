@@ -1,5 +1,8 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
+import {} from './main' 
+import {} from './createad'
+
     
 const firebaseConfig = {
   apiKey: "AIzaSyDoC94Xlt0BHfsH_zLp8562xsKMW49mv8s",
@@ -12,24 +15,11 @@ const firebaseConfig = {
 };
 
 // init firebase
-initializeApp(firebaseConfig)
+const app = initializeApp(firebaseConfig)
 
 // init services
-const db = getFirestore();
+const db = getFirestore(app);
 
 // collection ref
 
-const colRef = collection(db,'Acounts');
-
-
-// get collection data
-getDocs(colRef).then((snapshot) => {
-let Acounts = []
-snapshot.docs.forEach((doc)=>{
-    Acounts.push({...doc.data(), id:doc.id })
-})
-console.log(Acounts);
-})
-.catch(err => {
-    console.log(err.message);
-})
+const colRef = collection(db,'Data');

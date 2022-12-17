@@ -94,41 +94,42 @@
         <div class="col-lg-7 col-md-6 wow fadeInUp text-md-end" data-wow-delay="0.5s">
           <p class="mb-4"> נתקלת בבעיה כלשהי? צריך עזרה בתפעול האתר? אנא פנה אלינו בתיבת הפניות או באמצעות אמצעי הקשר
             הנמצאים בעמוד זה ונשמח לעזור לך בהקדם האפשרי</p>
-          <form>
+          <form class="contactForm">
             <div class="row g-3 text-md-end">
               <div class="col-md-6">
                 <div class="form-floating">
-                  <input type="text" dir="rtl" class="form-control" id="name" placeholder="Your Name">
+                  <input type="text" dir="rtl" class="form-control" id="cname" placeholder="Your Name">
                   <label for="name">שם מלא</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-floating">
-                  <input type="email" dir="rtl" class="form-control" id="email" placeholder="Your Email">
+                  <input type="email" dir="rtl" class="form-control" id="cemail" placeholder="Your Email">
                   <label for="email">כתובת מייל</label>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-floating">
-                  <input type="text" dir="rtl" class="form-control" id="subject" placeholder="Subject">
+                  <input type="text" dir="rtl" class="form-control" id="csubject" placeholder="Subject">
                   <label for="subject">נושא הפנייה</label>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-floating">
-                  <textarea class="form-control" dir="rtl" placeholder="Leave a message here" id="message"
+                  <textarea class="form-control" dir="rtl" placeholder="Leave a message here" id="message" name="cmsg"
                     style="height: 100px"></textarea>
                   <label for="message">תוכן הפנייה</label>
                 </div>
               </div>
               <div class="col-12">
                 <button id="Send" class="btn btn-primary py-3 px-4" type="submit">שלח פנייה</button>
-              </div>
-            </div>
           </form>
         </div>
       </div>
+      </form>
     </div>
+  </div>
+  </div>
   </div>
   <!-- Contact End -->
 
@@ -199,11 +200,11 @@
   <script src="lib/counterup/counterup.min.js"></script>
 
   <!-- Template Javascript -->
-  <script src="bundle.js"></script>
+  <script src="contact.bundle.js"></script>
 
-  <script src="/src/main.js"></script>
+  <!-- <script src="/src/main.js"></script> -->
 
-  <script src="/src/contact.js"></script>
+  <!-- <script src="/src/contact.js"></script> -->
 </body>
 
 </html>
