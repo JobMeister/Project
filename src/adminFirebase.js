@@ -61,7 +61,7 @@ getDocs(colRef).then((snapshot) => {
   
 
 
-  // delete old
+  // delete old about data
   const docRef = doc(db, 'Data', oldData)
   deleteDoc(docRef)
     .then(() => {
@@ -69,7 +69,7 @@ getDocs(colRef).then((snapshot) => {
     })
 
 
-  // add new
+  // add new data for about
   addDoc(colRef,{
     dataAbout: editAb.ntext.value
   }).then(() =>{
@@ -83,7 +83,7 @@ getDocs(colRef).then((snapshot) => {
 
 var size;
 
-// get messages 
+// get messages to display in admin panel & admin num of messages report
 getDocs(msgColRef).then((snapshot) => {
   let Messages = []
   snapshot.docs.forEach((doc)=>{
@@ -106,7 +106,7 @@ getDocs(msgColRef).then((snapshot) => {
       console.log(err.message);
   })
 
-
+  // getting data for num of ads
   var adSize;
   getDocs(adColRef).then((snapshot) => {
     let Ads = []
