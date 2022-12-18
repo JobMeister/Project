@@ -22,6 +22,7 @@ const app = initializeApp(firebaseConfig)
 
 // init services
 const db = getFirestore(app);
+const Auth = getAuth();
 
 // collection ref
 
@@ -131,7 +132,7 @@ const logoutButton = document.querySelector('.logoutBtn')
    signOut(auth)
       .then(() => {
        console.log('user signed out')
-       location.href="admin.html"
+       location.href="index.html"
      })
      .catch(err => {
         console.log(err.message)

@@ -41,7 +41,7 @@ Flogin.addEventListener('submit', (e) => {
     .then(cred => {
       console.log('user logged in:', cred.user)
       Flogin.reset()
-      location.href="index.html"
+      // location.href="index.html"
     })
     .catch(err => {
       console.log(err.message)

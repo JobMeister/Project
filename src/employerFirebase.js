@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
+import{getAuth, signOut } from 'firebase/auth'
 import {} from './main' 
 import {} from './createad'
 
@@ -22,4 +23,17 @@ const db = getFirestore(app);
 
 // collection ref
 
-const colRef = collection(db,'Data');
+// const colRef = collection(db,'Data');
+const auth = getAuth();
+
+const logoutButton = document.querySelector('.logoutBtn')
+  logoutButton.addEventListener('click', () => {
+   signOut(auth)
+      .then(() => {
+       console.log('user signed out')
+      //  location.href="index.html"
+     })
+     .catch(err => {
+        console.log(err.message)
+     })
+  })

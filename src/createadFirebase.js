@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
+
 import {} from './main' 
 import {} from './createad' 
 
@@ -25,6 +26,7 @@ const db = getFirestore(app);
 const adColRef = collection(db,'Ads');
 
 
+const Auth = getAuth();
 
 // sending data messaages
 
