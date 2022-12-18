@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
+import{getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+
 import {} from './login' 
 
 
@@ -23,3 +25,25 @@ const db = getFirestore(app);
 // collection ref
 
 const colRef = collection(db,'Data');
+
+// auth
+const auth = getAuth();
+
+
+const Flogin = document.querySelector('.Flogin')
+Flogin.addEventListener('submit', (e) => {
+  e.preventDefault()
+
+  const email = Flogin.email.value
+  const password = Flogin.password.value
+
+  signInWithEmailAndPassword(auth, email, password)
+    .then(cred => {
+      console.log('user logged in:', cred.user)
+      Flogin.reset()
+      location.href="index.html"
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
+})

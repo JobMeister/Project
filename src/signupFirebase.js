@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
+import{getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import {} from './signup'
     
 const firebaseConfig = {
@@ -20,4 +21,51 @@ const db = getFirestore(app);
 
 // collection ref
 
-const colRef = collection(db,'Data');
+// const colRef = collection(db,'Data');
+const auth = getAuth();
+
+
+// sign up
+const signUpForm = document.querySelector('.Fsignup')
+signUpForm.addEventListener('submit', (e) => {
+  e.preventDefault()
+
+const email = signUpForm.email.value
+const password = signUpForm.password.value
+const firstname = signUpForm.firstname.value
+const lastname = signUpForm.lastname.value
+const EmployerOrSearcher = signUpForm.EmployerOr.value
+
+if(EmployerOrSearcher == '1') {
+ 
+  var Company = signUpForm.Company.value
+  
+
+ createUserWithEmailAndPassword(auth, email, password)
+    .then((cred) => {
+      // Signed in 
+      const user = cred.user;
+      addDoc(collection(db, "users" ), { firstname ,lastname,email,password,Company});
+      window.alert("משתמש נרשם בהצלחה!");
+    })
+  
+}
+
+if(EmployerOrSearcher == '2') {
+ 
+  var age = signUpForm.age.value
+  var gender = signUpForm.gender.value
+  var Occ = signUpForm.MainOcc.value
+  
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((cred) => {
+      // Signed in 
+      const user = cred.user;
+      addDoc(collection(db, "users" ), { firstname ,lastname,email,password,age,gender,Occ});
+      window.alert("משתמש נרשם בהצלחה!");
+    })
+  
+}
+
+})
+
