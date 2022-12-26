@@ -93,7 +93,7 @@
               ">
                 <div class="card-body p-5 shadow-5 text-center" dir="rtl">
                   <h2 class="fw-bold mb-5">הירשם עכשיו:</h2>
-                  <form action="/signup">
+                  <form class="Fsignup" action="/signup">
                     <!-- 2 column grid layout with text inputs for the first and last names -->
                     <div class="row">
                       <div class="col-md-6 mb-4">
@@ -136,8 +136,8 @@
                     <!-- Choose which account to open -->
                     <div class="form-outline mb-4">
                       <label class="form-label" for="form3Example4">הירשם בתור:</label>
-                      <select class="form-select" id="S_select" onchange="DisplayDivBySelector(this.value)"
-                        aria-label="Default select example">
+                      <select name="EmployerOr" class="form-select" id="S_select"
+                        onchange="DisplayDivBySelector(this.value)" aria-label="Default select example">
                         <option selected value="">- אנא בחר סוג משתמש -</option>
                         <option value="1">מעסיק</option>
                         <option value="2">מחפש עבודה</option>
@@ -169,43 +169,43 @@
                         <select class="form-select mb-4" input name="gender" id="S_gender"
                           aria-label="Default select example">
                           <option selected value="">מין:</option>
-                          <option value="1">זכר</option>
-                          <option value="2">נקבה</option>
+                          <option value="זכר">זכר</option>
+                          <option value="נקבה">נקבה</option>
                         </select>
                         <div class="text-center pt-1 text-danger">
                           <h6 id="msg8"></h6>
                         </div>
                         <!--  -->
-                        <select class="form-select mb-4" input name="MainOccupation" id="S_MainOccupation"
+                        <select class="form-select mb-4" input name="MainOcc" id="S_MainOccupation"
                           aria-label="Default select example">
                           <option selected value="">תחום עיסוק עיקרי:</option>
-                          <option value="1">אבטחה,שמירה ובטחון</option>
-                          <option value="2">אומנות בידור ומדיה</option>
-                          <option value="3">אופנה וטקסטיל</option>
-                          <option value="4">בניין,בינוי ושיכון</option>
-                          <option value="5">בתי קפה,מסעדות ואירועים</option>
-                          <option value="6">הוראה,חינוך והדרכה</option>
-                          <option value="7">הנדסה</option>
-                          <option value="8">חשמל ואלקטרוניקה</option>
-                          <option value="9">יופי,טיפוח וספא</option>
-                          <option value="10">יזמות</option>
-                          <option value="11">ייצור ותעשייה</option>
-                          <option value="12">כספים וכלכלה</option>
-                          <option value="13">מדעי החברה</option>
-                          <option value="14">מחסנאות</option>
-                          <option value="15">מכירות</option>
-                          <option value="16">מערכות מידע</option>
-                          <option value="17">משאבי אנוש</option>
-                          <option value="18">משפטים</option>
-                          <option value="19">נדל״ן</option>
-                          <option value="20">נהגים ושליחים</option>
-                          <option value="21">סטודנטים</option>
-                          <option value="22">ספורט,כושר ואורח חיים</option>
-                          <option value="23">רכב ומכונאות</option>
-                          <option value="24">רפואה</option>
-                          <option value="25">שירות לקוחות</option>
-                          <option value="26">תוכנה</option>
-                          <option value="27">תיירות ומלונאות</option>
+                          <option value=">אבטחה,שמירה ובטחון">אבטחה,שמירה ובטחון</option>
+                          <option value=">אומנות בידור ומדיה">אומנות בידור ומדיה</option>
+                          <option value=">אופנה וטקסטיל">אופנה וטקסטיל</option>
+                          <option value=">בניין,בינוי ושיכון">בניין,בינוי ושיכון</option>
+                          <option value=">בתי קפה,מסעדות ואירועים">בתי קפה,מסעדות ואירועים</option>
+                          <option value=">הוראה,חינוך והדרכה">הוראה,חינוך והדרכה</option>
+                          <option value="הנדסה">הנדסה</option>
+                          <option value=">חשמל ואלקטרוניקה">חשמל ואלקטרוניקה</option>
+                          <option value=">יופי,טיפוח וספא">יופי,טיפוח וספא</option>
+                          <option value="יזמות">יזמות</option>
+                          <option value="ייצור ותעשייה">ייצור ותעשייה</option>
+                          <option value="כספים וכלכלה">כספים וכלכלה</option>
+                          <option value="מדעי החברה">מדעי החברה</option>
+                          <option value="מחסנאות">מחסנאות</option>
+                          <option value="מכירות">מכירות</option>
+                          <option value="מערכות מידע">מערכות מידע</option>
+                          <option value="משאבי אנוש">משאבי אנוש</option>
+                          <option value="משפטים">משפטים</option>
+                          <option value="נדל״ן">נדל״ן</option>
+                          <option value="נהגים ושליחים">נהגים ושליחים</option>
+                          <option value="סטודנטים">סטודנטים</option>
+                          <option value="ספורט,כושר ואורח חיים">ספורט,כושר ואורח חיים</option>
+                          <option value="רכב ומכונאות">רכב ומכונאות</option>
+                          <option value="רפואה">רפואה</option>
+                          <option value="שירות לקוחות">שירות לקוחות</option>
+                          <option value="תוכנה">תוכנה</option>
+                          <option value="תיירות ומלונאות">תיירות ומלונאות</option>
                         </select>
                         <div class="text-center pt-1 text-danger">
                           <h6 id="msg9"></h6>
@@ -213,12 +213,12 @@
                       </div>
 
                     </div>
+                    <button class="btn btn-primary btn-block mb-4" type="submit">
+                      הירשם
+                    </button>
                   </form>
                   <!-- Submit button -->
-                  <button class="btn btn-primary btn-block mb-4" button type="button"
-                    onclick="SignUpSucces(this.form);">
-                    הירשם
-                  </button>
+
 
                 </div>
                 </form>
@@ -237,8 +237,7 @@
     <!-- Section: Design Block -->
   </div>
   </div>
-  <script src="bundle.js"></script>
-  <script src="/src/signup.js"></script>
+  <script src="bundles/signup.bundle.js"></script>
 
 </body>
 

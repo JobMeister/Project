@@ -76,14 +76,14 @@
                     <h2 class="mt-1 mb-5 pb-1">ברוכים הבאים</h2>
                   </div>
 
-                  <form>
+                  <form class="Flogin">
                     <p>
                     <h4>התחבר למשתמש שלך</h4>
                     </p>
 
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="id_username">שם משתמש:</label>
-                      <input type="email" input name="username" class="form-control" placeholder="הכנס כתובת מייל" />
+                      <label class="form-label" for="id_username">אימייל: :</label>
+                      <input type="email" input name="email" class="form-control" placeholder="הכנס כתובת מייל" />
                     </div>
 
                     <div class="form-outline mb-4">
@@ -94,13 +94,13 @@
                       <h6 id="Alert_massage"></h6>
                     </div>
                     <div class="text-center pt-1 mb-5 pb-1">
-                      <button class="btn btn-primary btn-block fa-lg mb-3" button type="button"
-                        onclick="loginSuccses(this.form);">התחבר</button>
+                      <button class="btn btn-primary btn-block fa-lg mb-3" type="submit">התחבר</button>
                       <br>
                     </div>
 
                     <div class="d-flex align-items-center justify-content-center pb-4">
                       <p class="mb-0 p-md-3 me-2">אין לך משתמש? </p>
+                      <!-- <button type="submit">צור משתמש</button> -->
                       <a href="signup.html" class="btn btn-outline-primary">צור משתמש</a>
                     </div>
 
@@ -124,8 +124,8 @@
       </div>
     </div>
   </section>
-  <script src="bundle.js"></script>
-  <script src="/src/login.js"></script>
+  <script src="bundles/login.bundle.js"></script>
+  <!-- <script src="/src/login.js"></script> -->
 
 </body>
 

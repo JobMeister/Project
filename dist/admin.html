@@ -91,7 +91,7 @@
 
     <div class="navigation">
 
-      <a id="logout" class="button" href="index.html">
+      <a id="logout" class="button logoutBtn" href="index.html">
         <img
           src="https://previews.123rf.com/images/tmricons/tmricons1707/tmricons170700613/81207214-logout-sign-icon-sign-out-button-.jpg">
 
@@ -163,15 +163,17 @@
 
         <div id="editdiv" class="col-12">
           <h1> Heyyyy</h1>
-          <p id="editP"> JobMeister הוא פלטפורמת הדרושים הטובה ביותר של ישראל וזאת בזכות מערכת התאמת מועמד למעסיק הטובה
+          <p id="editP"> JobMeister הוא פלטפורמת הדרושים הטובה ביותר של ישראל וזאת בזכות מערכת התאמת
+            מועמד למעסיק הטובה
             ביותר. מטרת האתר היא לעזור למועמדים מכלל תחומי התעסוקה למצוא את העבודה הטובה והמתאימה להם,
             ובמקביל לעזור למעסיקים למצוא במהירות ויעילות את העובדים הטובים והמתאימים ביותר. </p>
 
-          <textarea placeholder="Enter here" id="Newtext" name="Newtext" rows="10" cols="90">
-            </textarea>
-          <br>
-          <button id="editNow">Edit here</button>
-
+          <form class="editbtn">
+            <textarea placeholder="Enter here" id="Newtext" name="ntext" rows="10" cols="90">
+             </textarea>
+            <br>
+            <button id="editNow">Edit here</button>
+          </form>
         </div>
 
 
@@ -187,12 +189,10 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-  <!-- <script src="src/main.js" charset="utf-8"></script>
-  <script src="src/admin.js" charset="utf-8"></script> -->
+  <script src="bundles/admin.bundle.js"></script>
+  <!-- <script src="/src/admin.js"></script>
+  <script src="/src/main.js" charset="utf-8"></script> -->
 
-  <script src="bundle.js"></script>
-  <script src="/src/admin.js" charset="utf-8"></script>
-  <script src="/src/main.js" charset="utf-8"></script>
 </body>
 
 </html>

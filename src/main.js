@@ -35,7 +35,7 @@
     }
   });
 
-  if (localStorage.getItem("About") !== null) {
-    $("#RealAbout").html(localStorage.getItem("About"));
-  }
+  // if (localStorage.getItem("About") !== null) {
+  //   $("#RealAbout").html(localStorage.getItem("About"));
+  // }
 
