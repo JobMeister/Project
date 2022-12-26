@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
+import{getAuth, onAuthStateChanged } from 'firebase/auth'
+
 import {} from './main'
 import {} from './admin'
 
@@ -35,7 +37,6 @@ snapshot.docs.forEach((doc)=>{
     Data.push({...doc.data(), id:doc.id })
 })
 console.log(Data);
-oldData = Data[0].id;
 $("#RealAbout").html(Data[0].dataAbout);
 })
 .catch(err => {

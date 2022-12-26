@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
+import{getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
+
 import {} from './admin'
 import {} from './main' 
  
@@ -20,6 +22,7 @@ const app = initializeApp(firebaseConfig)
 
 // init services
 const db = getFirestore(app);
+const auth = getAuth();
 
 // collection ref
 
@@ -42,11 +45,14 @@ getDocs(colRef).then((snapshot) => {
   })
 
   
+  
 // sending data
 
 const editAb = document.querySelector('.editbtn')
 editAb.addEventListener('submit', (e) => {
   e.preventDefault()
+
+  
   
 getDocs(colRef).then((snapshot) => {
   let Data = []
@@ -90,7 +96,6 @@ getDocs(msgColRef).then((snapshot) => {
     Messages.push({...doc.data(), id:doc.id })
   })
   size = Messages.length;
-  console.log(size);
   console.log(Messages);
 
   for (let index = 0; index < size; index++) {
@@ -120,3 +125,23 @@ getDocs(msgColRef).then((snapshot) => {
     .catch(err => {
         console.log(err.message);
     })
+
+
+const logoutButton = document.querySelector('.logoutBtn')
+  logoutButton.addEventListener('click', () => {
+   signOut(auth)
+      .then(() => {
+       console.log('user signed out')
+       location.href="index.html"
+     })
+     .catch(err => {
+        console.log(err.message)
+     })
+  })
+  
+
+  //sub
+
+  onAuthStateChanged(auth,(user)=>{
+    console.log("User status changed",user);
+  })

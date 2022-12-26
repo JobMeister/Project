@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
+import{getAuth, onAuthStateChanged } from 'firebase/auth'
+
 import {} from './main' 
  
 
