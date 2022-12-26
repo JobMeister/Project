@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
-import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
-import{getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, getDoc } from 'firebase/firestore'
+import{getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
 
 import {} from './login' 
 
@@ -25,6 +25,10 @@ const db = getFirestore(app);
 // collection ref
 
 const colRef = collection(db,'Data');
+const docRef = doc(db, "users", "eOrS");
+const docSnap = await getDoc(docRef);
+
+
 
 // auth
 const auth = getAuth();
@@ -41,9 +45,28 @@ Flogin.addEventListener('submit', (e) => {
     .then(cred => {
       console.log('user logged in:', cred.user)
       Flogin.reset()
+
+      if (docSnap.exists()) {
+        if(docSnap.data()=="Employer") {
+            location.href="employeer.html"
+
+         }
+        else {
+            location.href="index.html"
+
+        }
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+
       // location.href="index.html"
     })
     .catch(err => {
       console.log(err.message)
     })
+})
+
+onAuthStateChanged(auth,(user)=>{
+  console.log("User status changed",user);
 })

@@ -1,9 +1,12 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
+import{getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
+
 
 import {} from './main' 
 import {} from './createad' 
 
+const auth = getAuth();
     
 const firebaseConfig = {
   apiKey: "AIzaSyDoC94Xlt0BHfsH_zLp8562xsKMW49mv8s",
@@ -52,3 +55,6 @@ adForm.addEventListener('submit', (e) => {
 
 })
 
+onAuthStateChanged(auth,(user)=>{
+  console.log("User status changed",user);
+})

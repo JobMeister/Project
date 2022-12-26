@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
-import{getAuth, signOut } from 'firebase/auth'
+import{getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
 
 import {} from './admin'
 import {} from './main' 
@@ -22,7 +22,7 @@ const app = initializeApp(firebaseConfig)
 
 // init services
 const db = getFirestore(app);
-const Auth = getAuth();
+const auth = getAuth();
 
 // collection ref
 
@@ -137,4 +137,11 @@ const logoutButton = document.querySelector('.logoutBtn')
      .catch(err => {
         console.log(err.message)
      })
+  })
+  
+
+  //sub
+
+  onAuthStateChanged(auth,(user)=>{
+    console.log("User status changed",user);
   })

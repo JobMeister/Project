@@ -21,5 +21,7 @@ module.exports = {
     filename: "[name].bundle.js"
   },
   watch: true,
-  
+  experiments: {
+    topLevelAwait: true
+  }
 }

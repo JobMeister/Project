@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
-import{getAuth, signOut } from 'firebase/auth'
+import{getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
 import {} from './main' 
 import {} from './createad'
 
@@ -37,3 +37,7 @@ const logoutButton = document.querySelector('.logoutBtn')
         console.log(err.message)
      })
   })
+
+  onAuthStateChanged(auth,(user)=>{
+   console.log("User status changed",user);
+ })
