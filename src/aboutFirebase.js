@@ -37,7 +37,6 @@ snapshot.docs.forEach((doc)=>{
     Data.push({...doc.data(), id:doc.id })
 })
 console.log(Data);
-oldData = Data[0].id;
 $("#RealAbout").html(Data[0].dataAbout);
 })
 .catch(err => {
