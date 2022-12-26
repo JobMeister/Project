@@ -45,8 +45,8 @@ Flogin.addEventListener('submit', (e) => {
     .then(cred => {
       console.log('user logged in:', cred.user)
       window.alert("logged in")
-      Flogin.reset()
-
+      // Flogin.reset()
+      location.href="index.html"
       if (docSnap.exists()) {
         if(docSnap.data()=="Employer") {
             location.href="employeer.html"
@@ -64,8 +64,8 @@ Flogin.addEventListener('submit', (e) => {
       // location.href="index.html"
     })
     .catch(err => {
-      console.log(err.message)
-      window.alert("Error")
+      document.querySelector("#Alert_massage").innerHTML="Wrong password/username";
+            return false;
     })
 })
 
