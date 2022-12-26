@@ -37,6 +37,23 @@ h6,
 }
 
 /*** Button ***/
+.logout {
+  font-size: .8em;
+  font-family: 'Oswald', sans-serif;
+	position: relative;
+  right: -18px;
+  bottom: -4px;
+  overflow: hidden;
+  letter-spacing: 3px;
+  opacity: 0;
+  transition: opacity .45s;
+  -webkit-transition: opacity .35s;
+  
+}
+
+a {
+  text-decoration: none;
+}
 .btn {
   font-weight: 500;
   transition: 0.5s;

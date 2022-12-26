@@ -1,5 +1,7 @@
-console.log("checkaaaaaaaaa");
-(function ($) {
+
+  
+
+
   "use strict";
 
   // Spinner
@@ -11,9 +13,6 @@ console.log("checkaaaaaaaaa");
     }, 1);
   };
   spinner();
-
-  // // Initiate the wowjs
-  // new WOW().init();
 
   // asif random pages
   function pic() {
@@ -36,21 +35,7 @@ console.log("checkaaaaaaaaa");
     }
   });
 
-  // Back to top button
-  // $(window).scroll(function () {
-  //   if ($(this).scrollTop() > 300) {
-  //     $(".back-to-top").fadeIn("slow");
-  //   } else {
-  //     $(".back-to-top").fadeOut("slow");
-  //   }
-  // });
-  // $(".back-to-top").click(function () {
-  //   $("html, body").animate({ scrollTop: 0 }, 1500, "easeInOutExpo");
-  //   return false;
-  // });
+  // if (localStorage.getItem("About") !== null) {
+  //   $("#RealAbout").html(localStorage.getItem("About"));
+  // }
 
-  if (localStorage.getItem("About") !== null) {
-    // Gets about content from the admin edit
-    $("#RealAbout").html(localStorage.getItem("About"));
-  }
-})(jQuery);
