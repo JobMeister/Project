@@ -65,7 +65,6 @@ Flogin.addEventListener('submit', (e) => {
     })
     .catch(err => {
       document.querySelector("#Alert_massage").innerHTML="Wrong password/username";
-            return false;
     })
 })
 
