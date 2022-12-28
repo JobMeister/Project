@@ -8,6 +8,9 @@
  */
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
+<<<<<<< HEAD
+/******/ 	
+=======
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/@firebase/auth/dist/esm2017/index-c6def6da.js":
@@ -255,6 +258,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = __webpack_require__("./src/indexFirebase.js");
+>>>>>>> Tomer
 /******/ 	
 /******/ })()
 ;
