@@ -140,6 +140,22 @@ const logoutButton = document.querySelector('.logoutBtn')
   })
   
 
+ // get ads to display in admin panel 
+getDocs(adColRef).then((snapshot) => {
+  let ads = []
+  snapshot.docs.forEach((doc)=>{
+    ads.push({...doc.data(), id:doc.id })
+  })
+  size = ads.length;
+  console.log(ads);
+
+  for (let index = 0; index < size; index++) {
+    let indexR=index+1;
+    $("#NotConfirm").append("<p  class='border border-dark py-2 px-2 bg-white' >" + "<strong> ad number: " + indexR + "</strong>" + "<br>" + "description: " + (ads[index].des) + "<br>" +"location: " + (ads[index].location) + "<br>" + "percent: " + (ads[index].percent) + "<br>" + "Main Occupation : " + (ads[index].dep) + "<br>" + "requiements: " +(ads[index].req)+ "<br>" + "Title: " +(ads[index].title)+ "<br>" + "</p>" )
+  }
+
+  }) 
+
   //sub
 
   onAuthStateChanged(auth,(user)=>{
