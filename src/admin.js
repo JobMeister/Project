@@ -11,6 +11,10 @@ $(document).ready(function(){
   $("#editdiv").hide();
   $("#accessMenu").hide();
   $("#reports").hide();
+  $("#admin_conads").hide();
+  $("#not_admin_conads").hide();
+
+
 
 
   $("#darkBtn").click(function(){
@@ -107,6 +111,25 @@ $(document).ready(function(){
       return false;
     
   })
+  $("#confirm_ads").click(function(){
+    $("#admin_conads").toggle('drop');
+    $("#not_admin_conads").hide();
+    $("#editdiv").hide();
+    $("#admin_msg").hide();
+    $("#reports").hide();
+    return false;
+  
+})
+$("#notconfirm_ads").click(function(){
+  $("#not_admin_conads").toggle('drop');
+  $("#admin_conads").hide();
+  $("#editdiv").hide();
+  $("#admin_msg").hide();
+  $("#reports").hide();
+  return false;
+
+})
+
 
 
 
