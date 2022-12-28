@@ -5,8 +5,6 @@ import{getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
 
 import {} from './main' 
 import {} from './createad' 
-
-const auth = getAuth();
     
 const firebaseConfig = {
   apiKey: "AIzaSyDoC94Xlt0BHfsH_zLp8562xsKMW49mv8s",
@@ -28,8 +26,6 @@ const db = getFirestore(app);
 
 const adColRef = collection(db,'Ads');
 
-
-const Auth = getAuth();
 
 // sending data messaages
 
