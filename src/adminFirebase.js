@@ -99,8 +99,8 @@ getDocs(msgColRef).then((snapshot) => {
   console.log(Messages);
 
   for (let index = 0; index < size; index++) {
-
-    $("#admin_msg").append("<p> Name: " + (Messages[index].name) + "<br>" +"Email: " + (Messages[index].email) + "<br>" + "Subject: " + (Messages[index].subject) + "<br>" + "Message: " + (Messages[index].msg) + "</p>" )
+    let indexR=index+1;
+    $("#admin_msg").append("<p class='border border-dark py-2 px-2 bg-white'>" + "<strong> Message number: " + indexR + "</strong>" + "<br>" + "Name: " + (Messages[index].name) + "<br>" +"Email: " + (Messages[index].email) + "<br>" + "Subject: " + (Messages[index].subject) + "<br>" + "Message: " + (Messages[index].msg) + "</p>" )
   }
 
   $("#reports").append("<strong>Number of messages is - "+  size +"</strong>")
