@@ -110,9 +110,8 @@ $(document).ready(function(){
       $("#welcome").hide();
       $("#admin_msg").hide();
       $("#reports").hide();
-      $("#Confirm_ads").hide();
+      $("#Confirm").hide();
       $("#NotConfirm").hide();
-
       return false;
     
   })
