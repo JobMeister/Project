@@ -98,7 +98,7 @@ getDocs(msgColRef).then((snapshot) => {
   size = Messages.length;
   console.log(Messages);
 
-  for (let index = 0; index < size; index++) {
+ for (let index = 0; index < size; index++) {
     let indexR=index+1;
     $("#admin_msg").append("<p class='border border-dark py-2 px-2 bg-white'>" + "<strong> Message number: " + indexR + "</strong>" + "<br>" + "Name: " + (Messages[index].name) + "<br>" +"Email: " + (Messages[index].email) + "<br>" + "Subject: " + (Messages[index].subject) + "<br>" + "Message: " + (Messages[index].msg) + "</p>" )
   }
@@ -125,21 +125,6 @@ getDocs(msgColRef).then((snapshot) => {
     .catch(err => {
         console.log(err.message);
     })
-    // get ads to display in admin panel 
-getDocs(adColRef).then((snapshot) => {
-  let ads = []
-  snapshot.docs.forEach((doc)=>{
-    ads.push({...doc.data(), id:doc.id })
-  })
-  size = ads.length;
-  console.log(ads);
-
-  for (let index = 0; index < size; index++) {
-    let indexR=index+1;
-    $("#not_admin_conads").append("<p class='border border-dark py-2 px-2 bg-white'>" + "<strong> ad number: " + indexR + "</strong>" + "<br>" + "description: " + (ads[index].des) + "<br>" +"location: " + (ads[index].location) + "<br>" + "percent: " + (ads[index].percent) + "<br>" + "Main Occupation : " + (ads[index].dep) + "<br>" + "requiements: " +(ads[index].req)+ "<br>" + "Title: " +(ads[index].title)+ "<br>" + "</p>" )
-  }
-
-  })
 
 
 const logoutButton = document.querySelector('.logoutBtn')
@@ -153,14 +138,27 @@ const logoutButton = document.querySelector('.logoutBtn')
         console.log(err.message)
      })
   })
+  
 
-  
-  
+ // get ads to display in admin panel 
+getDocs(adColRef).then((snapshot) => {
+  let ads = []
+  snapshot.docs.forEach((doc)=>{
+    ads.push({...doc.data(), id:doc.id })
+  })
+  size = ads.length;
+  console.log(ads);
+
+  for (let index = 0; index < size; index++) {
+    let indexR=index+1;
+    $("#NotConfirm").append("<p  class='border border-dark py-2 px-2 bg-white' >" + "<strong> ad number: " + indexR + "</strong>" + "<br>" + "description: " + (ads[index].des) + "<br>" +"location: " + (ads[index].location) + "<br>" + "percent: " + (ads[index].percent) + "<br>" + "Main Occupation : " + (ads[index].dep) + "<br>" + "requiements: " +(ads[index].req)+ "<br>" + "Title: " +(ads[index].title)+ "<br>" + "</p>" + "<button type='button' class='btn btn-outline-dark me-2'>delete</button>" +  "<button type='button' class='btn btn-outline-dark'>Accept</button>"
+    )
+  }
+
+  }) 
 
   //sub
 
   onAuthStateChanged(auth,(user)=>{
     console.log("User status changed",user);
   })
-
-

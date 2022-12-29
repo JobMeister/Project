@@ -7,15 +7,14 @@ let textflag=0;
 
 
 $(document).ready(function(){
+  $("#welcome").show();
   $("#admin_msg").hide();
   $("#editdiv").hide();
   $("#accessMenu").hide();
   $("#reports").hide();
-  $("#admin_conads").hide();
-  $("#not_admin_conads").hide();
-
-
-
+  $("#Confirm").hide();
+  $("#NotConfirm").hide();
+  
 
   $("#darkBtn").click(function(){
     if(darkflag === 0) {
@@ -81,12 +80,12 @@ $(document).ready(function(){
   $("#reportsBtn").click(function(){
 
    
+    $("#reports").toggle('drop');
+    $("#welcome").hide();
     $("#editdiv").hide();
     $("#admin_msg").hide();
-    $("#not_admin_conads").hide();
-    $("#admin_conads").hide();
-    $("#reports").toggle('drop');
-
+    $("#Confirm_ads").hide();
+    $("#NotConfirm").hide();
 
     return false;
   
@@ -94,55 +93,80 @@ $(document).ready(function(){
   
   $("#msg_btn").click(function(){
 
+   
+      $("#admin_msg").toggle('drop');
+      $("#welcome").hide();
       $("#editdiv").hide();
       $("#reports").hide();
-      $("#not_admin_conads").hide();
-      $("#admin_conads").hide();
-      $("#admin_msg").toggle('drop');
-
+      $("#Confirm_ads").hide();
+      $("#NotConfirm").hide();
       return false;
     
   })
 
   $("#edit_btn").click(function(){
     
+      $("#editdiv").toggle('drop');
+      $("#welcome").hide();
       $("#admin_msg").hide();
       $("#reports").hide();
-      $("#not_admin_conads").hide();
-      $("#admin_conads").hide();
-      $("#editdiv").toggle('drop');
-
-
+      $("#Confirm").hide();
+      $("#NotConfirm").hide();
       return false;
     
   })
-  $("#confirm_ads").click(function(){
-    $("#admin_conads").toggle('drop');
-    $("#not_admin_conads").hide();
+  $("#Confirm_btn").click(function(){
+
+    $("#Confirm").toggle('drop');
+    $("#welcome").hide();
+    $("#NotConfirm").hide();
+    $("#reports").hide();
     $("#editdiv").hide();
     $("#admin_msg").hide();
-    $("#reports").hide();
     return false;
   
 })
-$("#notconfirm_ads").click(function(){
-  $("#admin_conads").hide();
+$("#NotConfirm_btn").click(function(){
+
+  $("#NotConfirm").toggle('drop');
+  $("#welcome").hide();
+  $("#Confirm").hide();
+  $("#reports").hide();
   $("#editdiv").hide();
   $("#admin_msg").hide();
-  $("#reports").hide();
-  $("#not_admin_conads").toggle('drop');
   return false;
 
 })
-
-
-
 
 var editB = $("#editNow");
 
 var NewText = "JobMeister הוא פלטפורמת הדרושים הטובה ביותר של ישראל וזאת בזכות מערכת התאמת מועמד למעסיק הטובה ביותר. מטרת האתר היא לעזור למועמדים מכלל תחומי התעסוקה למצוא את העבודה הטובה והמתאימה להם, ובמקביל לעזור למעסיקים למצוא במהירות ויעילות את העובדים הטובים והמתאימים ביותר.";
 })
+// editB.click( function() {
+//   NewText = $("#Newtext").val();
+//   localStorage.setItem("About", NewText);
+//   $("#editP").html(NewText);
+//   alert("Saved");
 
+//   } );
+
+// var num_msg = localStorage.getItem("num_of_msg");
+// for (var index = 0; index < num_msg; index++) {
+//   let name = localStorage.getItem("Client " + index + " name");
+//   let email = localStorage.getItem("Client " + index + " email");
+//   let subject = localStorage.getItem("Client " + index + " subject");
+//   let message = localStorage.getItem("Client " + index + " message");
+//   $("#admin_msg").append("<strong>Number of message is - </strong>" + (index+1));
+//   $("#admin_msg").append("<p> Name: " + name + "<br>" +"Email: " + email + "<br>" + "Subject: " + subject + "<br>" + "Message: " + message + "</p>" );
+  
+// };
+
+
+// var num_ads = localStorage.getItem("num_of_ads");
+
+// $("#reports").append("<strong>Number of messeges is - "+  index +"</strong>");
+// $("#reports").append("<strong><p>Number of ads is - "+  num_ads +"</strong></p>");
+// // $("#reports").append(" <img src="img/adv.png"/> ");
 
 
  
