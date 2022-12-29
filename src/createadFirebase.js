@@ -41,8 +41,8 @@ adForm.addEventListener('submit', (e) => {
     percent:adForm.MainOccupation.value,
     dep:adForm.MainOccupation1.value,
     req:adForm.reqs.value,
-    title:adForm.title.value
-
+    title:adForm.title.value,
+    accepted:false
 
   }).then(() =>{
     alert("Success");

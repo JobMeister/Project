@@ -82,9 +82,10 @@ $(document).ready(function(){
    
     $("#reports").toggle('drop');
     $("#welcome").hide();
-    $("#editdiv").hide();
     $("#admin_msg").hide();
-    $("#Confirm_ads").hide();
+    $("#editdiv").hide();
+    $("#accessMenu").hide();
+    $("#Confirm").hide();
     $("#NotConfirm").hide();
 
     return false;
@@ -97,8 +98,9 @@ $(document).ready(function(){
       $("#admin_msg").toggle('drop');
       $("#welcome").hide();
       $("#editdiv").hide();
+      $("#accessMenu").hide();
       $("#reports").hide();
-      $("#Confirm_ads").hide();
+      $("#Confirm").hide();
       $("#NotConfirm").hide();
       return false;
     
@@ -109,6 +111,7 @@ $(document).ready(function(){
       $("#editdiv").toggle('drop');
       $("#welcome").hide();
       $("#admin_msg").hide();
+      $("#accessMenu").hide();
       $("#reports").hide();
       $("#Confirm").hide();
       $("#NotConfirm").hide();
@@ -119,10 +122,11 @@ $(document).ready(function(){
 
     $("#Confirm").toggle('drop');
     $("#welcome").hide();
-    $("#NotConfirm").hide();
-    $("#reports").hide();
-    $("#editdiv").hide();
     $("#admin_msg").hide();
+    $("#editdiv").hide();
+    $("#accessMenu").hide();
+    $("#reports").hide();
+    $("#NotConfirm").hide();
     return false;
   
 })
@@ -130,10 +134,11 @@ $("#NotConfirm_btn").click(function(){
 
   $("#NotConfirm").toggle('drop');
   $("#welcome").hide();
-  $("#Confirm").hide();
-  $("#reports").hide();
-  $("#editdiv").hide();
   $("#admin_msg").hide();
+  $("#editdiv").hide();
+  $("#accessMenu").hide();
+  $("#reports").hide();
+  $("#Confirm").hide();
   return false;
 
 })
