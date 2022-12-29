@@ -25,6 +25,7 @@ const db = getFirestore(app);
 
 // const colRef = collection(db,'Data');
 const auth = getAuth();
+const adColRef = collection(db,'Ads');
 
 const logoutButton = document.querySelector('.logoutBtn')
   logoutButton.addEventListener('click', () => {
@@ -41,3 +42,23 @@ const logoutButton = document.querySelector('.logoutBtn')
   onAuthStateChanged(auth,(user)=>{
    console.log("User status changed",user);
  })
+ 
+
+  var adSize;
+  getDocs(adColRef).then((snapshot) => {
+    let Ads = []
+    snapshot.docs.forEach((doc)=>{
+        Ads.push({...doc.data(), id:doc.id })
+    })
+    adSize = Ads.length;
+    console.log(Ads);
+    for (let index = 0; index < adSize; index++) {
+      let indexR=index+1;
+      $("#try1").append("<div class='col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='img/asif1clear.png' alt='Thumbnail [100%x225]' style='height: 225px; width: 100%; display: block;' data-holder-rendered='true'><div class='card-body'> <h5 id='cardHeader' dir='rtl'><b>" + Ads[index].title + "</b></h5> <p class='card-text' id='cardText' dir='rtl'>" +  Ads[index].des +"</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'> <button type='button' class='btn btn-sm btn-outline-secondary'>מחיקה</button><button type='button' class='btn btn-sm btn-outline-secondary'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
+      )
+    }
+
+    })
+    .catch(err => {
+        console.log(err.message);
+    })
