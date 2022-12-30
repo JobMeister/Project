@@ -26,16 +26,23 @@ const db = getFirestore(app);
 
 const adColRef = collection(db,'Ads');
 
-
+const auth = getAuth();
+let logEmail;
 // sending data messaages
+onAuthStateChanged(auth,(user)=>{
+  console.log("User status changed",user);
+  logEmail = user.email;
+  alert(logEmail)
+})
 
 const adForm = document.querySelector('.adF')
 adForm.addEventListener('submit', (e) => {
   e.preventDefault()
- 
+  
 
   // add new info to firebase messages
   addDoc(adColRef,{
+    emailofemployer:logEmail,
     des:adForm.desc.value,
     location:adForm.loc.value,
     percent:adForm.MainOccupation.value,

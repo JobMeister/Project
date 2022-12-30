@@ -20,28 +20,49 @@ const app = initializeApp(firebaseConfig)
 
 // init services
 const db = getFirestore(app);
-
-// collection ref
-
-// const colRef = collection(db,'Data');
 const auth = getAuth();
-const adColRef = collection(db,'Ads');
+let logEmail;
+let allUsers = []
+let usernumber,useremail,userfirstname,userlastname;
+
+onAuthStateChanged(auth,(user)=>{
+  console.log("User status changed",user);
+  logEmail = user.email;
+  alert(logEmail)
+})
+
+
+const adColRef = collection(db,'Ads'); 
+const docAllusers = collection(db,'users')
+getDocs(docAllusers).then((snapshot) => {
+  snapshot.docs.forEach((doc)=>{
+    allUsers.push({...doc.data(), id:doc.id })
+  })
+  let userq=allUsers.length;
+  console.log(allUsers);
+  for (let index = 0; index < userq; index++) {
+    if(allUsers[index].email==logEmail) {
+        useremail = allUsers[index].email;
+        userfirstname=allUsers[index].firstname;
+        userlastname=allUsers[index].lastname;
+    }
+  }
+})
+
 
 const logoutButton = document.querySelector('.logoutBtn')
   logoutButton.addEventListener('click', () => {
    signOut(auth)
       .then(() => {
-       console.log('user signed out')
-      //  location.href="index.html"
+       alert("signout")
+        location.href="index.html"
      })
      .catch(err => {
         console.log(err.message)
      })
   })
 
-  onAuthStateChanged(auth,(user)=>{
-   console.log("User status changed",user);
- })
+  
  
 
   var adSize;
@@ -62,3 +83,4 @@ const logoutButton = document.querySelector('.logoutBtn')
     .catch(err => {
         console.log(err.message);
     })
+  
