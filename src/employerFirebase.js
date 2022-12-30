@@ -20,29 +20,62 @@ const app = initializeApp(firebaseConfig)
 
 // init services
 const db = getFirestore(app);
-
-// collection ref
-
-// const colRef = collection(db,'Data');
 const auth = getAuth();
-const adColRef = collection(db,'Ads');
+let logEmail;
+let allUsers = []
+let usernumber,useremail,userfirstname,userlastname;
+
+
+// onAuthStateChanged(auth,(user)=>{
+//   console.log("User status changed",user);
+  
+//   if(user==null) {
+//     location.href="404.html"
+//   }
+// })
+
+
+const adColRef = collection(db,'Ads'); 
+const docAllusers = collection(db,'users')
+getDocs(docAllusers).then((snapshot) => {
+  snapshot.docs.forEach((doc)=>{
+    allUsers.push({...doc.data(), id:doc.id })
+  })
+  let userq=allUsers.length;
+  console.log(allUsers);
+  for (let index = 0; index < userq; index++) {
+    if(allUsers[index].email==logEmail) {
+        useremail = allUsers[index].email;
+        userfirstname=allUsers[index].firstname;
+        userlastname=allUsers[index].lastname;
+    }
+  }
+})
+
+onAuthStateChanged(auth,(user)=>{
+  console.log("User status changed",user);
+  if(user!=null) {
+    logEmail = user.email;
+    alert(logEmail);
+  }
+  else {
+    location.href="index.html";
+  }
+})
 
 const logoutButton = document.querySelector('.logoutBtn')
   logoutButton.addEventListener('click', () => {
    signOut(auth)
       .then(() => {
-       console.log('user signed out')
-      //  location.href="index.html"
+       alert("signout")
+        location.href="index.html"
      })
      .catch(err => {
         console.log(err.message)
      })
   })
 
-  onAuthStateChanged(auth,(user)=>{
-   console.log("User status changed",user);
- })
- 
+  
 
   var adSize;
   getDocs(adColRef).then((snapshot) => {
@@ -54,11 +87,14 @@ const logoutButton = document.querySelector('.logoutBtn')
     console.log(Ads);
     for (let index = 0; index < adSize; index++) {
       let indexR=index+1;
+      if(Ads[index].emailofemployer==useremail) {
       $("#try1").append("<div class='col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='img/asif1clear.png' alt='Thumbnail [100%x225]' style='height: 225px; width: 100%; display: block;' data-holder-rendered='true'><div class='card-body'> <h5 id='cardHeader' dir='rtl'><b>" + Ads[index].title + "</b></h5> <p class='card-text' id='cardText' dir='rtl'>" +  Ads[index].des +"</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'> <button type='button' class='btn btn-sm btn-outline-secondary'>מחיקה</button><button type='button' class='btn btn-sm btn-outline-secondary'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
       )
     }
-
+  }
     })
     .catch(err => {
-        console.log(err.message);
+      console.log(err.message);
     })
+  
+    

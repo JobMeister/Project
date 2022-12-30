@@ -26,31 +26,51 @@ const db = getFirestore(app);
 
 const adColRef = collection(db,'Ads');
 
-
+const auth = getAuth();
+let logEmail;
 // sending data messaages
 
 const adForm = document.querySelector('.adF')
 adForm.addEventListener('submit', (e) => {
   e.preventDefault()
- 
+  
 
   // add new info to firebase messages
   addDoc(adColRef,{
+    emailofemployer:logEmail,
     des:adForm.desc.value,
     location:adForm.loc.value,
     percent:adForm.MainOccupation.value,
     dep:adForm.MainOccupation1.value,
     req:adForm.reqs.value,
-    title:adForm.title.value
-
+    title:adForm.title.value,
+    accepted:false
 
   }).then(() =>{
     alert("Success");
   })
-
-
 })
 
-onAuthStateChanged(auth,(user)=>{
-  console.log("User status changed",user);
-})
+
+const logoutButton = document.querySelector('.logoutBtn')
+  logoutButton.addEventListener('click', () => {
+   signOut(auth)
+      .then(() => {
+       alert("signout")
+        location.href="index.html"
+     })
+     .catch(err => {
+        console.log(err.message)
+     })
+  })
+
+  onAuthStateChanged(auth,(user)=>{
+    console.log("User status changed",user);
+    if(user!=null) {
+      logEmail = user.email;
+      alert(logEmail)
+    }
+    if(user==null) {
+      location.href="index.html"
+    }
+  })
