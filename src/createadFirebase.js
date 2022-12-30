@@ -29,11 +29,6 @@ const adColRef = collection(db,'Ads');
 const auth = getAuth();
 let logEmail;
 // sending data messaages
-onAuthStateChanged(auth,(user)=>{
-  console.log("User status changed",user);
-  logEmail = user.email;
-  alert(logEmail)
-})
 
 const adForm = document.querySelector('.adF')
 adForm.addEventListener('submit', (e) => {
@@ -54,10 +49,28 @@ adForm.addEventListener('submit', (e) => {
   }).then(() =>{
     alert("Success");
   })
-
-
 })
 
-onAuthStateChanged(auth,(user)=>{
-  console.log("User status changed",user);
-})
+
+const logoutButton = document.querySelector('.logoutBtn')
+  logoutButton.addEventListener('click', () => {
+   signOut(auth)
+      .then(() => {
+       alert("signout")
+        location.href="index.html"
+     })
+     .catch(err => {
+        console.log(err.message)
+     })
+  })
+
+  onAuthStateChanged(auth,(user)=>{
+    console.log("User status changed",user);
+    if(user!=null) {
+      logEmail = user.email;
+      alert(logEmail)
+    }
+    if(user==null) {
+      location.href="index.html"
+    }
+  })
