@@ -48,6 +48,7 @@ adForm.addEventListener('submit', (e) => {
 
   }).then(() =>{
     alert("Success");
+    location.href="employeer.html"
   })
 })
 
