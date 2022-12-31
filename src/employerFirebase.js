@@ -88,13 +88,40 @@ const logoutButton = document.querySelector('.logoutBtn')
     for (let index = 0; index < adSize; index++) {
       let indexR=index+1;
       if(Ads[index].emailofemployer==useremail) {
-      $("#try1").append("<div class='col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='img/asif1clear.png' alt='Thumbnail [100%x225]' style='height: 225px; width: 100%; display: block;' data-holder-rendered='true'><div class='card-body'> <h5 id='cardHeader' dir='rtl'><b>" + Ads[index].title + "</b></h5> <p class='card-text' id='cardText' dir='rtl'>" +  Ads[index].des +"</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'> <button type='button' class='btn btn-sm btn-outline-secondary'>מחיקה</button><button type='button' class='btn btn-sm btn-outline-secondary'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
-      )
+      $("#try1").append("<div class='col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='img/asif1clear.png' alt='Thumbnail [100%x225]' style='height: 225px; width: 100%; display: block;' data-holder-rendered='true'><div class='card-body'> <h5 id='cardHeader' dir='rtl'><b>" + Ads[index].title + "</b></h5> <p class='card-text' id='cardText' dir='rtl'>" +  Ads[index].des +"</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='delbtn"+index+"' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#exampleModal'>מחיקה</button><button id='view"+index+"' class='btn btn-sm btn-outline-secondary'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
+      );
     }
   }
+  for (let index = 0; index < adSize; index++) {
+    const buttonE = document.getElementById('delbtn'+index);
+    if(buttonE) {
+      buttonE.addEventListener('click', function() {
+        console.log("yougay");
+        var buttonD= document.getElementById('YesDelete');
+        if(buttonD) {
+          buttonD.addEventListener('click', function() {
+          console.log("the index is:",index);
+          console.log(Ads[index]);
+          var docDelAds=doc(db,'Ads',Ads[index].id)
+          deleteDoc(docDelAds).then(() => {
+            location.reload()
+            })
+          })
+        }
+      })
+    }
+    $('#modal-delete').on('hidden.bs.modal', function () { 
+      location.reload();
+    });
+    const buttonE2 = document.getElementById('view'+index);
+    if(buttonE2) {
+      buttonE2.addEventListener('click', function() {
+        console.log("younotgay");
+      })
+    }
+   }
     })
     .catch(err => {
       console.log(err.message);
     })
-  
     

@@ -159,7 +159,7 @@ getDocs(adColRef).then((snapshot) => {
     }
     }
     console.log(ids);
-  for (let index = 0; index < size; index++) {
+    for (let index = 0; index < size; index++) {
     if(ads[index].accepted===false) {
       const button = document.getElementById('delbtn'+index);
       button.addEventListener('click', function() {
