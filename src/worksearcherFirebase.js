@@ -1,10 +1,9 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
 import{getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
-
-
 import {} from './main' 
-import {} from './createad' 
+import {} from './createad'
+
     
 const firebaseConfig = {
   apiKey: "AIzaSyDoC94Xlt0BHfsH_zLp8562xsKMW49mv8s",
@@ -21,37 +20,48 @@ const app = initializeApp(firebaseConfig)
 
 // init services
 const db = getFirestore(app);
-
-// collection ref
-
-const adColRef = collection(db,'Ads');
-
 const auth = getAuth();
 let logEmail;
-// sending data messaages
+let allUsers = []
+let usernumber,useremail,userfirstname,userlastname;
 
-const adForm = document.querySelector('.adF')
-adForm.addEventListener('submit', (e) => {
-  e.preventDefault()
+
+// onAuthStateChanged(auth,(user)=>{
+//   console.log("User status changed",user);
   
+//   if(user==null) {
+//     location.href="404.html"
+//   }
+// })
 
-  // add new info to firebase messages
-  addDoc(adColRef,{
-    emailofemployer:logEmail,
-    des:adForm.desc.value,
-    location:adForm.loc.value,
-    percent:adForm.MainOccupation.value,
-    dep:adForm.MainOccupation1.value,
-    req:adForm.reqs.value,
-    title:adForm.title.value,
-    accepted:false
 
-  }).then(() =>{
-    alert("Success");
-    location.href="employeer.html"
+const adColRef = collection(db,'Ads'); 
+const docAllusers = collection(db,'users')
+getDocs(docAllusers).then((snapshot) => {
+  snapshot.docs.forEach((doc)=>{
+    allUsers.push({...doc.data(), id:doc.id })
   })
+  let userq=allUsers.length;
+  console.log(allUsers);
+  for (let index = 0; index < userq; index++) {
+    if(allUsers[index].email==logEmail) {
+        useremail = allUsers[index].email;
+        userfirstname=allUsers[index].firstname;
+        userlastname=allUsers[index].lastname;
+    }
+  }
 })
 
+onAuthStateChanged(auth,(user)=>{
+  console.log("User status changed",user);
+  if(user!=null) {
+    logEmail = user.email;
+    alert(logEmail);
+  }
+  else {
+    location.href="index.html";
+  }
+})
 
 const logoutButton = document.querySelector('.logoutBtn')
   logoutButton.addEventListener('click', () => {
@@ -65,13 +75,4 @@ const logoutButton = document.querySelector('.logoutBtn')
      })
   })
 
-  onAuthStateChanged(auth,(user)=>{
-    console.log("User status changed",user);
-    if(user!=null) {
-      logEmail = user.email;
-      alert(logEmail)
-    }
-    if(user==null) {
-      location.href="index.html"
-    }
-  })
+  

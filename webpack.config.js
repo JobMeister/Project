@@ -12,7 +12,7 @@ module.exports = {
     signup: './src/signupFirebase.js',
     admin: './src/adminFirebase.js',
     index: './src/indexFirebase.js',
-
+    worksearcher: './src/worksearcherFirebase.js',
 
 
   },
