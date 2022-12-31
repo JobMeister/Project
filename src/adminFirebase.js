@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
+import { getFirestore, collection, getDocs, addDoc, deleteDoc,updateDoc, doc } from 'firebase/firestore'
 import{getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
 
 import {} from './admin'
@@ -29,8 +29,8 @@ const auth = getAuth();
 const colRef = collection(db,'Data');
 const msgColRef = collection(db,'Messages');
 const adColRef = collection(db,'Ads');
-
 var oldData;
+
 
 getDocs(colRef).then((snapshot) => {
   let Data = []
@@ -90,6 +90,7 @@ getDocs(colRef).then((snapshot) => {
 var size;
 
 // get messages to display in admin panel & admin num of messages report
+//
 getDocs(msgColRef).then((snapshot) => {
   let Messages = []
   snapshot.docs.forEach((doc)=>{
@@ -98,9 +99,9 @@ getDocs(msgColRef).then((snapshot) => {
   size = Messages.length;
   console.log(Messages);
 
-  for (let index = 0; index < size; index++) {
-
-    $("#admin_msg").append("<p> Name: " + (Messages[index].name) + "<br>" +"Email: " + (Messages[index].email) + "<br>" + "Subject: " + (Messages[index].subject) + "<br>" + "Message: " + (Messages[index].msg) + "</p>" )
+ for (let index = 0; index < size; index++) {
+    let indexR=index+1;
+    $("#admin_msg").append("<p class='border border-dark py-2 px-2 bg-white'>" + "<strong> Message number: " + indexR + "</strong>" + "<br>" + "Name: " + (Messages[index].name) + "<br>" +"Email: " + (Messages[index].email) + "<br>" + "Subject: " + (Messages[index].subject) + "<br>" + "Message: " + (Messages[index].msg) + "</p>" )
   }
 
   $("#reports").append("<strong>Number of messages is - "+  size +"</strong>")
@@ -140,8 +141,70 @@ const logoutButton = document.querySelector('.logoutBtn')
   })
   
 
-  //sub
+
+ // get ads to display in admin panel as not confirm
+getDocs(adColRef).then((snapshot) => {
+  let ads = []
+  snapshot.docs.forEach((doc)=>{
+    ads.push({...doc.data(), id:doc.id })
+  })
+  size = ads.length;
+  console.log(ads);
+  let ids = []
+  for (let index = 0; index < size; index++) {
+    let indexR=index+1;
+    ids[index]=ads[index].id;
+    if(ads[index].accepted===false) {
+      $("#NotConfirm").append("<p  class='border border-dark py-2 px-2 bg-white' >" + "<strong> ad number: " + indexR + "</strong>" + "<br>" + "description: " + (ads[index].des) + "<br>" +"location: " + (ads[index].location) + "<br>" + "percent: " + (ads[index].percent) + "<br>" + "Main Occupation : " + (ads[index].dep) + "<br>" + "requiements: " +(ads[index].req)+ "<br>" + "Title: " +(ads[index].title)+ "<br>" + "</p>" + "<button id='delbtn"+index+"' class='btn btn-outline-danger me-2'>delete</button>" +  "<button id='Acceptbtn"+index+"' class='btn btn-outline-success'>Accept</button>");
+    }
+    }
+    console.log(ids);
+    for (let index = 0; index < size; index++) {
+    if(ads[index].accepted===false) {
+      const button = document.getElementById('delbtn'+index);
+      button.addEventListener('click', function() {
+         const docDel=doc(db,'Ads',ids[index])
+        deleteDoc(docDel)
+      })
+      const button2 = document.getElementById('Acceptbtn'+index);
+      button2.addEventListener('click', function() {
+        const updDoc = doc(db,'Ads',ids[index])
+        updateDoc(updDoc, {
+          accepted: true});
+      });
+    }
+    }
+  }) 
+ 
+  getDocs(adColRef).then((snapshot) => {
+    let ads = []
+    snapshot.docs.forEach((doc)=>{
+      ads.push({...doc.data(), id:doc.id })
+    })
+    size = ads.length;
+    console.log(ads);
+    let ids = []
+    for (let index = 0; index < size; index++) {
+      let indexR=index+1;
+      ids[index]=ads[index].id;
+      if(ads[index].accepted===true) {
+        $("#Confirm").append("<p  class='border border-dark py-2 px-2 bg-white' >" + "<strong> ad number: " + indexR + "</strong>" + "<br>" + "description: " + (ads[index].des) + "<br>" +"location: " + (ads[index].location) + "<br>" + "percent: " + (ads[index].percent) + "<br>" + "Main Occupation : " + (ads[index].dep) + "<br>" + "requiements: " +(ads[index].req)+ "<br>" + "Title: " +(ads[index].title)+ "<br>" + "</p>" + "<button id='delbtn"+index+"' class='btn btn-outline-danger me-2'>delete</button>");
+      }
+      }
+      for (let index = 0; index < size; index++) {
+        if(ads[index].accepted===true) {
+          const button = document.getElementById('delbtn'+index);
+          button.addEventListener('click', function() {
+             const docDel=doc(db,'Ads',ids[index])
+            deleteDoc(docDel)
+          })
+        }
+      }
+    })
 
   onAuthStateChanged(auth,(user)=>{
     console.log("User status changed",user);
+    if(user==null) {
+      location.href="404.html"
+    }
   })

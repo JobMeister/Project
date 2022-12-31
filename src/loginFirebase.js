@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, getDoc } from 'firebase/firestore'
-import{getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
+import{getAuth, signInWithEmailAndPassword, onAuthStateChanged,signOut } from 'firebase/auth'
 
 import {} from './login' 
 
@@ -25,12 +25,10 @@ const db = getFirestore(app);
 // collection ref
 
 const colRef = collection(db,'Data');
-const docRef = doc(db, "users", "eOrS");
+const docRef = doc(db, 'users', 'eOrS');
 const docSnap = await getDoc(docRef);
+const docAllusers = collection(db,'users');
 
-
-
-// auth
 const auth = getAuth();
 
 
@@ -40,32 +38,58 @@ Flogin.addEventListener('submit', (e) => {
 
   const email = Flogin.email.value
   const password = Flogin.password.value
-
+ 
   signInWithEmailAndPassword(auth, email, password)
     .then(cred => {
       console.log('user logged in:', cred.user)
       window.alert("logged in")
-      Flogin.reset()
-
-      if (docSnap.exists()) {
-        if(docSnap.data()=="Employer") {
+      var logEmail = cred.user.email;
+      // Name, email address, and profile photo Url
+      alert(logEmail)
+      let usernumber
+      getDocs(docAllusers).then((snapshot) => {
+        let allUsers = []
+        snapshot.docs.forEach((doc)=>{
+          allUsers.push({...doc.data(), id:doc.id })
+        })
+        let userq=allUsers.length;
+        console.log(allUsers);
+        for (let index = 0; index < userq; index++) {
+          if(allUsers[index].email==logEmail)
+              usernumber=index;
+           }
+      
+        if(allUsers[usernumber].eOrS=="Employer") {
             location.href="employeer.html"
-
+         }
+        else if(allUsers[usernumber].eOrS=="Work Searcher") {
+          location.href="worksearcher.html"
          }
         else {
-            location.href="index.html"
-
+          location.href="admin.html"
         }
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
+      })
+      // Flogin.reset()
+      // location.href="index.html"
+      // if (docSnap.exists()) {
+      //   console.log("work");
+      //   if(docSnap.data()=="Employer") {
+      //       location.href="employeer.html"
+
+      //    }
+      //   else {
+      //       location.href="index.html"
+
+      //   }
+      // } else {
+      //   // doc.data() will be undefined in this case
+      //   console.log("No such document!");
+      // }
 
       // location.href="index.html"
     })
     .catch(err => {
-      console.log(err.message)
-      window.alert("Error")
+      document.querySelector("#Alert_massage").innerHTML="Wrong password/username";
     })
 })
 

@@ -5,8 +5,6 @@ import{getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
 
 import {} from './main' 
 import {} from './createad' 
-
-const auth = getAuth();
     
 const firebaseConfig = {
   apiKey: "AIzaSyDoC94Xlt0BHfsH_zLp8562xsKMW49mv8s",
@@ -28,33 +26,52 @@ const db = getFirestore(app);
 
 const adColRef = collection(db,'Ads');
 
-
-const Auth = getAuth();
-
+const auth = getAuth();
+let logEmail;
 // sending data messaages
 
 const adForm = document.querySelector('.adF')
 adForm.addEventListener('submit', (e) => {
   e.preventDefault()
- 
+  
 
   // add new info to firebase messages
   addDoc(adColRef,{
+    emailofemployer:logEmail,
     des:adForm.desc.value,
     location:adForm.loc.value,
     percent:adForm.MainOccupation.value,
     dep:adForm.MainOccupation1.value,
     req:adForm.reqs.value,
-    title:adForm.title.value
-
+    title:adForm.title.value,
+    accepted:false
 
   }).then(() =>{
     alert("Success");
+    location.href="employeer.html"
+  })
+})
+
+
+const logoutButton = document.querySelector('.logoutBtn')
+  logoutButton.addEventListener('click', () => {
+   signOut(auth)
+      .then(() => {
+       alert("signout")
+        location.href="index.html"
+     })
+     .catch(err => {
+        console.log(err.message)
+     })
   })
 
-
-})
-
-onAuthStateChanged(auth,(user)=>{
-  console.log("User status changed",user);
-})
+  onAuthStateChanged(auth,(user)=>{
+    console.log("User status changed",user);
+    if(user!=null) {
+      logEmail = user.email;
+      alert(logEmail)
+    }
+    if(user==null) {
+      location.href="index.html"
+    }
+  })

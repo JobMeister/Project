@@ -52,7 +52,7 @@
             <span class="navG nav-link-text ms-1">הודעות שלי</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li id="Confirm_btn" class="nav-item">
           <a class="nav-link text-white " href="">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
@@ -60,7 +60,7 @@
             <span class="navG nav-link-text ms-1">מודעות שאושרו</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li id="NotConfirm_btn" class="nav-item">
           <a class="nav-link text-white " href="">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
@@ -151,9 +151,21 @@
     <div class="container-fluid py-4">
       <div class="row min-vh-80 h-100">
 
-        <div id="admin_msg">
-          <h1>"Your messages"</h1>
+        <div id="welcome">
+          <h1>Welcome back admin!</h1>
+        </div>
 
+        <div id="admin_msg">
+          <h1>Your messages</h1>
+
+        </div>
+
+        <div id="Confirm">
+          <h1>Ads: </h1>
+        </div>
+
+        <div id="NotConfirm">
+          <h1>Please confirm this ads: </h1>
         </div>
 
         <div id="reports">
@@ -167,12 +179,11 @@
             מועמד למעסיק הטובה
             ביותר. מטרת האתר היא לעזור למועמדים מכלל תחומי התעסוקה למצוא את העבודה הטובה והמתאימה להם,
             ובמקביל לעזור למעסיקים למצוא במהירות ויעילות את העובדים הטובים והמתאימים ביותר. </p>
-
           <form class="editbtn">
             <textarea placeholder="Enter here" id="Newtext" name="ntext" rows="10" cols="90">
              </textarea>
             <br>
-            <button id="editNow">Edit here</button>
+            <button id="editNow" class="btn btn-outline-dark">Edit here</button>
           </form>
         </div>
 
