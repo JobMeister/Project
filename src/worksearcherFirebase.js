@@ -87,8 +87,10 @@ const logoutButton = document.querySelector('.logoutBtn')
     adSize = Ads.length;
     console.log(Ads);
     for (let index = 0; index < adSize; index++) {
-      $("#try2").append("<div class='col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='img/asif1clear.png' alt='Thumbnail [100%x225]' style='height: 225px; width: 100%; display: block;' data-holder-rendered='true'><div class='card-body'> <h5 id='cardHeader' dir='rtl'><b>" + Ads[index].title + "</b></h5> <p class='card-text' id='cardText' dir='rtl'>" +  Ads[index].des +"</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='delbtn"+index+"' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#exampleModal'>מחיקה</button><button id='view"+index+"' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#exampleModalCenter'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
+      if(Ads[index].accepted==true) {
+      $("#try2").append("<div class='col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ"+Ads[index].imgid+".jpeg' alt='Thumbnail [100%x225]' style='height: 225px; width: 100%; display: block;' data-holder-rendered='true'><div class='card-body'> <h5 id='cardHeader' dir='rtl'><b>" + Ads[index].title + "</b></h5> <p class='card-text' id='cardText' dir='rtl'>" +  Ads[index].des +"</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='delbtn"+index+"' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#exampleModal'>מחיקה</button><button id='view"+index+"' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#exampleModalCenter'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
       );
+      }
   }
   for (let index = 0; index < adSize; index++) {
     const buttonE = document.getElementById('delbtn'+index);

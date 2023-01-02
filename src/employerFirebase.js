@@ -48,6 +48,7 @@ getDocs(docAllusers).then((snapshot) => {
         useremail = allUsers[index].email;
         userfirstname=allUsers[index].firstname;
         userlastname=allUsers[index].lastname;
+
     }
   }
 })
@@ -88,12 +89,13 @@ const logoutButton = document.querySelector('.logoutBtn')
     for (let index = 0; index < adSize; index++) {
       let indexR=index+1;
       if(Ads[index].emailofemployer==useremail) {
-      $("#try1").append("<div class='col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='img/asif1clear.png' alt='Thumbnail [100%x225]' style='height: 225px; width: 100%; display: block;' data-holder-rendered='true'><div class='card-body'> <h5 id='cardHeader' dir='rtl'><b>" + Ads[index].title + "</b></h5> <p class='card-text' id='cardText' dir='rtl'>" +  Ads[index].des +"</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='delbtn"+index+"' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#exampleModal'>מחיקה</button><button id='view"+index+"' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#exampleModalCenter'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
+      $("#try1").append("<div class='col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ"+Ads[index].imgid+".jpeg' alt='Thumbnail [100%x225]' style='height: 225px; width: 100%; display: block;' data-holder-rendered='true'><div class='card-body'> <h5 id='cardHeader' dir='rtl'><b>" + Ads[index].title + "</b></h5> <p class='card-text' id='cardText' dir='rtl'>" +  Ads[index].des +"</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='delbtn"+index+"' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#exampleModal'>מחיקה</button><button id='view"+index+"' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modal2'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
       );
     }
   }
   for (let index = 0; index < adSize; index++) {
     const buttonE = document.getElementById('delbtn'+index);
+    const buttonE2 = document.getElementById('view'+index);
     if(buttonE) {
       buttonE.addEventListener('click', function() {
         console.log("yougay");
@@ -110,15 +112,26 @@ const logoutButton = document.querySelector('.logoutBtn')
         }
       })
     }
-    
-    const buttonE2 = document.getElementById('view'+index);
     if(buttonE2) {
       buttonE2.addEventListener('click', function() {
-        console.log("younotgay");
+        console.log("younotgay"+index);
+        document.querySelector("#Mtitle").innerHTML=Ads[index].title;
+        if(Ads[index].company==null) {
+          document.querySelector("#Mcompany").innerHTML='חסוי';
+        }
+        else {
+          document.querySelector("#Mcompany").innerHTML=Ads[index].company;
+        }
+        document.querySelector("#Mlocation").innerHTML=Ads[index].location;
+        document.querySelector("#Mdescribe").innerHTML=Ads[index].des;
+        document.querySelector("#Mreq").innerHTML=Ads[index].req;
+        document.querySelector("#Mdep").innerHTML=Ads[index].dep;
+        document.querySelector("#Mpercent").innerHTML=Ads[index].percent;
+        document.querySelector("#Mimg").src="/dist/img/occpics/occ"+Ads[index].imgid+".jpeg";
+           }) 
+        }
+      }
       })
-    }
-   }
-    })
     .catch(err => {
       console.log(err.message);
     })
