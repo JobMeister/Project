@@ -101,7 +101,7 @@ getDocs(msgColRef).then((snapshot) => {
 
  for (let index = 0; index < size; index++) {
     let indexR=index+1;
-    $("#admin_msg").append("<p class='border border-dark py-2 px-2 bg-white'>" + "<strong> Message number: " + indexR + "</strong>" + "<br>" + "Name: " + (Messages[index].name) + "<br>" +"Email: " + (Messages[index].email) + "<br>" + "Subject: " + (Messages[index].subject) + "<br>" + "Message: " + (Messages[index].msg) + "</p>" )
+    $("#admin_msg").append("<p class='border border-dark py-2 px-2 bg-white'>" + "<strong> Message number: " + indexR + "</strong>" + "<br>" + "Name: " + (Messages[index].name) + "<br>" +"Email: " + (Messages[index].email) + "<br>" + "Subject: " + (Messages[index].subject) + "<br>" + "Message: " + (Messages[index].msg) + "<br><strong>email to respond: "+"<a href ='mailto:"+(Messages[index].email)+"'>"+(Messages[index].email)+"</a></strong></p>")
   }
 
   $("#reports").append("<strong>Number of messages is - "+  size +"</strong>")
@@ -151,13 +151,18 @@ getDocs(adColRef).then((snapshot) => {
   size = ads.length;
   console.log(ads);
   let ids = []
+  let counter1=0;
   for (let index = 0; index < size; index++) {
     let indexR=index+1;
     ids[index]=ads[index].id;
     if(ads[index].accepted===false) {
-      $("#NotConfirm").append("<p  class='border border-dark py-2 px-2 bg-white' >" + "<strong> ad number: " + indexR + "</strong>" + "<br>" + "description: " + (ads[index].des) + "<br>" +"location: " + (ads[index].location) + "<br>" + "percent: " + (ads[index].percent) + "<br>" + "Main Occupation : " + (ads[index].dep) + "<br>" + "requiements: " +(ads[index].req)+ "<br>" + "Title: " +(ads[index].title)+ "<br>" + "</p>" + "<button id='delbtn"+index+"' class='btn btn-outline-danger me-2'>delete</button>" +  "<button id='Acceptbtn"+index+"' class='btn btn-outline-success'>Accept</button>");
+      $("#NotConfirm").append("<p  class='border border-dark py-2 px-2 bg-white' >" + "<strong> ad number: " + indexR + "</strong>" + "<br>"+ "Email of Employer: " +(ads[index].emailofemployer)+"<br>"+"company name: "+(ads[index].company)+"<br>" +"Title: "+(ads[index].title)+ "<br>"+"description: " + (ads[index].des) + "<br>" +"location: " + (ads[index].location) + "<br>" + "percent: " + (ads[index].percent) + "<br>" + "Main Occupation : " + (ads[index].dep) + "<br>" + "requiements: " +(ads[index].req)+ "<br>" + "</p>" + "<button id='delbtn"+index+"' class='btn btn-outline-danger me-2'>delete</button>" +  "<button id='Acceptbtn"+index+"' class='btn btn-outline-success'>Accept</button>");
+      counter1++;
     }
     }
+    let updatename=document.querySelector("#notconfirm1");
+      updatename.innerHTML=counter1 + "  " + "מודעות שלא אושרו"
+    
     console.log(ids);
     for (let index = 0; index < size; index++) {
     if(ads[index].accepted===false) {
@@ -183,14 +188,18 @@ getDocs(adColRef).then((snapshot) => {
     })
     size = ads.length;
     console.log(ads);
+    let counter2=0;
     let ids = []
     for (let index = 0; index < size; index++) {
       let indexR=index+1;
       ids[index]=ads[index].id;
       if(ads[index].accepted===true) {
-        $("#Confirm").append("<p  class='border border-dark py-2 px-2 bg-white' >" + "<strong> ad number: " + indexR + "</strong>" + "<br>" + "description: " + (ads[index].des) + "<br>" +"location: " + (ads[index].location) + "<br>" + "percent: " + (ads[index].percent) + "<br>" + "Main Occupation : " + (ads[index].dep) + "<br>" + "requiements: " +(ads[index].req)+ "<br>" + "Title: " +(ads[index].title)+ "<br>" + "</p>" + "<button id='delbtn"+index+"' class='btn btn-outline-danger me-2'>delete</button>");
+        $("#Confirm").append("<p  class='border border-dark py-2 px-2 bg-white' >" + "<strong> ad number: " + indexR + "</strong>" + "<br>"+ "Email of Employer: " +(ads[index].emailofemployer)+"<br>"+ "company name: "+(ads[index].company)+"<br>"+ "Title: "+(ads[index].title)+ "<br>"+ "description: " + (ads[index].des) + "<br>" +"location: " + (ads[index].location) + "<br>" + "percent: " + (ads[index].percent) + "<br>" + "Main Occupation : " + (ads[index].dep) + "<br>" + "requiements: " +(ads[index].req)+ "</p>" + "<button id='delbtn"+index+"' class='btn btn-outline-danger me-2'>delete</button>");
+        counter2++;
       }
       }
+      let updatename=document.querySelector("#confirm1");
+      updatename.innerHTML=counter2 + "  " + "מודעות שאושרו"
       for (let index = 0; index < size; index++) {
         if(ads[index].accepted===true) {
           const button = document.getElementById('delbtn'+index);
@@ -205,6 +214,6 @@ getDocs(adColRef).then((snapshot) => {
   onAuthStateChanged(auth,(user)=>{
     console.log("User status changed",user);
     if(user==null) {
-      location.href="404.html"
+      location.href="index.html"
     }
   })
