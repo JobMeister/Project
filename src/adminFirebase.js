@@ -161,7 +161,7 @@ getDocs(adColRef).then((snapshot) => {
     }
     }
     let updatename=document.querySelector("#notconfirm1");
-      updatename.innerHTML=counter1 + "-" + "מודעות שלא אושרו"
+      updatename.innerHTML=counter1 + "  " + "מודעות שלא אושרו"
     
     console.log(ids);
     for (let index = 0; index < size; index++) {
@@ -199,7 +199,7 @@ getDocs(adColRef).then((snapshot) => {
       }
       }
       let updatename=document.querySelector("#confirm1");
-      updatename.innerHTML=counter2 + "-" + "מודעות שאושרו"
+      updatename.innerHTML=counter2 + "  " + "מודעות שאושרו"
       for (let index = 0; index < size; index++) {
         if(ads[index].accepted===true) {
           const button = document.getElementById('delbtn'+index);
