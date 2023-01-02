@@ -409,7 +409,7 @@ input::placeholder {
   color: #555;
   font-weight: 900 !important;
 }
-
+/* access style */
 .accessClass {
   width: 100%;
   background-color: rgb(255, 255, 255);
@@ -417,7 +417,7 @@ input::placeholder {
 
 img {
   width: 25px;
-  border-radius: 50px;
+  /* border-radius: 50px; */
   float: left;
 }
 
@@ -459,37 +459,34 @@ img {
   margin: 15px;
   color: white;
   width: 50px;
-  background-color: grey;
+  background-color: rgb(26, 122, 233);
   transition: width 0.35s;
   -webkit-transition: width 0.35s;
   overflow: hidden;
 }
 #accessMenu {
   position: fixed;
-  right: 240px;
-  top: 164px;
+  right: 25px;
+  top: 214px;
   background-color: #d2d0d0;
   border-radius: 25px;
   border-color: #000;
   border-width: 4px;
-  height: 350px;
-  width: 450px;
+  height: 250px;
+  width: 180px;
+  display: none;
 }
 
 #acessability:hover {
   color: white;
-  width: 180px;
+  width: 140px;
 }
 .widthAccess {
-  width: 180px;
+  width: 140px;
 }
 
 a:hover .access {
   opacity: 0.9;
-}
-
-a {
-  text-decoration: none;
 }
 
 .navbar-default .dropdown-menu.notify-drop {

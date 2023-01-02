@@ -30,6 +30,9 @@ const auth = getAuth();
 let logEmail;
 let allUsers = [];
 let usernumber, useremail, userfirstname, userlastname;
+let flag = 0;
+let darkflag = 0;
+let textflag = 0;
 
 // onAuthStateChanged(auth,(user)=>{
 //   console.log("User status changed",user);
