@@ -214,6 +214,6 @@ getDocs(adColRef).then((snapshot) => {
   onAuthStateChanged(auth,(user)=>{
     console.log("User status changed",user);
     if(user==null) {
-      location.href="404.html"
+      location.href="index.html"
     }
   })
