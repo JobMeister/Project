@@ -35,6 +35,7 @@ let Loc = "0";
 let Per = "0";
 let adsNum;
 let allUsers = [];
+let allSavedAds= [];
 let AdsArray =["id1","id2"];
 console.log(AdsArray);
 let usernumber, useremail, userfirstname, userlastname;
@@ -345,6 +346,7 @@ getDocs(adColRef).then((snapshot) => {
         }
       }
       for (let index = 0; index < adSize; index++) {
+        const buttonS = document.getElementById("saveButton");
         const buttonE2 = document.getElementById("view" + index);
         if (buttonE2) {
           buttonE2.addEventListener("click", function () {
@@ -370,12 +372,41 @@ getDocs(adColRef).then((snapshot) => {
             updateDoc(updateViews, {
               viewsCount: increment(1),
           });
+          const docAllSaved = collection(db, "SavedAds");
+          getDocs(docAllSaved).then((snapshot) => {
+            snapshot.docs.forEach((doc) => {
+              allSavedAds.push({ ...doc.data(), id: doc.id });
+            });
+            let SaveAdsQ = allSavedAds.length;
+            console.log(allSavedAds);
+            for (let i= 0; i < SaveAdsQ; i++) {
+              if (allSavedAds[i].Saveremail == logEmail) {
+                console.log(Ads[index].id);
+                console.log(allSavedAds[i].idOfAds);
+                if(Ads[index].id==allSavedAds[i].idOfAds) {
+                  console.log("change botton");
+                  buttonS.style.background = "green";
+                  buttonS.style.color="white";
+                  buttonS.style.borderColor="white";
+                  buttonS.innerHTML="מודעה נשמרה";
+                  break;
+                }
+                else {
+                  buttonS.style.background=null;
+                  buttonS.style.color=null;
+                  buttonS.style.borderColor=null;
+                  console.log("changeBackkkk");
+                }
+              }
+            }
+            });
             });
       }
     }
   }
     const buttonS = document.getElementById("saveButton");
             if (buttonS) {
+
               buttonS.addEventListener("click", function () {
                 console.log("Saveeeee"+adsNum)
                 console.log(ids2[Savetoid]);
