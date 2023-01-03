@@ -163,14 +163,14 @@ $("#darkBtn").click(function () {
   if (darkflag === 0) {
     $("#body").addClass("darkMode");
     $("#body").removeClass("bg-gray-200");
-    $("#pagesDark").addClass("text-white");
+    $("#divDark").addClass("text-white");
     $("#adminDark").addClass("text-white");
 
     darkflag = 1;
   } else {
     $("#body").addClass("bg-gray-200");
     $("#body").removeClass("darkMode");
-    $("#pagesDark").removeClass("text-white");
+    $("#divDark").removeClass("text-white");
     $("#adminDark").removeClass("text-white");
     darkflag = 0;
   }
@@ -205,4 +205,21 @@ $("#acessability").click(function () {
 
   $("#accessMenu").toggle("drop");
   return false;
+});
+
+$(document).ready(function () {
+  var down = false;
+
+  $("#bell").click(function (e) {
+    var color = $(this).text();
+    if (down) {
+      $("#box").css("height", "0px");
+      $("#box").css("opacity", "0");
+      down = false;
+    } else {
+      $("#box").css("height", "auto");
+      $("#box").css("opacity", "1");
+      down = true;
+    }
+  });
 });
