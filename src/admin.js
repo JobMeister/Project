@@ -14,6 +14,7 @@ $(document).ready(function(){
   $("#reports").hide();
   $("#Confirm").hide();
   $("#NotConfirm").hide();
+  $("#deleteusers").hide();
   
 
   $("#darkBtn").click(function(){
@@ -87,6 +88,7 @@ $(document).ready(function(){
     $("#accessMenu").hide();
     $("#Confirm").hide();
     $("#NotConfirm").hide();
+    $("#deleteusers").hide();
 
     return false;
   
@@ -102,6 +104,7 @@ $(document).ready(function(){
       $("#reports").hide();
       $("#Confirm").hide();
       $("#NotConfirm").hide();
+      $("#deleteusers").hide();
       return false;
     
   })
@@ -115,6 +118,7 @@ $(document).ready(function(){
       $("#reports").hide();
       $("#Confirm").hide();
       $("#NotConfirm").hide();
+      $("#deleteusers").hide();
       return false;
     
   })
@@ -127,6 +131,7 @@ $(document).ready(function(){
     $("#accessMenu").hide();
     $("#reports").hide();
     $("#NotConfirm").hide();
+    $("#deleteusers").hide();
     return false;
   
 })
@@ -139,6 +144,20 @@ $("#NotConfirm_btn").click(function(){
   $("#accessMenu").hide();
   $("#reports").hide();
   $("#Confirm").hide();
+  $("#deleteusers").hide();
+  return false;
+
+})
+$("#usersBtn").click(function(){
+
+  $("#deleteusers").toggle('drop');
+  $("#welcome").hide();
+  $("#admin_msg").hide();
+  $("#editdiv").hide();
+  $("#accessMenu").hide();
+  $("#reports").hide();
+  $("#Confirm").hide();
+  $("#NotConfirm").hide();
   return false;
 
 })

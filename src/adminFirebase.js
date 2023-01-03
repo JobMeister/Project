@@ -29,6 +29,7 @@ const auth = getAuth();
 const colRef = collection(db,'Data');
 const msgColRef = collection(db,'Messages');
 const adColRef = collection(db,'Ads');
+const usersColRef=collection(db,'users');
 var oldData;
 
 
@@ -217,3 +218,39 @@ getDocs(adColRef).then((snapshot) => {
       location.href="index.html"
     }
   })
+
+  // show users on admin panel
+  getDocs(usersColRef).then((snapshot) => {
+    let usersAarray = []
+    snapshot.docs.forEach((doc)=>{
+      usersAarray.push({...doc.data(), id:doc.id })
+    })
+    size = usersAarray.length;
+    console.log(usersAarray);
+    let ids = []
+    for (let index = 0; index < size; index++) {
+      let indexR=index+1;
+      ids[index]=usersAarray[index].id;
+      if(usersAarray[index].eOrS=="Employer") {
+        $("#deleteusers").append("<p  class='border border-dark py-2 px-2 bg-white' >" + "first name: " +(usersAarray[index].firstname)+"<br>"+"last name: "+(usersAarray[index].lastname)+"<br>" +"email: "+(usersAarray[index].email)+ "<br>"+"company: " + (usersAarray[index].Company) + "<br>" +"user type: " + (usersAarray[index].eOrS) + "<br>" + "passeord: " + (usersAarray[index].password) + "<br>"  + "</p>" + "<button id='deluserbtn"+index+"' class='btn btn-outline-danger me-2'>delete</button>");
+      }
+      else {
+        if(usersAarray[index].eOrS=="Work Searcher") {
+          $("#deleteusers").append("<p  class='border border-dark py-2 px-2 bg-white' >"+ "first name: " +(usersAarray[index].firstname)+"<br>"+"last name: "+(usersAarray[index].lastname)+"<br>" +"email: "+(usersAarray[index].email)+ "<br>"+"age: " + (usersAarray[index].age) + "<br>" +"user type: " + (usersAarray[index].eOrS) + "<br>" + "passeord: " + (usersAarray[index].password) + "<br>"  + "</p>" + "<button id='deluserbtn"+index+"' class='btn btn-outline-danger me-2'>delete</button>");
+        }
+      }
+    }
+    console.log(ids);
+     for (let index = 0; index < size; index++) {
+          const button = document.getElementById('deluserbtn'+index);
+          if(button){
+          console.log(index);
+          button.addEventListener('click', function() {
+             const docDel=doc(db,'users',ids[index])
+           deleteDoc(docDel)
+           alert('user deleted')
+        });
+       }
+      }
+   })
+  
