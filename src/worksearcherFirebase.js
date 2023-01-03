@@ -373,21 +373,25 @@ getDocs(adColRef).then((snapshot) => {
             });
       }
     }
+  }
     const buttonS = document.getElementById("saveButton");
             if (buttonS) {
               buttonS.addEventListener("click", function () {
-                buttonS.style.background = "green";  
-                buttonS.style.color="white";
                 console.log("Saveeeee"+adsNum)
                 console.log(ids2[Savetoid]);
-                const upDoc=doc(db,"users",ids2[Savetoid]);
-                let arr = [Ads[adsNum].id];
-                updateDoc(upDoc, {
-                  arrAds: arr,
-                });
+                // const upDoc=doc(db,"users",ids2[Savetoid]);
+                // let arr = [];
+                const addSaveA=collection(db,'SavedAds');
+                console.log(logEmail);
+                console.log(Ads[adsNum].id);
+                 addDoc(addSaveA,{
+                   Saveremail:logEmail,
+                  idOfAds:Ads[adsNum].id,
+                }).then (()=>{
+                  console.log("המשרה נשמרה בהצלחה");
+                })
               })
             }
-  }
   })
 })
   .catch((err) => {
