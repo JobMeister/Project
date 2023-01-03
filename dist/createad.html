@@ -31,7 +31,8 @@
 
   <!-- Template Stylesheet -->
   <link href="css/style.css" rel="stylesheet" />
-
+<!-- icons library -->
+<script src="https://kit.fontawesome.com/ea7f144e5b.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -42,16 +43,23 @@
   </div>
   <!-- Spinner End -->
 
-  <!-- Navbar Start -->
-  <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
-    <a href="index.html" class="navbar-brand d-flex align-items-center">
+   <!-- Navbar Start -->
+
+   <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
+    <button type="button" class="btn btn-outline-primary logoutBtn">התנתקות</button>
+
+    <a href="" class="navbar-brand d-flex align-items-center">
+
+      <a href="employeer.html" <i class="fa-regular fa-bell fa-xl alertBell"></i>
+      </a>
 
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-4 start -0 py-lg-0">
-          <a href="contact.html" class="nav-item nav-link"><b>צור קשר</b></a>
-          <a href="about.html" class="nav-item nav-link"><b>אודות</b></a>
+          <!-- <a href="contact.html" class="nav-item nav-link"><b>צור קשר</b></a>
+          <a href="about.html" class="nav-item nav-link"><b>אודות</b></a> -->
           <a href="createad.html" class="nav-item nav-link"><b>יצירת מודעה חדשה</b></a>
           <a href="employeer.html" class="nav-item nav-link"><b>המודעות שלך</b></a>
+
         </div>
     </a>
     <a href="employeer.html" <h2 class="m-0 text-primary">
@@ -106,9 +114,27 @@
                 </div>
                 <div class="row mb-5">
                   <div class="form-group col-md-6">
-                    <label for="name"> מיקום המשרה</label>
-                    <input name="loc" type="text" dir="rtl" class="form-control" id="adlocation"
-                      placeholder="מיקום המשרה (עד 40 תווים)" maxlength="40">
+                    <label for="location"> מיקום המשרה</label>
+                    <select class="form-select col-md-6" dir="rtl" input name="Adloc" id="adlocation"
+                      aria-label="Default select example">
+                      <option selected value="">אנא בחר את מיקום המשרה</option>
+                      <option value="אילת והסביבה">אילת והסביבה</option>
+                      <option value="באר שבע והסביבה">באר שבע והסביבה</option>
+                      <option value="אריאל וישובי יהודה">אריאל וישובי יהודה</option>
+                      <option value="אשדוד,אשקלון והסביבה">אשדוד,אשקלון והסביבה</option>
+                      <option value="אזור השפלה">אזור השפלה</option>
+                      <option value="ירושלים והסביבה">ירושלים והסביבה</option>
+                      <option value="בית שמש והסביבה">בית שמש והסביבה</option>
+                      <option value="רמת גן והסביבה">רמת גן והסביבה</option>
+                      <option value="חולון ובת ים">חולון ובת ים</option>
+                      <option value="ראשון לציון והסביבה">ראשון לציון והסביבה</option>
+                      <option value="תל אביב יפו">תל אביב יפו</option>
+                      <option value="רמת השרון והרצליה">רמת השרון והרצליה</option>
+                      <option value="נתניה והסביבה">נתניה והסביבה</option>
+                      <option value="יוקנעם והסביבה">יוקנעם והסביבה</option>
+                      <option value="רמת הגולן">רמת הגולן</option>
+                      <option value="עפולה והסביבה">עפולה והסביבה</option>
+                      </select>
                   </div>
                   <div class="form-group col-md-6">
                     <label for="name"> תחום המשרה</label>

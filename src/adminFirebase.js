@@ -35,6 +35,7 @@ const auth = getAuth();
 const colRef = collection(db, "Data");
 const msgColRef = collection(db, "Messages");
 const adColRef = collection(db, "Ads");
+const usersColRef = collection(db, "users");
 var oldData;
 
 getDocs(colRef)
@@ -115,7 +116,12 @@ getDocs(msgColRef)
           "<br>" +
           "Message: " +
           Messages[index].msg +
-          "</p>"
+          "<br><strong>email to respond: " +
+          "<a href ='mailto:'" +
+          Messages[index].email +
+          ">" +
+          Messages[index].email +
+          "</a></strong></p>"
       );
     }
 
@@ -165,6 +171,7 @@ getDocs(adColRef).then((snapshot) => {
   size = ads.length;
   console.log(ads);
   let ids = [];
+  let counter1 = 0;
   for (let index = 0; index < size; index++) {
     let indexR = index + 1;
     ids[index] = ads[index].id;
@@ -174,6 +181,15 @@ getDocs(adColRef).then((snapshot) => {
           "<strong> ad number: " +
           indexR +
           "</strong>" +
+          "<br>" +
+          "Email of Employer: " +
+          ads[index].emailofemployer +
+          "<br>" +
+          "company name: " +
+          ads[index].company +
+          "<br>" +
+          "Title: " +
+          ads[index].title +
           "<br>" +
           "description: " +
           ads[index].des +
@@ -190,9 +206,6 @@ getDocs(adColRef).then((snapshot) => {
           "requiements: " +
           ads[index].req +
           "<br>" +
-          "Title: " +
-          ads[index].title +
-          "<br>" +
           "</p>" +
           "<button id='delbtn" +
           index +
@@ -201,8 +214,12 @@ getDocs(adColRef).then((snapshot) => {
           index +
           "' class='btn btn-outline-success'>Accept</button>"
       );
+      counter1++;
     }
   }
+  let updatename = document.querySelector("#notconfirm1");
+  updatename.innerHTML = counter1 + "  " + "מודעות שלא אושרו";
+
   console.log(ids);
   for (let index = 0; index < size; index++) {
     if (ads[index].accepted === false) {
@@ -229,6 +246,7 @@ getDocs(adColRef).then((snapshot) => {
   });
   size = ads.length;
   console.log(ads);
+  let counter2 = 0;
   let ids = [];
   for (let index = 0; index < size; index++) {
     let indexR = index + 1;
@@ -239,6 +257,15 @@ getDocs(adColRef).then((snapshot) => {
           "<strong> ad number: " +
           indexR +
           "</strong>" +
+          "<br>" +
+          "Email of Employer: " +
+          ads[index].emailofemployer +
+          "<br>" +
+          "company name: " +
+          ads[index].company +
+          "<br>" +
+          "Title: " +
+          ads[index].title +
           "<br>" +
           "description: " +
           ads[index].des +
@@ -254,17 +281,16 @@ getDocs(adColRef).then((snapshot) => {
           "<br>" +
           "requiements: " +
           ads[index].req +
-          "<br>" +
-          "Title: " +
-          ads[index].title +
-          "<br>" +
           "</p>" +
           "<button id='delbtn" +
           index +
           "' class='btn btn-outline-danger me-2'>delete</button>"
       );
+      counter2++;
     }
   }
+  let updatename = document.querySelector("#confirm1");
+  updatename.innerHTML = counter2 + "  " + "מודעות שאושרו";
   for (let index = 0; index < size; index++) {
     if (ads[index].accepted === true) {
       const button = document.getElementById("delbtn" + index);
@@ -278,4 +304,89 @@ getDocs(adColRef).then((snapshot) => {
 
 onAuthStateChanged(auth, (user) => {
   console.log("User status changed", user);
+  if (user == null) {
+    location.href = "index.html";
+  }
+});
+
+// show users on admin panel
+getDocs(usersColRef).then((snapshot) => {
+  let usersAarray = [];
+  snapshot.docs.forEach((doc) => {
+    usersAarray.push({ ...doc.data(), id: doc.id });
+  });
+  size = usersAarray.length;
+  console.log(usersAarray);
+  let ids = [];
+  for (let index = 0; index < size; index++) {
+    let indexR = index + 1;
+    ids[index] = usersAarray[index].id;
+    if (usersAarray[index].eOrS == "Employer") {
+      $("#deleteusers").append(
+        "<p  class='border border-dark py-2 px-2 bg-white' >" +
+          "first name: " +
+          usersAarray[index].firstname +
+          "<br>" +
+          "last name: " +
+          usersAarray[index].lastname +
+          "<br>" +
+          "email: " +
+          usersAarray[index].email +
+          "<br>" +
+          "company: " +
+          usersAarray[index].Company +
+          "<br>" +
+          "user type: " +
+          usersAarray[index].eOrS +
+          "<br>" +
+          "passeord: " +
+          usersAarray[index].password +
+          "<br>" +
+          "</p>" +
+          "<button id='deluserbtn" +
+          index +
+          "' class='btn btn-outline-danger me-2'>delete</button>"
+      );
+    } else {
+      if (usersAarray[index].eOrS == "Work Searcher") {
+        $("#deleteusers").append(
+          "<p  class='border border-dark py-2 px-2 bg-white' >" +
+            "first name: " +
+            usersAarray[index].firstname +
+            "<br>" +
+            "last name: " +
+            usersAarray[index].lastname +
+            "<br>" +
+            "email: " +
+            usersAarray[index].email +
+            "<br>" +
+            "age: " +
+            usersAarray[index].age +
+            "<br>" +
+            "user type: " +
+            usersAarray[index].eOrS +
+            "<br>" +
+            "passeord: " +
+            usersAarray[index].password +
+            "<br>" +
+            "</p>" +
+            "<button id='deluserbtn" +
+            index +
+            "' class='btn btn-outline-danger me-2'>delete</button>"
+        );
+      }
+    }
+  }
+  console.log(ids);
+  for (let index = 0; index < size; index++) {
+    const button = document.getElementById("deluserbtn" + index);
+    if (button) {
+      console.log(index);
+      button.addEventListener("click", function () {
+        const docDel = doc(db, "users", ids[index]);
+        deleteDoc(docDel);
+        alert("user deleted");
+      });
+    }
+  }
 });
