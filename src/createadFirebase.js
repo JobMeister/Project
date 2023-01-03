@@ -61,7 +61,8 @@ adForm.addEventListener('submit', (e) => {
     imgid:whichnumber(adForm.MainOccupation1.value),
     req:adForm.reqs.value,
     title:adForm.title.value,
-    accepted:false
+    accepted:false,
+    viewsCount:0
 
   }).then(() =>{
     alert("Success");

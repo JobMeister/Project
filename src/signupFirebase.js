@@ -58,7 +58,8 @@ if(firstname!="" && lastname!="" && email!="" && password!="" ) {
           // Signed in 
           const user = cred.user;
           addDoc(collection(db, "users" ), { firstname ,lastname,email,password,Company,eOrS});
-          window.alert("משתמש נרשם בהצלחה!");
+          alert("משתמש נרשם בהצלחה!");
+          location.href = "index.html";
         })
       }
       else {
@@ -81,7 +82,8 @@ if(firstname!="" && lastname!="" && email!="" && password!="" ) {
           // Signed in 
           const user = cred.user;
           addDoc(collection(db, "users" ), { firstname ,lastname,email,password,age,gender,Occ,eOrS});
-          window.alert("משתמש נרשם בהצלחה!");
+          alert("משתמש נרשם בהצלחה!");
+          location.href = "login.html";
         })
       }
       else {
