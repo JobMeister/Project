@@ -28,7 +28,7 @@ const adColRef = collection(db,'Ads');
 
 const auth = getAuth();
 let allUsers = [];
-let logEmail,logCompany;
+let logEmail,logCompany,userfirstname;
 
 const docAllusers = collection(db,'users')
 getDocs(docAllusers).then((snapshot) => {
@@ -40,9 +40,13 @@ getDocs(docAllusers).then((snapshot) => {
   for (let index = 0; index < userq; index++) {
     if(allUsers[index].email==logEmail) {
       logCompany=allUsers[index].Company;
+      userfirstname = allUsers[index].firstname;
     }
   }
-})
+  document.querySelector("#welcometext").innerHTML =
+    "<h1 id=welcometext>שלום " +userfirstname +", צור מודעה חדשה</h1>";
+});
+
 // sending data messaages
 
 const adForm = document.querySelector('.adF')
@@ -146,7 +150,6 @@ const logoutButton = document.querySelector('.logoutBtn')
     console.log("User status changed",user);
     if(user!=null) {
       logEmail = user.email;
-      alert(logEmail)
     }
     if(user==null) {
       location.href="index.html"

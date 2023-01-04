@@ -45,43 +45,19 @@
   <!-- Spinner End -->
 
   <!-- Navbar Start -->
-
   <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
     <button type="button" class="btn btn-outline-primary logoutBtn">התנתקות</button>
+    <a href="index.html" class="navbar-brand d-flex align-items-center">
 
-   
-
-      <div class="icon mx-3" id="bell"> <i class="fa-regular fa-bell fa-xl alertBell"><span class="circlebell position-absolute start-150 translate-middle badge rounded-pill bg-danger">
-        2
-        <span class="visually-hidden">unread messages</span>
-      </span></i> </div>
-
-      
-      <div class="notifications" dir="rtl" id="box">
-        <h2>התראות -  <span>2</span></h2>
-        <div class="notifications-item"> <img src="https://img.mensxp.com/media/content/2022/Jan/Rather-Surprising-Facts-To-Know-About-Having-A-Small-Penis--3_61dee97800274.jpeg" alt="img">
-            <div class="text mx-2">
-                <h4>לאביב יש קטן</h4>
-                <p>לאביב יש מזה קטן אתה חייב לראות</p>
-            </div>
-        </div>
-        <div class="notifications-item"> <img src="https://media.licdn.com/dms/image/D4D03AQGRZc5RFPboRw/profile-displayphoto-shrink_800_800/0/1667240302550?e=1678320000&v=beta&t=eRQFJfctrG9yrVgYTdt-pI5qDfvOaqMT43XdMT8wbds" alt="img">
-            <div class="text mx-2">
-                <h4>אל תשכח תפילת מנחה צדיק!</h4>
-                <p>דבר עם השמן והרזה התפילה במנזה</p>
-            </div>
-        </div>
-    </div>
-      
-    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-4 start -0 py-lg-0">
           <!-- <a href="contact.html" class="nav-item nav-link"><b>צור קשר</b></a> -->
           <a href="favorites.html" class="nav-item nav-link"><b>משרות שנשמרו</b></a>
-          <a href="about.html" class="nav-item nav-link"><b>אודות</b></a>
+          <!-- <a href="about.html" class="nav-item nav-link"><b>אודות</b></a> -->
           <a href="worksearcher.html" class="nav-item nav-link"><b>חיפוש משרה</b></a>
         </div>
-    <!-- </a> -->
-    <a href="worksearcher.html" <h2 class="m-0 text-primary">
+    </a>
+    <a href="worksearcher.html" class="m-0 text-primary">
       <img class="img-fluid me-2" src="img/fixedlogo.png" alt="" style="width: 210px" />
       </h2>
 
@@ -91,14 +67,13 @@
     </button>
     </div>
   </nav>
-  
   <!-- Navbar End -->
 
   <!-- Header Start -->
   <section class="jumbotron text-center">
     <div class="container">
       <h1 class="jumbotron-heading">המודעות ששמרת</h1>
-      <p class="lead text-muted">ברוך הבא אביב, הנה המודעות ששמרת באתרנו</p>
+      <p id=welcometext class="lead text-muted"></p>
       <!-- <p>
           <a href="#" class="btn btn-primary my-2">Main call to action</a>
           <a href="#" class="btn btn-secondary my-2">Secondary action</a>
@@ -234,7 +209,7 @@
   <script src="lib/counterup/counterup.min.js"></script>
 
   <!-- Template Javascript -->
-  <script src="bundles/employer.bundle.js"></script>
+  <script src="bundles/favorites.bundle.js"></script>
   <!-- <script defer src="/src/createad.js"></script> -->
   <!-- <script src="/src/main.js"></script> -->
 </body>

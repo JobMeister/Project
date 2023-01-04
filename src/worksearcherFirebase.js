@@ -36,8 +36,9 @@ let Per = "0";
 let adsNum;
 let allUsers = [];
 let allSavedAds= [];
-let AdsArray =["id1","id2"];
-console.log(AdsArray);
+let allSaveAdslength=[];
+let flagAds =[true];
+console.log(flagAds);
 let usernumber, useremail, userfirstname, userlastname;
 // console.log(Userid);
 
@@ -69,9 +70,6 @@ getDocs(docAllusers).then((snapshot) => {
     userfirstname +
     ", חפש את המשרה המועדפת עלייך</p>";
 });
-// const docUef = doc(db,"users",Userid[0]);
-// const Thisuser = getDoc(docUef);
-// console.log(Thisuser.data());
 
 onAuthStateChanged(auth, (user) => {
   console.log("User status changed", user);
@@ -82,6 +80,7 @@ onAuthStateChanged(auth, (user) => {
     location.href = "index.html";
   }
 });
+
 
 const logoutButton = document.querySelector(".logoutBtn");
 logoutButton.addEventListener("click", () => {
@@ -133,6 +132,7 @@ getDocs(adColRef).then((snapshot) => {
     adSize = Ads.length;
     let flag = 0;
     let flagStart = 0;
+    let SavedAdsindex= [];
     const SearchBtn = document.getElementById("SearchBtn");
     SearchBtn.addEventListener("click", function () {
       if (SearchBtn) {
@@ -346,86 +346,136 @@ getDocs(adColRef).then((snapshot) => {
         }
       }
       for (let index = 0; index < adSize; index++) {
-        const buttonS = document.getElementById("saveButton");
-        const buttonE2 = document.getElementById("view" + index);
-        if (buttonE2) {
-          buttonE2.addEventListener("click", function () {
-            document.querySelector("#WStitle").innerHTML = Ads[index].title;
-            console.log("yougay");
-            if (Ads[index].company == null) {
-              document.querySelector("#WScompany").innerHTML = "חסוי";
-            } 
-            else {
-              document.querySelector("#WScompany").innerHTML =
-                Ads[index].company;
-            }
-            document.querySelector("#WSlocation").innerHTML =
-              Ads[index].location;
-            document.querySelector("#WSdescribe").innerHTML = Ads[index].des;
-            document.querySelector("#WSreq").innerHTML = Ads[index].req;
-            document.querySelector("#WSdep").innerHTML = Ads[index].dep;
-            document.querySelector("#WSpercent").innerHTML = Ads[index].percent;
-            document.querySelector("#WSimg").src =
-              "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
-              adsNum=index;
-            const updateViews = doc(db, "Ads",Ads[index].id);
-            updateDoc(updateViews, {
-              viewsCount: increment(1),
-          });
-          const docAllSaved = collection(db, "SavedAds");
-          getDocs(docAllSaved).then((snapshot) => {
-            snapshot.docs.forEach((doc) => {
-              allSavedAds.push({ ...doc.data(), id: doc.id });
-            });
-            let SaveAdsQ = allSavedAds.length;
-            console.log(allSavedAds);
-            for (let i= 0; i < SaveAdsQ; i++) {
-              if (allSavedAds[i].Saveremail == logEmail) {
-                console.log(Ads[index].id);
-                console.log(allSavedAds[i].idOfAds);
-                if(Ads[index].id==allSavedAds[i].idOfAds) {
-                  console.log("change botton");
-                  buttonS.style.background = "green";
-                  buttonS.style.color="white";
-                  buttonS.style.borderColor="white";
-                  buttonS.innerHTML="מודעה נשמרה";
-                  break;
-                }
-                else {
-                  buttonS.style.background=null;
-                  buttonS.style.color=null;
-                  buttonS.style.borderColor=null;
-                  console.log("changeBackkkk");
-                }
+          const buttonS = document.getElementById("saveButton");
+          const buttonE2 = document.getElementById("view" + index);
+           if (buttonE2) {
+            buttonE2.addEventListener("click", function () {
+              if(allSavedAds) {
+               for (let i= 0; i < allSaveAdslength[0]; i++) {
+                     allSavedAds.splice(i);
+                   }
+                  }
+              document.querySelector("#WStitle").innerHTML = Ads[index].title;
+              if (Ads[index].company == null) {
+                document.querySelector("#WScompany").innerHTML = "חסוי";
+              } 
+              else {
+                document.querySelector("#WScompany").innerHTML =
+                  Ads[index].company;
               }
-            }
-            });
-            });
-      }
+              document.querySelector("#WSlocation").innerHTML =
+                Ads[index].location;
+              document.querySelector("#WSdescribe").innerHTML = Ads[index].des;
+              document.querySelector("#WSreq").innerHTML = Ads[index].req;
+              document.querySelector("#WSdep").innerHTML = Ads[index].dep;
+              document.querySelector("#WSpercent").innerHTML = Ads[index].percent;
+              document.querySelector("#WSimg").src =
+                "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
+                adsNum=index;
+              const updateViews = doc(db, "Ads",Ads[index].id);
+              updateDoc(updateViews, {
+                viewsCount: increment(1),
+              });
+                const docAllSaved = collection(db, "SavedAds");
+                getDocs(docAllSaved).then((snapshot) => {
+                  snapshot.docs.forEach((doc) => {
+                    allSavedAds.push({ ...doc.data(), id: doc.id });
+                  });
+                  let SaveAdsQ = allSavedAds.length;
+                  allSaveAdslength[0] = allSavedAds.length;
+                  console.log(allSavedAds);
+                  for (let i= 0; i < SaveAdsQ; i++) {
+                    if (allSavedAds[i].Saveremail == logEmail) {
+                      console.log(Ads[index].id);
+                      console.log(allSavedAds[i].idOfAds);
+                      if(Ads[index].id==allSavedAds[i].idOfAds) {
+                        SavedAdsindex[0]=i;
+                        console.log("change botton");
+                        buttonS.style.background = "#4CAF50";
+                        buttonS.style.color="white";
+                        buttonS.style.borderColor="white";
+                        buttonS.innerHTML="✔ משרה נשמרה";
+                        flagAds[0]=false;
+                        break;
+                      }
+                      else {
+                        console.log("Regular botton");
+                        buttonS.style.background=null;
+                        buttonS.style.color=null;
+                        buttonS.style.borderColor=null;
+                        buttonS.innerHTML="שמור מודעה";
+                        flagAds[0]=true;
+                      }
+                    }
+                  }
+                });
+              });
+             }
+          }
     }
-  }
     const buttonS = document.getElementById("saveButton");
             if (buttonS) {
-
               buttonS.addEventListener("click", function () {
-                console.log("Saveeeee"+adsNum)
-                console.log(ids2[Savetoid]);
-                // const upDoc=doc(db,"users",ids2[Savetoid]);
-                // let arr = [];
                 const addSaveA=collection(db,'SavedAds');
-                console.log(logEmail);
-                console.log(Ads[adsNum].id);
-                 addDoc(addSaveA,{
-                   Saveremail:logEmail,
-                  idOfAds:Ads[adsNum].id,
-                }).then (()=>{
-                  console.log("המשרה נשמרה בהצלחה");
-                })
+                if (flagAds[0]==true) {
+                  addDoc(addSaveA,{
+                    Saveremail:logEmail,
+                    idOfAds:Ads[adsNum].id,
+                  }).then (()=>{
+                    console.log("המשרה נשמרה בהצלחה");
+                  })
+                }
+                else if(flagAds[0]==false) {
+                  const docSavedAds = doc(db, "SavedAds",allSavedAds[SavedAdsindex[0]].id);
+                   deleteDoc(docSavedAds);
+                  console.log("Unsaved this ad");
+                }
               })
             }
+      const bottonCV = document.getElementById("UploadCV");
+      if(bottonCV) {
+        bottonCV.addEventListener("click", function () {
+          document.getElementById("cvDiv").style.display = "block";
+        });
+      }
+      const bottonSendCV= document.getElementById("UploadCVbtn");
+      if(bottonSendCV) {
+        bottonSendCV.addEventListener("click", function() {
+          let linkU = document.getElementById("CVid").value;
+          if(validURL(linkU))   {
+            console.log(true);
+            console.log(linkU);
+            console.log(logEmail);
+            console.log(Ads[adsNum].id);
+            console.log(Ads[adsNum].emailofemployer);
+            const addSendLinks=collection(db,'Sendedlinks');
+                  addDoc(addSendLinks,{
+                    emailofemployer:Ads[adsNum].emailofemployer,
+                    idOfAds:Ads[adsNum].id,
+                    nameOfsender: logEmail,
+                    downloadLink: linkU,
+                  }).then (()=>{
+                    console.log("הקורות חיים הועברו למעסיק");
+                  })
+            document.getElementById("cvDiv").style.display = "none";
+          }
+          else
+            console.log(false);
+            document.querySelector("#ErrorSend").innerHTML ="אנא הכנס קישור תקין"
+        })
+      }
   })
 })
   .catch((err) => {
     console.log(err.message);
   });
 
+  function validURL(str) {
+    var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+      '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+    return !!pattern.test(str);
+  }

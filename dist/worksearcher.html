@@ -50,11 +50,11 @@
         <div class="navbar-nav ms-auto py-4 start -0 py-lg-0">
           <!-- <a href="contact.html" class="nav-item nav-link"><b>צור קשר</b></a> -->
           <a href="favorites.html" class="nav-item nav-link"><b>משרות שנשמרו</b></a>
-          <a href="about.html" class="nav-item nav-link"><b>אודות</b></a>
+          <!-- <a href="about.html" class="nav-item nav-link"><b>אודות</b></a> -->
           <a href="worksearcher.html" class="nav-item nav-link"><b>חיפוש משרה</b></a>
         </div>
     </a>
-    <a href="index.html" class="m-0 text-primary">
+    <a href="worksearcher.html" class="m-0 text-primary">
       <img class="img-fluid me-2" src="img/fixedlogo.png" alt="" style="width: 210px" />
       </h2>
 
@@ -75,7 +75,7 @@
       <section class="intro">
           <div class="mask d-flex align-items-center h-100">
                 <div class="container mb-5" dir="rtl">
-                    <p id=welcometext class="h1 mb-4 mb-md-5 text-black  text-center mt-3">חפש את העבודה הרצויה עלייך</p>
+                    <p id=welcometext class="h1 mb-4 mb-md-5 text-black  text-center mt-3"></p>
                     <div class="card mb-5">
                         <div class="card-body p-4">
                             <div class="row justify-content-center">
@@ -197,7 +197,15 @@
         </div>
         <div class="modal-footer d-flex justify-content-between">
           <button type="button" id="saveButton" class="btn btn-outline-primary" data-bs-dismiss="modal">שמור מודעה</button>
-          <button type="button" id="YesDelete" class="btn btn-outline-primary" data-bs-dismiss="modal" >הגש קורות חיים</button>
+          <button type="button" id="UploadCV" class="btn btn-outline-primary">הגש קורות חיים</button>
+        </div>
+        <div id=cvDiv class="UploadCvDiv" style="display:none;">
+          <label class="Cv d-flex justify-content-center">הכנס קישור לקורות חיים</label><br>
+          <p id=ErrorSend class="text-danger text-center"></p>
+          <div class="d-flex justify-content-between mb-2 col-xs-4">
+            <input type="text" class="form-control" input name="Cv" id="CVid"/>
+            <button type="button" id="UploadCVbtn" class="btn btn-outline-primary btn-sm">שלח קורות חיים למעסיק</button>
+          </div>
         </div>
       </div>
     </div>
