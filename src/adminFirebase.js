@@ -117,9 +117,9 @@ getDocs(msgColRef)
           "Message: " +
           Messages[index].msg +
           "<br><strong>email to respond: " +
-          "<a href ='mailto:'" +
+          "<a href ='mailto:"+
           Messages[index].email +
-          ">" +
+          "'>" +
           Messages[index].email +
           "</a></strong></p>"
       );

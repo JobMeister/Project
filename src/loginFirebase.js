@@ -45,7 +45,7 @@ Flogin.addEventListener('submit', (e) => {
       window.alert("logged in")
       var logEmail = cred.user.email;
       // Name, email address, and profile photo Url
-      alert(logEmail)
+      // alert(logEmail)
       let usernumber
       getDocs(docAllusers).then((snapshot) => {
         let allUsers = []

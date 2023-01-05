@@ -28,7 +28,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth();
 let logEmail;
-let allUsers = [];
+let allUsers = [],allSavedAds = [];
 let usernumber, useremail, userfirstname, userlastname;
 let flag = 0;
 let darkflag = 0;
@@ -57,14 +57,18 @@ getDocs(docAllusers).then((snapshot) => {
       userlastname = allUsers[index].lastname;
     }
   }
+  document.querySelector("#welcometext").innerHTML =
+    "<p id=welcometext class='text-black text-center'>שלום  " +
+    userfirstname +
+    ", הנה המשרות ששמרת באתרנו</p>";
 });
 
 onAuthStateChanged(auth, (user) => {
   console.log("User status changed", user);
   if (user != null) {
     logEmail = user.email;
-    alert(logEmail);
-  } else {
+  } 
+  else {
     location.href = "index.html";
   }
 });
@@ -82,36 +86,36 @@ logoutButton.addEventListener("click", () => {
 });
 
 var adSize;
-getDocs(adColRef)
-  .then((snapshot) => {
+getDocs(adColRef).then((snapshot) => {
     let Ads = [];
     snapshot.docs.forEach((doc) => {
       Ads.push({ ...doc.data(), id: doc.id });
     });
     adSize = Ads.length;
     console.log(Ads);
-    for (let index = 0; index < adSize; index++) {
-      let indexR = index + 1;
-      if (Ads[index].emailofemployer == useremail) {
-        $("#try1").append(
-          "<div class='col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
-            Ads[index].imgid +
-            ".jpeg' alt='Thumbnail [100%x225]' style='height: 225px; width: 100%; display: block;' data-holder-rendered='true'><div class='card-body'> <h5 id='cardHeader' dir='rtl'><b>" +
-            Ads[index].title +
-            "</b></h5> <p class='card-text' id='cardText' dir='rtl'>" +
-            Ads[index].des +
-            "</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='delbtn" +
-            index +
-            "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#exampleModal'>מחיקה</button><button id='view" +
-            index +
-            "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modal2'>צפה</button></div>" +
-            (Ads[index].accepted == true
-              ? "<small class='text-success'>מאושר ✔</small>"
-              : "<small class='text-danger'>ממתין לאישור</small>") +
-            "<small class='text-muted'>לפני שעה</small></div></div></div></div>"
-        );
+    const docAllSaved = collection(db, "SavedAds");
+    getDocs(docAllSaved).then((snapshot) => {
+    snapshot.docs.forEach((doc) => {
+      allSavedAds.push({ ...doc.data(), id: doc.id });
+      });
+      let SaveAdsQ = allSavedAds.length;
+      for (let index = 0; index < adSize; index++) {
+        for (let i= 0; i < SaveAdsQ; i++) {
+            if (Ads[index].accepted == true && Ads[index].id==allSavedAds[i].idOfAds && allSavedAds[i].Saveremail == logEmail) {
+              $("#try1").append(
+                "<div class='Added col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
+                  Ads[index].imgid +
+                  ".jpeg' alt='Thumbnail [100%x225]' style='height: 225px; width: 100%; display: block;' data-holder-rendered='true'><div class='card-body'> <h5 id='cardHeader' dir='rtl'><b>" +
+                  Ads[index].title +
+                  "</b></h5> <p class='card-text' id='cardText' dir='rtl'>" +
+                  Ads[index].des +
+                  "</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='view" +
+                  index +
+                  "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalWS'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
+              );
+            }
+          }
       }
-    }
     for (let index = 0; index < adSize; index++) {
       const buttonE = document.getElementById("delbtn" + index);
       const buttonE2 = document.getElementById("view" + index);
@@ -155,6 +159,8 @@ getDocs(adColRef)
       }
     }
   })
+  })
+  
   .catch((err) => {
     console.log(err.message);
   });

@@ -33,6 +33,7 @@ let usernumber, useremail, userfirstname, userlastname;
 let flag = 0;
 let darkflag = 0;
 let textflag = 0;
+let sended = [];
 
 // onAuthStateChanged(auth,(user)=>{
 //   console.log("User status changed",user);
@@ -44,6 +45,7 @@ let textflag = 0;
 
 const adColRef = collection(db, "Ads");
 const docAllusers = collection(db, "users");
+const sendLinks = collection(db, "SendedLinks");
 getDocs(docAllusers).then((snapshot) => {
   snapshot.docs.forEach((doc) => {
     allUsers.push({ ...doc.data(), id: doc.id });
@@ -57,13 +59,16 @@ getDocs(docAllusers).then((snapshot) => {
       userlastname = allUsers[index].lastname;
     }
   }
+  document.querySelector("#welcometext").innerHTML =
+    "<p id=welcometext class='lead text-muted'>ברוך הבא " +
+    userfirstname +
+    ", הנה המודעות שפירסמת באתרנו</p>";
 });
 
 onAuthStateChanged(auth, (user) => {
   console.log("User status changed", user);
   if (user != null) {
     logEmail = user.email;
-    alert(logEmail);
   } else {
     location.href = "index.html";
   }
@@ -80,7 +85,24 @@ logoutButton.addEventListener("click", () => {
       console.log(err.message);
     });
 });
-
+getDocs(sendLinks).then((snapshot) => {
+  snapshot.docs.forEach((doc) => {
+    sended.push({ ...doc.data(), id: doc.id });
+  });
+  let sendedLength = sended.length;
+  console.log(sended);
+  // for (let index = 0; index < userq; index++) {
+  //   if (allUsers[index].email == logEmail) {
+  //     useremail = allUsers[index].email;
+  //     userfirstname = allUsers[index].firstname;
+  //     userlastname = allUsers[index].lastname;
+  //   }
+  // }
+  // document.querySelector("#welcometext").innerHTML =
+  //   "<p id=welcometext class='lead text-muted'>ברוך הבא " +
+  //   userfirstname +
+  //   ", הנה המודעות שפירסמת באתרנו</p>";
+});
 var adSize;
 getDocs(adColRef)
   .then((snapshot) => {
@@ -115,6 +137,7 @@ getDocs(adColRef)
     for (let index = 0; index < adSize; index++) {
       const buttonE = document.getElementById("delbtn" + index);
       const buttonE2 = document.getElementById("view" + index);
+      const buttonBell = document.getElementById("bell");
       if (buttonE) {
         buttonE.addEventListener("click", function () {
           console.log("yougay");
@@ -147,10 +170,18 @@ getDocs(adColRef)
               ? "<small class='text-success'>אושר ופורסם באתרנו ✔</small>"
               : "<small class='text-danger'>ממתין לאישור האדמין </small>";
           document.querySelector("#Mreq").innerHTML = Ads[index].req;
+          document.querySelector("#Mviews").innerHTML =
+            Ads[index].viewsCount + " <i class='fa-regular fa-eye'></i>";
           document.querySelector("#Mdep").innerHTML = Ads[index].dep;
           document.querySelector("#Mpercent").innerHTML = Ads[index].percent;
           document.querySelector("#Mimg").src =
             "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
+        });
+      }
+      if (buttonBell) {
+        buttonBell.addEventListener("click", function () {
+          console.log("checkbell");
+          // if()
         });
       }
     }
