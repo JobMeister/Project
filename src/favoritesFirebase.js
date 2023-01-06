@@ -111,51 +111,32 @@ getDocs(adColRef).then((snapshot) => {
                   Ads[index].des +
                   "</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='view" +
                   index +
-                  "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalWS'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
+                  "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalF'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
               );
             }
           }
       }
     for (let index = 0; index < adSize; index++) {
-      const buttonE = document.getElementById("delbtn" + index);
       const buttonE2 = document.getElementById("view" + index);
-      if (buttonE) {
-        buttonE.addEventListener("click", function () {
-          console.log("yougay");
-          var buttonD = document.getElementById("YesDelete");
-          if (buttonD) {
-            buttonD.addEventListener("click", function () {
-              console.log("the index is:", index);
-              console.log(Ads[index]);
-              var docDelAds = doc(db, "Ads", Ads[index].id);
-              deleteDoc(docDelAds).then(() => {
-                location.reload();
-              });
-            });
-          }
-        });
-      }
       if (buttonE2) {
         buttonE2.addEventListener("click", function () {
-          console.log("younotgay" + index);
-          document.querySelector("#Mtitle").innerHTML = Ads[index].title;
+          document.querySelector("#WStitle").innerHTML = Ads[index].title;
           if (Ads[index].company == null) {
-            document.querySelector("#Mcompany").innerHTML = "חסוי";
-          } else {
-            document.querySelector("#Mcompany").innerHTML = Ads[index].company;
+            document.querySelector("#WScompany").innerHTML = "חסוי";
+          } 
+          else {
+            document.querySelector("#WScompany").innerHTML =
+              Ads[index].company;
           }
-          document.querySelector("#Mlocation").innerHTML = Ads[index].location;
-          document.querySelector("#Mdescribe").innerHTML = Ads[index].des;
-          document.querySelector("#Maccepted").innerHTML =
-            Ads[index].accepted == true
-              ? "<small class='text-success'>אושר ופורסם באתרנו ✔</small>"
-              : "<small class='text-danger'>ממתין לאישור האדמין </small>";
-          document.querySelector("#Mreq").innerHTML = Ads[index].req;
-          document.querySelector("#Mdep").innerHTML = Ads[index].dep;
-          document.querySelector("#Mpercent").innerHTML = Ads[index].percent;
-          document.querySelector("#Mimg").src =
+          document.querySelector("#WSlocation").innerHTML =
+            Ads[index].location;
+          document.querySelector("#WSdescribe").innerHTML = Ads[index].des;
+          document.querySelector("#WSreq").innerHTML = Ads[index].req;
+          document.querySelector("#WSdep").innerHTML = Ads[index].dep;
+          document.querySelector("#WSpercent").innerHTML = Ads[index].percent;
+          document.querySelector("#WSimg").src =
             "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
-        });
+        })
       }
     }
   })
