@@ -15,7 +15,6 @@ const firebaseConfig = {
 
 // init firebase
 const app = initializeApp(firebaseConfig)
-
 // init services
 const db = getFirestore(app);
 
@@ -29,7 +28,6 @@ const auth = getAuth();
 const signUpForm = document.querySelector('.Fsignup')
 signUpForm.addEventListener('submit', (e) => {
   e.preventDefault()
-  
 // if(signUpForm.email.value=="") {
 //     document.querySelector("#msg1").innerHTML="אנא הכנס שם פרטי";
 // }
@@ -58,8 +56,9 @@ if(firstname!="" && lastname!="" && email!="" && password!="" ) {
           // Signed in 
           const user = cred.user;
           addDoc(collection(db, "users" ), { firstname ,lastname,email,password,Company,eOrS});
-          window.alert("משתמש נרשם בהצלחה!");
-        })
+          alert("משתמש נרשם בהצלחה!");
+          signUpForm.reset();
+        });
       }
       else {
         document.querySelector("#msg6").innerHTML="אנא הכנס שם חברה";
@@ -80,8 +79,9 @@ if(firstname!="" && lastname!="" && email!="" && password!="" ) {
         .then((cred) => {
           // Signed in 
           const user = cred.user;
-          addDoc(collection(db, "users" ), { firstname ,lastname,email,password,age,gender,Occ,eOrS});
-          window.alert("משתמש נרשם בהצלחה!");
+          addDoc(collection(db, "users" ),{ firstname ,lastname,email,password,age,gender,Occ,eOrS});
+          alert("משתמש נרשם בהצלחה!");
+          signUpForm.reset();
         })
       }
       else {
@@ -123,8 +123,8 @@ else {
     document.querySelector("#msg4").innerHTML="אנא הכנס סיסמא";
   }
 }
-
 })
+
 
 onAuthStateChanged(auth,(user)=>{
   console.log("User status changed",user);
