@@ -45,13 +45,14 @@ let sended = [];
 
 const adColRef = collection(db, "Ads");
 const docAllusers = collection(db, "users");
-const sendLinks = collection(db, "SendedLinks");
+const sendLinks = collection(db, "Sendedlinks");
 getDocs(docAllusers).then((snapshot) => {
   snapshot.docs.forEach((doc) => {
     allUsers.push({ ...doc.data(), id: doc.id });
   });
   let userq = allUsers.length;
   console.log(allUsers);
+
   for (let index = 0; index < userq; index++) {
     if (allUsers[index].email == logEmail) {
       useremail = allUsers[index].email;
@@ -85,25 +86,9 @@ logoutButton.addEventListener("click", () => {
       console.log(err.message);
     });
 });
-getDocs(sendLinks).then((snapshot) => {
-  snapshot.docs.forEach((doc) => {
-    sended.push({ ...doc.data(), id: doc.id });
-  });
-  let sendedLength = sended.length;
-  console.log(sended);
-  // for (let index = 0; index < userq; index++) {
-  //   if (allUsers[index].email == logEmail) {
-  //     useremail = allUsers[index].email;
-  //     userfirstname = allUsers[index].firstname;
-  //     userlastname = allUsers[index].lastname;
-  //   }
-  // }
-  // document.querySelector("#welcometext").innerHTML =
-  //   "<p id=welcometext class='lead text-muted'>ברוך הבא " +
-  //   userfirstname +
-  //   ", הנה המודעות שפירסמת באתרנו</p>";
-});
+
 var adSize;
+var countAds = 0;
 getDocs(adColRef)
   .then((snapshot) => {
     let Ads = [];
@@ -115,6 +100,7 @@ getDocs(adColRef)
     for (let index = 0; index < adSize; index++) {
       let indexR = index + 1;
       if (Ads[index].emailofemployer == useremail) {
+        countAds++;
         $("#try1").append(
           "<div class='col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
             Ads[index].imgid +
@@ -134,10 +120,18 @@ getDocs(adColRef)
         );
       }
     }
+    document.querySelector("#adC").innerHTML = countAds;
+    getDocs(sendLinks).then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        sended.push({ ...doc.data(), id: doc.id });
+      });
+      console.log(sended);
+    });
     for (let index = 0; index < adSize; index++) {
       const buttonE = document.getElementById("delbtn" + index);
       const buttonE2 = document.getElementById("view" + index);
       const buttonBell = document.getElementById("bell");
+      const notfimodal = document.getElementById("modalNoti");
       if (buttonE) {
         buttonE.addEventListener("click", function () {
           console.log("yougay");
@@ -178,12 +172,60 @@ getDocs(adColRef)
             "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
         });
       }
-      if (buttonBell) {
-        buttonBell.addEventListener("click", function () {
+
+      $(document).ready(function () {
+        var down = false;
+
+        $("#bell").click(function (e) {
+          var color = $(this).text();
+          if (down) {
+            $("#box").css("height", "0px");
+            $("#box").css("opacity", "0");
+            down = false;
+          } else {
+            $("#box").css("height", "auto");
+            $("#box").css("opacity", "1");
+            down = true;
+          }
           console.log("checkbell");
-          // if()
+
+          let sendedLength = sended.length;
+          console.log(sendedLength);
+          let userNotifCount = 0;
+          // for (let i = 0; i < sendedLength; i++) {
+          if (sended[index].emailofemployer == useremail) {
+            userNotifCount++;
+            console.log("chgeckit" + index);
+            $("#box").append(
+              "<div class='added notifications-item' data-bs-toggle='modal' data-bs-target='#modalNoti'> <img src='/dist/img/occpics/occ" +
+                Ads[index].imgid +
+                ".jpeg' alt='img'> <div class='text mx-2'><h4>המשתמש " +
+                sended[index].nameOfsender +
+                " הגיש קורות חיים למשרתך</h4   <p> לחץ כאן על מנת לראות פרטים</p> </div> </div>"
+            );
+            "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
+            if (notfimodal) {
+              document.querySelector("#Mnotfirst").innerHTML = 0;
+              document.querySelector("#Mnotlast").innerHTML = 0;
+              document.querySelector("#Mnotage").innerHTML = 0;
+              document.querySelector("#Mnotgender").innerHTML = 0;
+              document.querySelector("#Mnotocc").innerHTML = 0;
+              document.querySelector("#Mnotemail").innerHTML =
+                sended[index].emailOfSender;
+              document.querySelector("#Mnotlink").innerHTML =
+                sended[index].downloadLink;
+              document.querySelector("#Mnotimg").src =
+                "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
+            }
+          }
+          $("#bell").click(function () {
+            $("#box").removeClass(".added");
+          });
+          document.querySelector("#notifcount").innerHTML = userNotifCount;
+          // }
         });
-      }
+      });
+      // });
     }
   })
   .catch((err) => {
@@ -236,21 +278,4 @@ $("#acessability").click(function () {
 
   $("#accessMenu").toggle("drop");
   return false;
-});
-
-$(document).ready(function () {
-  var down = false;
-
-  $("#bell").click(function (e) {
-    var color = $(this).text();
-    if (down) {
-      $("#box").css("height", "0px");
-      $("#box").css("opacity", "0");
-      down = false;
-    } else {
-      $("#box").css("height", "auto");
-      $("#box").css("opacity", "1");
-      down = true;
-    }
-  });
 });

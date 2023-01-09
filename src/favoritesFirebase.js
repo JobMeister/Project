@@ -28,12 +28,13 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth();
 let logEmail;
-let allUsers = [],allSavedAds = [];
+let allUsers = [],
+  allSavedAds = [];
 let usernumber, useremail, userfirstname, userlastname;
 let flag = 0;
 let darkflag = 0;
 let textflag = 0;
-
+let adCount = 0;
 // onAuthStateChanged(auth,(user)=>{
 //   console.log("User status changed",user);
 
@@ -67,8 +68,7 @@ onAuthStateChanged(auth, (user) => {
   console.log("User status changed", user);
   if (user != null) {
     logEmail = user.email;
-  } 
-  else {
+  } else {
     location.href = "index.html";
   }
 });
@@ -86,7 +86,8 @@ logoutButton.addEventListener("click", () => {
 });
 
 var adSize;
-getDocs(adColRef).then((snapshot) => {
+getDocs(adColRef)
+  .then((snapshot) => {
     let Ads = [];
     snapshot.docs.forEach((doc) => {
       Ads.push({ ...doc.data(), id: doc.id });
@@ -95,72 +96,58 @@ getDocs(adColRef).then((snapshot) => {
     console.log(Ads);
     const docAllSaved = collection(db, "SavedAds");
     getDocs(docAllSaved).then((snapshot) => {
-    snapshot.docs.forEach((doc) => {
-      allSavedAds.push({ ...doc.data(), id: doc.id });
+      snapshot.docs.forEach((doc) => {
+        allSavedAds.push({ ...doc.data(), id: doc.id });
       });
       let SaveAdsQ = allSavedAds.length;
       for (let index = 0; index < adSize; index++) {
-        for (let i= 0; i < SaveAdsQ; i++) {
-            if (Ads[index].accepted == true && Ads[index].id==allSavedAds[i].idOfAds && allSavedAds[i].Saveremail == logEmail) {
-              $("#try1").append(
-                "<div class='Added col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
-                  Ads[index].imgid +
-                  ".jpeg' alt='Thumbnail [100%x225]' style='height: 225px; width: 100%; display: block;' data-holder-rendered='true'><div class='card-body'> <h5 id='cardHeader' dir='rtl'><b>" +
-                  Ads[index].title +
-                  "</b></h5> <p class='card-text' id='cardText' dir='rtl'>" +
-                  Ads[index].des +
-                  "</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='view" +
-                  index +
-                  "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalWS'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
-              );
+        for (let i = 0; i < SaveAdsQ; i++) {
+          if (
+            Ads[index].accepted == true &&
+            Ads[index].id == allSavedAds[i].idOfAds &&
+            allSavedAds[i].Saveremail == logEmail
+          ) {
+            document.querySelector("#adC").innerHTML = adCount++;
+            adCount++;
+            $("#try1").append(
+              "<div class='Added col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
+                Ads[index].imgid +
+                ".jpeg' alt='Thumbnail [100%x225]' style='height: 225px; width: 100%; display: block;' data-holder-rendered='true'><div class='card-body'> <h5 id='cardHeader' dir='rtl'><b>" +
+                Ads[index].title +
+                "</b></h5> <p class='card-text' id='cardText' dir='rtl'>" +
+                Ads[index].des +
+                "</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='view" +
+                index +
+                "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalF'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
+            );
+          }
+        }
+      }
+      for (let index = 0; index < adSize; index++) {
+        const buttonE2 = document.getElementById("view" + index);
+        if (buttonE2) {
+          buttonE2.addEventListener("click", function () {
+            document.querySelector("#WStitle").innerHTML = Ads[index].title;
+            if (Ads[index].company == null) {
+              document.querySelector("#WScompany").innerHTML = "חסוי";
+            } else {
+              document.querySelector("#WScompany").innerHTML =
+                Ads[index].company;
             }
-          }
+            document.querySelector("#WSlocation").innerHTML =
+              Ads[index].location;
+            document.querySelector("#WSdescribe").innerHTML = Ads[index].des;
+            document.querySelector("#WSreq").innerHTML = Ads[index].req;
+            document.querySelector("#WSdep").innerHTML = Ads[index].dep;
+            document.querySelector("#WSpercent").innerHTML = Ads[index].percent;
+            document.querySelector("#WSimg").src =
+              "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
+          });
+        }
       }
-    for (let index = 0; index < adSize; index++) {
-      const buttonE = document.getElementById("delbtn" + index);
-      const buttonE2 = document.getElementById("view" + index);
-      if (buttonE) {
-        buttonE.addEventListener("click", function () {
-          console.log("yougay");
-          var buttonD = document.getElementById("YesDelete");
-          if (buttonD) {
-            buttonD.addEventListener("click", function () {
-              console.log("the index is:", index);
-              console.log(Ads[index]);
-              var docDelAds = doc(db, "Ads", Ads[index].id);
-              deleteDoc(docDelAds).then(() => {
-                location.reload();
-              });
-            });
-          }
-        });
-      }
-      if (buttonE2) {
-        buttonE2.addEventListener("click", function () {
-          console.log("younotgay" + index);
-          document.querySelector("#Mtitle").innerHTML = Ads[index].title;
-          if (Ads[index].company == null) {
-            document.querySelector("#Mcompany").innerHTML = "חסוי";
-          } else {
-            document.querySelector("#Mcompany").innerHTML = Ads[index].company;
-          }
-          document.querySelector("#Mlocation").innerHTML = Ads[index].location;
-          document.querySelector("#Mdescribe").innerHTML = Ads[index].des;
-          document.querySelector("#Maccepted").innerHTML =
-            Ads[index].accepted == true
-              ? "<small class='text-success'>אושר ופורסם באתרנו ✔</small>"
-              : "<small class='text-danger'>ממתין לאישור האדמין </small>";
-          document.querySelector("#Mreq").innerHTML = Ads[index].req;
-          document.querySelector("#Mdep").innerHTML = Ads[index].dep;
-          document.querySelector("#Mpercent").innerHTML = Ads[index].percent;
-          document.querySelector("#Mimg").src =
-            "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
-        });
-      }
-    }
+    });
   })
-  })
-  
+
   .catch((err) => {
     console.log(err.message);
   });
