@@ -15,7 +15,6 @@ const firebaseConfig = {
 
 // init firebase
 const app = initializeApp(firebaseConfig)
-
 // init services
 const db = getFirestore(app);
 
@@ -29,45 +28,103 @@ const auth = getAuth();
 const signUpForm = document.querySelector('.Fsignup')
 signUpForm.addEventListener('submit', (e) => {
   e.preventDefault()
-
+// if(signUpForm.email.value=="") {
+//     document.querySelector("#msg1").innerHTML="אנא הכנס שם פרטי";
+// }
+// if(signUpForm.email.value!="") {
+//   document.querySelector("#msg1").innerHTML="";
+// }
 const email = signUpForm.email.value
 const password = signUpForm.password.value
 const firstname = signUpForm.firstname.value
 const lastname = signUpForm.lastname.value
 const EmployerOrSearcher = signUpForm.EmployerOr.value
-
-if(EmployerOrSearcher == '1') {
- 
-  var Company = signUpForm.Company.value
-  var eOrS = "Employer"
-
- createUserWithEmailAndPassword(auth, email, password)
-    .then((cred) => {
-      // Signed in 
-      const user = cred.user;
-      addDoc(collection(db, "users" ), { firstname ,lastname,email,password,Company,eOrS});
-      window.alert("משתמש נרשם בהצלחה!");
-    })
+if(firstname!="" && lastname!="" && email!="" && password!="" ) {
+  document.querySelector("#msg1").innerHTML="";
+  document.querySelector("#msg2").innerHTML="";
+  document.querySelector("#msg3").innerHTML="";
+  document.querySelector("#msg4").innerHTML="";
   
-}
+    if(EmployerOrSearcher == '1') {
+      document.querySelector("#msg5").innerHTML="";
+      var Company = signUpForm.Company.value
+      var eOrS = "Employer"
+      if(Company!="") {
+        document.querySelector("#msg6").innerHTML="";
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((cred) => {
+          // Signed in 
+          const user = cred.user;
+          addDoc(collection(db, "users" ), { firstname ,lastname,email,password,Company,eOrS});
+          alert("משתמש נרשם בהצלחה!");
+          signUpForm.reset();
+        });
+      }
+      else {
+        document.querySelector("#msg6").innerHTML="אנא הכנס שם חברה";
+      }
+    }
 
-if(EmployerOrSearcher == '2') {
- 
-  var age = signUpForm.age.value
-  var gender = signUpForm.gender.value
-  var Occ = signUpForm.MainOcc.value
-  var eOrS = "Work Searcher"
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((cred) => {
-      // Signed in 
-      const user = cred.user;
-      addDoc(collection(db, "users" ), { firstname ,lastname,email,password,age,gender,Occ,eOrS});
-      window.alert("משתמש נרשם בהצלחה!");
-    })
-  
+    else if(EmployerOrSearcher == '2') {
+      document.querySelector("#msg5").innerHTML="";
+      var age = signUpForm.age.value
+      var gender = signUpForm.gender.value
+      var Occ = signUpForm.MainOcc.value
+      if(age!="" && gender!="" && Occ!="") {
+      document.querySelector("#msg7").innerHTML="";
+      document.querySelector("#msg8").innerHTML="";
+      document.querySelector("#msg9").innerHTML="";
+      var eOrS = "Work Searcher"
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((cred) => {
+          // Signed in 
+          const user = cred.user;
+          addDoc(collection(db, "users" ),{ firstname ,lastname,email,password,age,gender,Occ,eOrS});
+          alert("משתמש נרשם בהצלחה!");
+          signUpForm.reset();
+        })
+      }
+      else {
+          if(age=="") {
+            document.querySelector("#msg7").innerHTML="אנא הכנס גיל";
+          }
+          else if(gender=="") {
+            document.querySelector("#msg7").innerHTML="";
+            document.querySelector("#msg8").innerHTML="אנא בחר מין";
+          }
+          else {
+            document.querySelector("#msg7").innerHTML="";
+            document.querySelector("#msg8").innerHTML="";
+            document.querySelector("#msg9").innerHTML="אנא בחר תחום עיסוק עיקרי";
+          }
+        }
+      }
+    else {
+    document.querySelector("#msg5").innerHTML="בחר סוג משתמש";
+    }
 }
-
+else {
+  if(firstname=="") {
+    document.querySelector("#msg1").innerHTML="אנא הכנס שם פרטי";
+  }
+  else if(lastname=="") {
+    document.querySelector("#msg1").innerHTML="";
+    document.querySelector("#msg2").innerHTML="אנא הכנס שם משפחה";
+  }
+  else if(email=="") {
+    document.querySelector("#msg1").innerHTML="";
+    document.querySelector("#msg2").innerHTML="";
+    document.querySelector("#msg3").innerHTML="אנא הכנס כתובת מייל";
+  }
+  else if(password=="") {
+    document.querySelector("#msg1").innerHTML="";
+    document.querySelector("#msg2").innerHTML="";
+    document.querySelector("#msg3").innerHTML="";
+    document.querySelector("#msg4").innerHTML="אנא הכנס סיסמא";
+  }
+}
 })
+
 
 onAuthStateChanged(auth,(user)=>{
   console.log("User status changed",user);

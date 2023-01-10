@@ -41,27 +41,30 @@
 <header>
   <div class="header_container">
 
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white .bg-white navbar-light sticky-top p-1 px-4 px-lg-5" dir="rtl">
-      <a href="index.html" class="navbar-brand d-flex align-items-center">
-        <h2 class="m-0 text-primary" onclick=boot.html>
-          <img class="img-fluid me-2" src="img/icon-1.png" alt="" style="margin-top:50px" />
-          JobMeister
-        </h2>
-      </a>
-      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav position-absolute start-0 ms-auto p-auto ">
-          <a href="login.html" target="_blank" class="nav-item nav-link"><b>התחברות</b></a>
-          <a href="signup.html" class="nav-item nav-link" target="_blank"><b>הרשמה</b></a>
-        </div>
-        <hr>
-      </div>
-    </nav>
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
+  <a href="index.html" class="navbar-brand d-flex align-items-center">
 
-    <!-- Navbar End -->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto py-4 start -0 py-lg-0">
+        <a href="contact.html" class="nav-item nav-link"><b>צור קשר</b></a>
+        <a href="login.html" class="nav-item nav-link"><b>התחברות</b></a>
+        <a href="signup.html" class="nav-item nav-link"><b>הרשמה</b></a>
+        <a href="about.html" class="nav-item nav-link"><b>אודות</b></a>
+        <a href="index.html" class="nav-item nav-link"><b>ראשי</b></a>
+      </div>
+  </a>
+  <a href="index.html" class="m-0 text-primary">
+    <img class="img-fluid me-2" src="img/fixedlogo.png" alt="" style="width: 210px" />
+    </h2>
+
+  </a>
+  <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  </div>
+</nav>
+<!-- Navbar End -->
 
   </div>
 </header>
@@ -92,13 +95,13 @@
               backdrop-filter: blur(30px);
               ">
                 <div class="card-body p-5 shadow-5 text-center" dir="rtl">
-                  <h2 class="fw-bold mb-5">הירשם עכשיו:</h2>
+                  <h2 class="fw-bold mb-5">הירשם עכשיו</h2>
                   <form class="Fsignup" action="/signup">
                     <!-- 2 column grid layout with text inputs for the first and last names -->
                     <div class="row">
                       <div class="col-md-6 mb-4">
                         <div class="form-outline">
-                          <label class="form-label" for="form3Example2">שם פרטי:</label>
+                          <label class="form-label" for="form3Example2">שם פרטי</label>
                           <input type="text" input name="firstname" id="S_firstname" class="form-control" />
                           <div class="text-center pt-1 text-danger">
                             <h6 id="msg1"></h6>
@@ -107,7 +110,7 @@
                       </div>
                       <div class="col-md-6 mb-4">
                         <div class="form-outline">
-                          <label class="form-label" for="form3Example1">שם משפחה:</label>
+                          <label class="form-label" for="form3Example1">שם משפחה</label>
                           <input type="text" input name="lastname" id="S_lastname" class="form-control" />
                           <div class="text-center pt-1 text-danger">
                             <h6 id="msg2"></h6>
@@ -118,7 +121,7 @@
 
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="form3Example3">אימייל:</label>
+                      <label class="form-label" for="form3Example3">אימייל</label>
                       <input type="email" input name="email" id="S_email" class="form-control" />
                       <div class="text-center pt-1 text-danger">
                         <h6 id="msg3"></h6>
@@ -127,7 +130,7 @@
 
                     <!-- Password input -->
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="form3Example4">סיסמא:</label>
+                      <label class="form-label" for="form3Example4">סיסמא</label>
                       <input type="password" input name="password" id="S_password" class="form-control" />
                       <div class="text-center pt-1 text-danger">
                         <h6 id="msg4"></h6>
@@ -135,10 +138,10 @@
                     </div>
                     <!-- Choose which account to open -->
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="form3Example4">הירשם בתור:</label>
+                      <label class="form-label" for="form3Example4">הירשם בתור</label>
                       <select name="EmployerOr" class="form-select" id="S_select"
                         onchange="DisplayDivBySelector(this.value)" aria-label="Default select example">
-                        <option selected value="">- אנא בחר סוג משתמש -</option>
+                        <option selected value="" class="text-center">- אנא בחר סוג משתמש -</option>
                         <option value="1">מעסיק</option>
                         <option value="2">מחפש עבודה</option>
                       </select>
@@ -150,7 +153,7 @@
                     <div class="after-select">
                       <!-- Class of registery only for Employer -->
                       <div class="form-Employer mb-4" id="div-E">
-                        <label class="form-label" for="form3Example2">שם החברה המעסיקה:</label>
+                        <label class="form-label" for="form3Example2">שם החברה המעסיקה</label>
                         <input type="text" input name="Company" id="S_company" class="form-control" />
                         <div class="text-center pt-1 text-danger">
                           <h6 id="msg6"></h6>
@@ -160,7 +163,7 @@
                       <!-- Class of registery only for work searcher -->
                       <div class="form-workSearcher mb-4" id="div-WS">
                         <!--  -->
-                        <label class="form-label" for="form3Example2">גיל:</label>
+                        <label class="form-label" for="form3Example2">גיל</label>
                         <input type="text" input name="age" id="S_age" class="form-control " />
                         <div class="text-center pt-1 text-danger mb-4">
                           <h6 id="msg7"></h6>
@@ -168,7 +171,7 @@
                         <!--  -->
                         <select class="form-select mb-4" input name="gender" id="S_gender"
                           aria-label="Default select example">
-                          <option selected value="">מין:</option>
+                          <option selected value="">מין</option>
                           <option value="זכר">זכר</option>
                           <option value="נקבה">נקבה</option>
                         </select>
@@ -227,7 +230,7 @@
           </div>
 
           <div class="col-lg-6 mb-0 mb-lg-0">
-            <img src="img/222.png" style: width:250px; class="w-100 rounded-4 shadow-4" alt="">
+            <img src="img/try1.png" style: width:250px; class="w-100 rounded-4 shadow-4" alt="">
 
           </div>
         </div>
