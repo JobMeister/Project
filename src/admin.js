@@ -30,6 +30,7 @@ $(document).ready(function () {
       darkflag = 1;
     } else {
       $("#body").addClass("bg-gray-200");
+      $("p").addClass("border-dark");
       $("p").addClass("bg-white");
       $("#body").removeClass("darkMode");
       $("#pagesDark").removeClass("text-white");
