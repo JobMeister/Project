@@ -193,6 +193,7 @@ getDocs(adColRef).then((snapshot) => {
     }
     function Running1() {
       $(".Added").remove();
+      let counterView=0
       for (let index = 0; index < adSize; index++) {
         console.log(flag);
         switch (flag) {
@@ -351,8 +352,8 @@ getDocs(adColRef).then((snapshot) => {
            if (buttonE2) {
             buttonE2.addEventListener("click", function () {
               if(allSavedAds) {
-               for (let i= 0; i < allSaveAdslength[0]; i++) {
-                     allSavedAds.splice(i);
+                  for (let i= 0; i < allSaveAdslength[0]; i++) {
+                      allSavedAds.splice(i);
                    }
                   }
               document.querySelector("#WStitle").innerHTML = Ads[index].title;
@@ -381,10 +382,11 @@ getDocs(adColRef).then((snapshot) => {
                   snapshot.docs.forEach((doc) => {
                     allSavedAds.push({ ...doc.data(), id: doc.id });
                   });
+                  console.log(allSavedAds);
                   let SaveAdsQ = allSavedAds.length;
                   allSaveAdslength[0] = allSavedAds.length;
-                  console.log(allSavedAds);
                   for (let i= 0; i < SaveAdsQ; i++) {
+                    console.log(allSavedAds[i]);
                     if (allSavedAds[i].Saveremail == logEmail) {
                       console.log(Ads[index].id);
                       console.log(allSavedAds[i].idOfAds);

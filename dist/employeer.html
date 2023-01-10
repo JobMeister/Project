@@ -57,21 +57,22 @@
       </span></i> </div>
 
       
-      <div class="notifications" dir="rtl" id="box">
-        <h2>התראות -  <span>2</span></h2>
-        <div class="notifications-item"> <img src="https://img.mensxp.com/media/content/2022/Jan/Rather-Surprising-Facts-To-Know-About-Having-A-Small-Penis--3_61dee97800274.jpeg" alt="img">
-            <div class="text mx-2">
-                <h4>לאביב יש קטן</h4>
-                <p>לאביב יש מזה קטן אתה חייב לראות</p>
-            </div>
-        </div>
+      <div class="added notifications" dir="rtl" id="box">
+        <h2>התראות -  <span id="notifcount"> </span></h2>
+        <!-- <div class = "notifications-item" dir="rtl" id="checknot"> -->
+    
+
+        <!-- <div class = "notifications-item" dir="rtl" id="checknot">
         <div class="notifications-item"> <img src="https://media.licdn.com/dms/image/D4D03AQGRZc5RFPboRw/profile-displayphoto-shrink_800_800/0/1667240302550?e=1678320000&v=beta&t=eRQFJfctrG9yrVgYTdt-pI5qDfvOaqMT43XdMT8wbds" alt="img">
             <div class="text mx-2">
                 <h4>אל תשכח תפילת מנחה צדיק!</h4>
                 <p>דבר עם השמן והרזה התפילה במנזה</p>
             </div>
-        </div>
-    </div>
+          </div>
+        </div> -->
+      </div>
+
+    <!-- </div> -->
       
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-4 start -0 py-lg-0">
@@ -136,7 +137,7 @@
     </div>
   
     <div class="container">
-      <h5 id="cardHeader" dir="rtl"><b>כמות מודעות</b></h5>
+      <h5 id="cardHeader"class="" dir="rtl"><b>כמות מודעות (<text id="adC"></text>)</b></h5>
 
       <div id ="try1" class="row" dir="rtl">
 
@@ -187,16 +188,43 @@
             <text id="Mdescribe"></text><br><br>
             <strong>אושר לפרסום:</strong>
             <text id="Maccepted"></text><br><br>
+            <strong>כמות צפיות במודעה:</strong>
+            <text id="Mviews"></text><br><br>
           </div>
           </div>
-          <!-- <div class="modal-footer d-flex justify-content-between">
-            <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">שמור מודעה</button>
-            <button type="button" id="YesDelete" class="btn btn-outline-primary" data-bs-dismiss="modal" >הגש קורות חיים</button>
-          </div> -->
         </div>
       </div>
     </div>
-
+    <!-- notifc modal -->
+    <div class="modal" id="modalNoti" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-light flex-row-reverse justify-content-between">
+            <h5 class="modal-delete" id="Mnotitle" ></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body d-flex ">
+            <img src="/dist/img/occpics/occ1.jpeg" id="Mnotimg" class="h-100 float-left" style="width: 230px;" alt="imgAds">
+            <div class=" col-md-6" dir="rtl">
+            <strong>שם פרטי:</strong>
+            <text id="Mnotfirst"></text><br><br>
+            <strong>שם משפחה:</strong>
+            <text id="Mnotlast"></text><br><br>
+            <strong>גיל:</strong>
+            <text id="Mnotage"></text><br><br>
+            <strong>מין:</strong>
+            <text id="Mnotgender"></text><br><br>
+            <strong>תחום עיסוק עיקרי:</strong>
+            <text id="Mnotocc"></text><br><br>
+            <strong>אימייל:</strong>
+            <text id="Mnotemail"></text><br><br>
+            <strong>קישור לקורות חיים:</strong>
+            <text id="Mnotlink"></text><br><br>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <!-- Header End -->
 
   <!-- Footer Start -->

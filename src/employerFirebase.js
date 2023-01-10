@@ -33,6 +33,7 @@ let usernumber, useremail, userfirstname, userlastname;
 let flag = 0;
 let darkflag = 0;
 let textflag = 0;
+let sended = [];
 
 // onAuthStateChanged(auth,(user)=>{
 //   console.log("User status changed",user);
@@ -44,12 +45,14 @@ let textflag = 0;
 
 const adColRef = collection(db, "Ads");
 const docAllusers = collection(db, "users");
+const sendLinks = collection(db, "Sendedlinks");
 getDocs(docAllusers).then((snapshot) => {
   snapshot.docs.forEach((doc) => {
     allUsers.push({ ...doc.data(), id: doc.id });
   });
   let userq = allUsers.length;
   console.log(allUsers);
+
   for (let index = 0; index < userq; index++) {
     if (allUsers[index].email == logEmail) {
       useremail = allUsers[index].email;
@@ -58,9 +61,10 @@ getDocs(docAllusers).then((snapshot) => {
     }
   }
   document.querySelector("#welcometext").innerHTML =
-  "<p id=welcometext class='lead text-muted'>ברוך הבא "+userfirstname+", הנה המודעות שפירסמת באתרנו</p>"
+    "<p id=welcometext class='lead text-muted'>ברוך הבא " +
+    userfirstname +
+    ", הנה המודעות שפירסמת באתרנו</p>";
 });
-
 
 onAuthStateChanged(auth, (user) => {
   console.log("User status changed", user);
@@ -84,6 +88,7 @@ logoutButton.addEventListener("click", () => {
 });
 
 var adSize;
+var countAds = 0;
 getDocs(adColRef)
   .then((snapshot) => {
     let Ads = [];
@@ -95,6 +100,7 @@ getDocs(adColRef)
     for (let index = 0; index < adSize; index++) {
       let indexR = index + 1;
       if (Ads[index].emailofemployer == useremail) {
+        countAds++;
         $("#try1").append(
           "<div class='col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
             Ads[index].imgid +
@@ -114,12 +120,20 @@ getDocs(adColRef)
         );
       }
     }
+    document.querySelector("#adC").innerHTML = countAds;
+    getDocs(sendLinks).then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        sended.push({ ...doc.data(), id: doc.id });
+      });
+      console.log(sended);
+    });
     for (let index = 0; index < adSize; index++) {
       const buttonE = document.getElementById("delbtn" + index);
       const buttonE2 = document.getElementById("view" + index);
+      const buttonBell = document.getElementById("bell");
+      const notfimodal = document.getElementById("modalNoti");
       if (buttonE) {
         buttonE.addEventListener("click", function () {
-          console.log("yougay");
           var buttonD = document.getElementById("YesDelete");
           if (buttonD) {
             buttonD.addEventListener("click", function () {
@@ -135,7 +149,6 @@ getDocs(adColRef)
       }
       if (buttonE2) {
         buttonE2.addEventListener("click", function () {
-          console.log("younotgay" + index);
           document.querySelector("#Mtitle").innerHTML = Ads[index].title;
           if (Ads[index].company == null) {
             document.querySelector("#Mcompany").innerHTML = "חסוי";
@@ -149,12 +162,70 @@ getDocs(adColRef)
               ? "<small class='text-success'>אושר ופורסם באתרנו ✔</small>"
               : "<small class='text-danger'>ממתין לאישור האדמין </small>";
           document.querySelector("#Mreq").innerHTML = Ads[index].req;
+          document.querySelector("#Mviews").innerHTML =
+            Ads[index].viewsCount + " <i class='fa-regular fa-eye'></i>";
           document.querySelector("#Mdep").innerHTML = Ads[index].dep;
           document.querySelector("#Mpercent").innerHTML = Ads[index].percent;
           document.querySelector("#Mimg").src =
             "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
         });
       }
+
+      $(document).ready(function () {
+        var down = false;
+
+        $("#bell").click(function (e) {
+          var color = $(this).text();
+          if (down) {
+            $("#box").css("height", "0px");
+            $("#box").css("opacity", "0");
+            down = false;
+          } else {
+            $("#box").css("height", "auto");
+            $("#box").css("opacity", "1");
+            down = true;
+          }
+          console.log("checkbell");
+          let sendedLength = sended.length;
+          console.log(sendedLength);
+          let userNotifCount = 0;
+          // for (let i = 0; i < sendedLength; i++) {
+          if (sended[index].emailofemployer == useremail) {
+            userNotifCount++;
+            console.log("chgeckit" + index);
+            $("#box").append(
+              "<div id='added2' class='added2 notifications-item' data-bs-toggle='modal' data-bs-target='#modalNoti'> <img src='/dist/img/occpics/occ" +
+                Ads[index].imgid +
+                ".jpeg' alt='img'> <div class='text mx-2'><h6>המשתמש " +
+                sended[index].nameOfsender +
+                " הגיש קורות חיים למשרתך</h6<p> לחץ כאן על מנת לראות פרטים</p> </div></div>"
+            );
+            "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
+            // if (notfimodal) {
+            //   document.querySelector("#Mnotfirst").innerHTML = 0;
+            //   document.querySelector("#Mnotlast").innerHTML = 0;
+            //   document.querySelector("#Mnotage").innerHTML = 0;
+            //   document.querySelector("#Mnotgender").innerHTML = 0;
+            //   document.querySelector("#Mnotocc").innerHTML = 0;
+            //   document.querySelector("#Mnotemail").innerHTML =
+            //     sended[index].emailOfSender;
+            //   document.querySelector("#Mnotlink").innerHTML =
+            //     sended[index].downloadLink;
+            //   document.querySelector("#Mnotimg").src =
+            //     "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
+            // }
+          }
+          $("#Added2").remove();
+          $(".Added2").remove();
+          $("#bell").click(function () {
+            $("#box").removeClass(".added");
+          });
+          document.querySelector("#notifcount").innerHTML = userNotifCount;
+          // }
+        });
+      });
+      
+      // });
     }
   })
   .catch((err) => {
@@ -207,21 +278,4 @@ $("#acessability").click(function () {
 
   $("#accessMenu").toggle("drop");
   return false;
-});
-
-$(document).ready(function () {
-  var down = false;
-
-  $("#bell").click(function (e) {
-    var color = $(this).text();
-    if (down) {
-      $("#box").css("height", "0px");
-      $("#box").css("opacity", "0");
-      down = false;
-    } else {
-      $("#box").css("height", "auto");
-      $("#box").css("opacity", "1");
-      down = true;
-    }
-  });
 });
