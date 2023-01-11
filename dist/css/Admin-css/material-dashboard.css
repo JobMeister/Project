@@ -50,6 +50,7 @@
       background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABlElEQVRIieXWMWgUQRTG8Z/xEEmVwkJERDBFKksRbRREYqGdFnYiiK21EEkrNhLQSkUQrUQ7QQkBCw9stFIQBQv7RAnBQnMW8y7ezc5lB7aw8IPl3uzMe//Zj715y7imsYTvGLRcL7Bbi3Zk4yVcxWN8acm9hA84j4020FCreFi5dsXfJ5metGgqG8/ga+1uQvN4NgmSA+B3ZeHNkfg0npYgJUCtlrPxfAnSKyTurATcjN+TI3XmAnJmUtIAC5WAkhaixpa6WFSlEqDWopIauV3eopIauf/Eoi6qsqiL/gOLbuB1B0DDoh6ORryJW9LZfiTgv6QzfwN7MDuS+y2ubdVDH2+wK4ocxyt8ivn9OIsDeIC3kXsPj7J6xT/pAIdjxx9xRWqZx2L+bgAvxPx2apxFw1NwNna/T/Oxl3Eu4r1SW4Xb+NwC3AJcxw8s4mW2ZgbrEf/Eu4jXNXUIayXAZbzP7s1JzeManse9NdzPip6QesJBXMSdnNo3/nZMSZ73pca+KH2enMKTwq6Hvq9Kto19yvwBHE5Tc5ACC1sAAAAASUVORK5CYII=") no-repeat left center transparent;
       background-size: 100% 100%;
   }
+  
   .buttonadmin2:before{
     content:  "\0000a0"; 
     display: inline-block;
@@ -63,8 +64,6 @@
     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABlElEQVRIieXWMWgUQRTG8Z/xEEmVwkJERDBFKksRbRREYqGdFnYiiK21EEkrNhLQSkUQrUQ7QQkBCw9stFIQBQv7RAnBQnMW8y7ezc5lB7aw8IPl3uzMe//Zj715y7imsYTvGLRcL7Bbi3Zk4yVcxWN8acm9hA84j4020FCreFi5dsXfJ5metGgqG8/ga+1uQvN4NgmSA+B3ZeHNkfg0npYgJUCtlrPxfAnSKyTurATcjN+TI3XmAnJmUtIAC5WAkhaixpa6WFSlEqDWopIauV3eopIauf/Eoi6qsqiL/gOLbuB1B0DDoh6ORryJW9LZfiTgv6QzfwN7MDuS+y2ubdVDH2+wK4ocxyt8ivn9OIsDeIC3kXsPj7J6xT/pAIdjxx9xRWqZx2L+bgAvxPx2apxFw1NwNna/T/Oxl3Eu4r1SW4Xb+NwC3AJcxw8s4mW2ZgbrEf/Eu4jXNXUIayXAZbzP7s1JzeManse9NdzPip6QesJBXMSdnNo3/nZMSZ73pca+KH2enMKTwq6Hvq9Kto19yvwBHE5Tc5ACC1sAAAAASUVORK5CYII=") no-repeat left center transparent;
     background-size: 100% 100%;
 }
-  
-
 :root {
   --bs-blue: #63B3ED;
   --bs-indigo: #596CFF;
@@ -1187,11 +1186,11 @@ progress {
     -webkit-transition: opacity .35s;
     
   }
-  #darkMode{
+  /* #darkMode{
     position: relative; right: -70px; top:40px;
     height: 20px;
     width: 20px;
-  }
+  } */
   .buttonAccess {
     position:fixed; right: 14px; top: 150px;
     text-decoration: none;
@@ -1206,6 +1205,14 @@ progress {
     overflow: hidden
   }
   #accessMenu{
+    position: absolute;bottom: 660px;
+    right: 25px;
+    background-color: #d2d0d0;
+    border-radius: 25px;
+    border-color: #000;
+    border-width: 40px;
+    height: 80px;
+    width: 120px;
     /* position: fixed; right: 240px; top:164px;
     background-color: #d2d0d0;
     border-radius: 25px;
@@ -1213,23 +1220,23 @@ progress {
     border-width: 4px;
     height: 350px;
     width: 450px; */
-    position: fixed; right: 240px; top:164px;
+    /* position: fixed; right: 240px; top:164px;
     background-color: #d2d0d0;
     border-radius: 25px;
     border-color: #000;
     border-width: 40px;
     height: 80px;
-    width: 176px;
+    width: 120px; */
   }
   
   #acessability:hover {
     color: white;
-    width: 180px;
+    width: 140px;
     
   }
   .widthAccess {
 
-    width: 180px;
+    width: 140px;
 
   }
 

@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import { getAuth, signOut, onAuthStateChanged, reload } from "firebase/auth";
 import {} from "./main";
+import {} from "./worksearcher";
 import {} from "./createad";
 
 const firebaseConfig = {
@@ -66,7 +67,7 @@ getDocs(docAllusers).then((snapshot) => {
     }
   }
   document.querySelector("#welcometext").innerHTML =
-    "<p id=welcometext class='h2 mb-4 mb-md-5 text-black text-center mt-3'>שלום  " +
+    "<h3 id=welcometext class='h2 mb-4 mb-md-5 text-black text-center mt-3'>שלום  " +
     userfirstname +
     ", חפש את המשרה המועדפת עלייך</p>";
 });
