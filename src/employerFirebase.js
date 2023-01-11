@@ -50,7 +50,7 @@ const sendLinks = collection(db, "Sendedlinks");
 getDocs(docAllusers).then((snapshot) => {
   snapshot.docs.forEach((doc) => {
     allUsers.push({ ...doc.data(), id: doc.id });
-  });y
+  });
   let userq = allUsers.length;
   console.log(allUsers);
 

@@ -13,10 +13,6 @@ import {
 import { getAuth, signOut, onAuthStateChanged, reload } from "firebase/auth";
 import {} from "./main";
 import {} from "./worksearcher";
-<<<<<<< HEAD
-// import {} from "./createad";
-=======
->>>>>>> Aviv-hagag
 
 const firebaseConfig = {
   apiKey: "AIzaSyDoC94Xlt0BHfsH_zLp8562xsKMW49mv8s",
