@@ -20,13 +20,13 @@ const firebaseConfig = {
   appId: "1:51579629977:web:eae8590655f4e102e2e308",
   measurementId: "G-W33GWTB6JB",
 };
-
 // init firebase
 const app = initializeApp(firebaseConfig);
 
 // init services
 const db = getFirestore(app);
 const auth = getAuth();
+$("#box").hide();
 let logEmail;
 let allUsers = [];
 let usernumber, useremail, userfirstname, userlastname;
@@ -126,12 +126,74 @@ getDocs(adColRef)
         sended.push({ ...doc.data(), id: doc.id });
       });
       console.log(sended);
+      let userNotifCount = 0;
+      let sendedLength = sended.length;
+      for (let f = 0; f < sendedLength; f++) {
+        if (sended[f].emailofemployer == useremail) {
+          userNotifCount++;
+          console.log("check");
+        }
+      }
+      if (userNotifCount > 0) {
+        $("#bellnotif").append(
+          "<span class='circlebell position-absolute start-150 translate-middle badge rounded-pill bg-danger'>" +
+            userNotifCount +
+            "</span>"
+        );
+      }
+    });
+    $(document).ready(function () {
+      var down = false;
+      $("#bell").click(function (e) {
+        var color = $(this).text();
+        if (down) {
+          // alert("check");
+          // $(".added1").hide();
+          $("#box").toggle("drop");
+          $("#box").css("height", "0px");
+          $("#box").css("opacity", "0");
+          $(".added1").remove();
+          down = false;
+        } else {
+          $(".added1").remove();
+          $("#box").toggle();
+          $("#box").css("height", "auto");
+          $("#box").css("opacity", "1");
+          down = true;
+        }
+        console.log("checkbell");
+
+        let sendedLength = sended.length;
+        console.log(sendedLength);
+        let userNotifCount1 = 0;
+        // const buttonBell = document.getElementById("bell");
+        for (let i = 0; i < sendedLength; i++) {
+          if (sended[i].emailofemployer == useremail) {
+            userNotifCount1++;
+            console.log("checkit" + i);
+            console.log(sended[i].downloadLink);
+            $("#box").append(
+              "<div class='added1 notifications-item'> <img src='/dist/img/occpics/occ" +
+                Ads[i].imgid +
+                ".jpeg' alt='img'> <div class='text mx-2'><h4>המשתמש " +
+                sended[i].nameOfsender +
+                " הגיש קורות חיים למשרתך</h4   <p><a href=https://" +
+                sended[i].downloadLink +
+                "> לחץ כאן על מנת לראות פרטים</a></p> </div> </div>"
+            );
+            "/dist/img/occpics/occ" + Ads[i].imgid + ".jpeg";
+          }
+          document.querySelector("#notifcount").innerHTML = userNotifCount1;
+        }
+
+        // }
+        return false;
+      });
     });
     for (let index = 0; index < adSize; index++) {
       const buttonE = document.getElementById("delbtn" + index);
       const buttonE2 = document.getElementById("view" + index);
-      const buttonBell = document.getElementById("bell");
-      const notfimodal = document.getElementById("modalNoti");
+
       if (buttonE) {
         buttonE.addEventListener("click", function () {
           console.log("yougay");
@@ -173,58 +235,6 @@ getDocs(adColRef)
         });
       }
 
-      $(document).ready(function () {
-        var down = false;
-
-        $("#bell").click(function (e) {
-          var color = $(this).text();
-          if (down) {
-            $("#box").css("height", "0px");
-            $("#box").css("opacity", "0");
-            down = false;
-          } else {
-            $("#box").css("height", "auto");
-            $("#box").css("opacity", "1");
-            down = true;
-          }
-          console.log("checkbell");
-
-          let sendedLength = sended.length;
-          console.log(sendedLength);
-          let userNotifCount = 0;
-          // for (let i = 0; i < sendedLength; i++) {
-          if (sended[index].emailofemployer == useremail) {
-            userNotifCount++;
-            console.log("chgeckit" + index);
-            $("#box").append(
-              "<div class='added notifications-item' data-bs-toggle='modal' data-bs-target='#modalNoti'> <img src='/dist/img/occpics/occ" +
-                Ads[index].imgid +
-                ".jpeg' alt='img'> <div class='text mx-2'><h4>המשתמש " +
-                sended[index].nameOfsender +
-                " הגיש קורות חיים למשרתך</h4   <p> לחץ כאן על מנת לראות פרטים</p> </div> </div>"
-            );
-            "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
-            if (notfimodal) {
-              document.querySelector("#Mnotfirst").innerHTML = 0;
-              document.querySelector("#Mnotlast").innerHTML = 0;
-              document.querySelector("#Mnotage").innerHTML = 0;
-              document.querySelector("#Mnotgender").innerHTML = 0;
-              document.querySelector("#Mnotocc").innerHTML = 0;
-              document.querySelector("#Mnotemail").innerHTML =
-                sended[index].emailOfSender;
-              document.querySelector("#Mnotlink").innerHTML =
-                sended[index].downloadLink;
-              document.querySelector("#Mnotimg").src =
-                "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
-            }
-          }
-          $("#bell").click(function () {
-            $("#box").removeClass(".added");
-          });
-          document.querySelector("#notifcount").innerHTML = userNotifCount;
-          // }
-        });
-      });
       // });
     }
   })
