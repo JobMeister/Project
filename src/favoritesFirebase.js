@@ -33,7 +33,7 @@ let usernumber, useremail, userfirstname, userlastname;
 let flag = 0;
 let darkflag = 0;
 let textflag = 0;
-
+let adCount=0;
 // onAuthStateChanged(auth,(user)=>{
 //   console.log("User status changed",user);
 
@@ -102,6 +102,8 @@ getDocs(adColRef).then((snapshot) => {
       for (let index = 0; index < adSize; index++) {
         for (let i= 0; i < SaveAdsQ; i++) {
             if (Ads[index].accepted == true && Ads[index].id==allSavedAds[i].idOfAds && allSavedAds[i].Saveremail == logEmail) {
+              document.querySelector("#adC").innerHTML = adCount++;
+              adCount++;
               $("#try1").append(
                 "<div class='Added col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
                   Ads[index].imgid +

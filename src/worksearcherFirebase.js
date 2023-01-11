@@ -13,7 +13,6 @@ import {
 import { getAuth, signOut, onAuthStateChanged, reload } from "firebase/auth";
 import {} from "./main";
 import {} from "./worksearcher";
-import {} from "./createad";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDoC94Xlt0BHfsH_zLp8562xsKMW49mv8s",
@@ -357,6 +356,7 @@ getDocs(adColRef).then((snapshot) => {
                       allSavedAds.splice(i);
                    }
                   }
+              document.getElementById("cvDiv").style.display = "none";
               document.querySelector("#WStitle").innerHTML = Ads[index].title;
               if (Ads[index].company == null) {
                 document.querySelector("#WScompany").innerHTML = "חסוי";

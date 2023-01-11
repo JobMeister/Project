@@ -72,7 +72,7 @@ $(document).ready(function () {
       flag = 0;
     }
 
-    // $("#accessMenu").toggle("drop");
+    $("#accessMenu").toggle("drop");
     return false;
   });
 

@@ -44,10 +44,10 @@ color: #111;
 a:hover .access{
   opacity: .9;
 }
-button {
+/* button {
   top:10px;
 
-}
+} */
 a {
   text-decoration: none;
 }
@@ -104,11 +104,9 @@ a {
 
 .largeFont{
     font-size: 22px;
-  
 }
 .mediumFont{
     font-size: 16px;
-  
 }
 .largerH{
     font-size: 70px;
@@ -120,9 +118,7 @@ a {
   font-size: 27px;
 }
 .widthAccess { 
-
     width: 120px !important;
-
 }
 
 .buttonAccess {
