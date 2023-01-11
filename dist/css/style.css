@@ -9,9 +9,15 @@
 .back-to-top {
   position: fixed;
   display: none;
-  right: 30px;
-  z-index: 99;
+  right: 20px; 
+  bottom:20px;
+  z-index: 99; 
 }
+
+/* .back-to-top .sticky-bottom {
+  bottom:100px;
+  transition: 0.5s;
+} */
 
 h4,
 h5,

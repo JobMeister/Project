@@ -40,15 +40,7 @@ let allSaveAdslength=[];
 let flagAds =[true];
 console.log(flagAds);
 let usernumber, useremail, userfirstname, userlastname;
-// console.log(Userid);
 
-// onAuthStateChanged(auth,(user)=>{
-//   console.log("User status changed",user);
-
-//   if(user==null) {
-//     location.href="404.html"
-//   }
-// })
 
 const adColRef = collection(db, "Ads");
 const docAllusers = collection(db, "users");
@@ -147,42 +139,42 @@ getDocs(adColRef).then((snapshot) => {
         // }
         if (Thum != "0" && Loc != "0" && Per != "0") {
           flag = 1;
-          alert("flag=" + flag);
+          // alert("flag=" + flag);
           flagStart = 1;
           Running1();
         } else if (Thum != "0" && Loc != "0" && Per == "0") {
           flag = 2;
-          alert("flag=" + flag);
+          // alert("flag=" + flag);
           flagStart = 1;
           Running1();
         } else if (Thum != "0" && Loc == "0" && Per != "0") {
           flag = 3;
-          alert("flag=" + flag);
+          // alert("flag=" + flag);
           flagStart = 1;
           Running1();
         } else if (Thum == "0" && Loc != "0" && Per != "0") {
           flag = 4;
-          alert("flag=" + flag);
+          // alert("flag=" + flag);
           flagStart = 1;
           Running1();
         } else if (Thum != "0" && Loc == "0" && Per == "0") {
           flag = 5;
-          alert("flag=" + flag);
+          // alert("flag=" + flag);
           flagStart = 1;
           Running1();
         } else if (Thum == "0" && Loc != "0" && Per == "0") {
           flag = 6;
-          alert("flag=" + flag);
+          // alert("flag=" + flag);
           flagStart = 1;
           Running1();
         } else if (Thum == "0" && Loc == "0" && Per != "0") {
           flag = 7;
-          alert("flag=" + flag);
+          // alert("flag=" + flag);
           flagStart = 1;
           Running1();
         } else {
           flag = 0;
-          alert("flag=" + flag);
+          // alert("flag=" + flag);
           flagStart = 1;
           Running1();
         }
@@ -208,7 +200,7 @@ getDocs(adColRef).then((snapshot) => {
                   Ads[index].des +
                   "</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='view" +
                   index +
-                  "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalWS'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
+                  "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalWS'>צפה</button></div><small class='text-muted'>" +Ads[index].Date +"</small></div></div></div></div>"
               );
             }
             console.log("case0");
@@ -229,7 +221,7 @@ getDocs(adColRef).then((snapshot) => {
                   Ads[index].des +
                   "</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='view" +
                   index +
-                  "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalWS'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
+                  "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalWS'>צפה</button></div><small class='text-muted'>" +Ads[index].Date +"</small></div></div></div></div>"
               );
             }
             console.log("case1");
@@ -472,7 +464,7 @@ getDocs(adColRef).then((snapshot) => {
   .catch((err) => {
     console.log(err.message);
   });
-
+//checking email input is currect 
   function validURL(str) {
     var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
       '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name

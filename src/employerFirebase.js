@@ -8,9 +8,8 @@ import {
   doc,
 } from "firebase/firestore";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
-
 import {} from "./main";
-import {} from "./emloyeer";
+import {} from "./createad";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDoC94Xlt0BHfsH_zLp8562xsKMW49mv8s",
@@ -21,13 +20,13 @@ const firebaseConfig = {
   appId: "1:51579629977:web:eae8590655f4e102e2e308",
   measurementId: "G-W33GWTB6JB",
 };
-
 // init firebase
 const app = initializeApp(firebaseConfig);
 
 // init services
 const db = getFirestore(app);
 const auth = getAuth();
+$("#box").hide();
 let logEmail;
 let allUsers = [];
 let usernumber, useremail, userfirstname, userlastname;
@@ -35,7 +34,7 @@ let flag = 0;
 let darkflag = 0;
 let textflag = 0;
 let sended = [];
-
+let userNotifCount = 0;
 // onAuthStateChanged(auth,(user)=>{
 //   console.log("User status changed",user);
 
@@ -117,7 +116,7 @@ getDocs(adColRef)
             (Ads[index].accepted == true
               ? "<small class='text-success'>מאושר ✔</small>"
               : "<small class='text-danger'>ממתין לאישור</small>") +
-            "<small class='text-muted'>"+Ads[index].Date+"</small></div></div></div></div>"
+            "<small class='text-muted'>"+Ads[index].Date +"</small></div></div></div></div>"
         );
       }
     }
@@ -127,14 +126,75 @@ getDocs(adColRef)
         sended.push({ ...doc.data(), id: doc.id });
       });
       console.log(sended);
+      
+      let sendedLength = sended.length;
+      console.log(sended);
+      for (let f = 0; f < sendedLength; f++) {
+        if (sended[f].emailofemployer == logEmail) {
+          userNotifCount++;
+        }
+      }
+      if (userNotifCount > 0) {
+        document.querySelector(".circlebell").innerHTML = userNotifCount;
+        // $("#bellnotif").append(
+        //   "<span class='circlebell position-absolute start-150 translate-middle badge rounded-pill bg-danger'>"+userNotifCount+"</span>"
+        // );
+      }
+    });
+    $(document).ready(function () {
+      var down = false;
+      $("#bell").click(function (e) {
+        var color = $(this).text();
+        if (down) {
+          // alert("check");
+          // $(".added1").hide();
+          $("#box").toggle("drop");
+          $("#box").css("height", "0px");
+          $("#box").css("opacity", "0");
+          // $(".added1").remove();
+          down = false;
+        } else {
+          $(".added1").remove();
+          $("#box").toggle();
+          $("#box").css("height", "auto");
+          $("#box").css("opacity", "1");
+          down = true;
+        }
+        console.log("checkbell");
+        let sendedLength = sended.length;
+        console.log(sendedLength);
+        let userNotifCount1 = 0;
+        // const buttonBell = document.getElementById("bell");
+        for (let i = 0; i < sendedLength; i++) {
+          if (sended[i].emailofemployer == useremail) {
+            userNotifCount1++;
+            console.log("checkit" + i);
+            console.log(sended[i].downloadLink);
+            $("#box").append(
+              "<div class='added1 notifications-item'> <img src='/dist/img/occpics/occ" +
+                Ads[i].imgid +
+                ".jpeg' alt='img'> <div class='text mx-2'><h4>המשתמש " +
+                sended[i].nameOfsender +
+                " הגיש קורות חיים למשרתך</h4   <p><a href=" +
+                sended[i].downloadLink +
+                "> לחץ כאן על מנת להוריד</a></p> </div> </div>"
+            );
+            "/dist/img/occpics/occ" + Ads[i].imgid + ".jpeg";
+          }
+          document.querySelector("#notifcount").innerHTML = userNotifCount1;
+        }
+
+        // }
+        return false;
+      });
     });
     for (let index = 0; index < adSize; index++) {
       const buttonE = document.getElementById("delbtn" + index);
       const buttonE2 = document.getElementById("view" + index);
-      const buttonBell = document.getElementById("bell");
-      const notfimodal = document.getElementById("modalNoti");
+
       if (buttonE) {
         buttonE.addEventListener("click", function () {
+          console.log("yougay");
           var buttonD = document.getElementById("YesDelete");
           if (buttonD) {
             buttonD.addEventListener("click", function () {
@@ -150,6 +210,7 @@ getDocs(adColRef)
       }
       if (buttonE2) {
         buttonE2.addEventListener("click", function () {
+          console.log("younotgay" + index);
           document.querySelector("#Mtitle").innerHTML = Ads[index].title;
           if (Ads[index].company == null) {
             document.querySelector("#Mcompany").innerHTML = "חסוי";
@@ -172,60 +233,6 @@ getDocs(adColRef)
         });
       }
 
-      $(document).ready(function () {
-        var down = false;
-
-        $("#bell").click(function (e) {
-          var color = $(this).text();
-          if (down) {
-            $("#box").css("height", "0px");
-            $("#box").css("opacity", "0");
-            down = false;
-          } else {
-            $("#box").css("height", "auto");
-            $("#box").css("opacity", "1");
-            down = true;
-          }
-          console.log("checkbell");
-          let sendedLength = sended.length;
-          console.log(sendedLength);
-          let userNotifCount = 0;
-          // for (let i = 0; i < sendedLength; i++) {
-          if (sended[index].emailofemployer == useremail) {
-            userNotifCount++;
-            console.log("chgeckit" + index);
-            $("#box").append(
-              "<div id='added2' class='added2 notifications-item' data-bs-toggle='modal' data-bs-target='#modalNoti'> <img src='/dist/img/occpics/occ" +
-                Ads[index].imgid +
-                ".jpeg' alt='img'> <div class='text mx-2'><h6>המשתמש " +
-                sended[index].nameOfsender +
-                " הגיש קורות חיים למשרתך</h6<p> לחץ כאן על מנת לראות פרטים</p> </div></div>"
-            );
-            "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
-            // if (notfimodal) {
-            //   document.querySelector("#Mnotfirst").innerHTML = 0;
-            //   document.querySelector("#Mnotlast").innerHTML = 0;
-            //   document.querySelector("#Mnotage").innerHTML = 0;
-            //   document.querySelector("#Mnotgender").innerHTML = 0;
-            //   document.querySelector("#Mnotocc").innerHTML = 0;
-            //   document.querySelector("#Mnotemail").innerHTML =
-            //     sended[index].emailOfSender;
-            //   document.querySelector("#Mnotlink").innerHTML =
-            //     sended[index].downloadLink;
-            //   document.querySelector("#Mnotimg").src =
-            //     "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
-            // }
-          }
-          $("#Added2").remove();
-          $(".Added2").remove();
-          $("#bell").click(function () {
-            $("#box").removeClass(".added");
-          });
-          document.querySelector("#notifcount").innerHTML = userNotifCount;
-          // }
-        });
-      });
-      
       // });
     }
   })

@@ -113,7 +113,7 @@ getDocs(adColRef).then((snapshot) => {
                   Ads[index].des +
                   "</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='view" +
                   index +
-                  "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalF'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
+                  "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalF'>צפה</button></div><small class='text-muted'>" +Ads[index].Date +"</small></div></div></div></div>"
               );
             }
           }
