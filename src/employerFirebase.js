@@ -50,7 +50,7 @@ const sendLinks = collection(db, "Sendedlinks");
 getDocs(docAllusers).then((snapshot) => {
   snapshot.docs.forEach((doc) => {
     allUsers.push({ ...doc.data(), id: doc.id });
-  });
+  });y
   let userq = allUsers.length;
   console.log(allUsers);
 
@@ -178,6 +178,7 @@ getDocs(adColRef)
         $("#bell").click(function (e) {
           var color = $(this).text();
           if (down) {
+            
             $("#box").css("height", "0px");
             $("#box").css("opacity", "0");
             down = false;
