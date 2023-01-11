@@ -51,7 +51,19 @@
       background-size: 100% 100%;
   }
   
-
+  .buttonadmin2:before{
+    content:  "\0000a0"; 
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+    margin: 0 4px -6px -4px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABlElEQVRIieXWMWgUQRTG8Z/xEEmVwkJERDBFKksRbRREYqGdFnYiiK21EEkrNhLQSkUQrUQ7QQkBCw9stFIQBQv7RAnBQnMW8y7ezc5lB7aw8IPl3uzMe//Zj715y7imsYTvGLRcL7Bbi3Zk4yVcxWN8acm9hA84j4020FCreFi5dsXfJ5metGgqG8/ga+1uQvN4NgmSA+B3ZeHNkfg0npYgJUCtlrPxfAnSKyTurATcjN+TI3XmAnJmUtIAC5WAkhaixpa6WFSlEqDWopIauV3eopIauf/Eoi6qsqiL/gOLbuB1B0DDoh6ORryJW9LZfiTgv6QzfwN7MDuS+y2ubdVDH2+wK4ocxyt8ivn9OIsDeIC3kXsPj7J6xT/pAIdjxx9xRWqZx2L+bgAvxPx2apxFw1NwNna/T/Oxl3Eu4r1SW4Xb+NwC3AJcxw8s4mW2ZgbrEf/Eu4jXNXUIayXAZbzP7s1JzeManse9NdzPip6QesJBXMSdnNo3/nZMSZ73pca+KH2enMKTwq6Hvq9Kto19yvwBHE5Tc5ACC1sAAAAASUVORK5CYII=") no-repeat left center transparent;
+    background-size: 100% 100%;
+}
 :root {
   --bs-blue: #63B3ED;
   --bs-indigo: #596CFF;
@@ -1193,7 +1205,7 @@ progress {
     overflow: hidden
   }
   #accessMenu{
-    position: fixed;bottom: 710px;
+    position: absolute;bottom: 660px;
     right: 25px;
     background-color: #d2d0d0;
     border-radius: 25px;

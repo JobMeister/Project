@@ -20,6 +20,8 @@ $(document).ready(function () {
       $("p").removeClass("bg-white");
       $(".buttonadmin").removeClass("btn-outline-dark");
       $(".buttonadmin").addClass("btn btn-outline-white");
+      $(".buttonadmin2").removeClass("btn-outline-dark");
+      $(".buttonadmin2").addClass("btn btn-outline-white");
       $("#editNow").removeClass("btn btn-outline-dark");
       $("#editNow").addClass("btn btn-outline-white");
       $("p").removeClass("border-dark");
@@ -37,6 +39,8 @@ $(document).ready(function () {
       $("#adminDark").removeClass("text-white");
       $(".buttonadmin").removeClass("btn-outline-white");
       $(".buttonadmin").addClass("btn btn-outline-dark");
+      $(".buttonadmin2").removeClass("btn-outline-white");
+      $(".buttonadmin2").addClass("btn btn-outline-dark");
       $("#editNow").removeClass("btn btn-outline-white");
       $("#editNow").addClass("btn btn-outline-dark");
       darkflag = 0;
