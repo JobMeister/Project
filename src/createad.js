@@ -11,19 +11,36 @@ $(document).ready(function () {
   $("#darkBtn").click(function () {
     if (darkflag === 0) {
       $("h1").addClass("whitetext"); 
+<<<<<<< HEAD
       $("h4").addClass("whitetext");
       $("body").addClass("darkMode");
       $(".footS").removeClass("bg-light");
       $(".bgdark").removeClass("bg-light");
 
+=======
+      $("h5").addClass("whitetext");
+      $("body").addClass("darkMode");
+      $(".bgdark").removeClass("bg-light");
+      $(".bgf").addClass("darkMode")
+     
+>>>>>>> Aviv-hagag
 
       darkflag = 1;
     } else {
       $("h1").removeClass("whitetext");
+<<<<<<< HEAD
       $("h4").removeClass("whitetext");
       $("body").removeClass("darkMode");
       $(".footS").addClass("bg-light");
       $(".bgdark").addClass("bg-light");
+=======
+      $("h5").removeClass("whitetext");
+      $("body").removeClass("darkMode");
+      $("#body").removeClass("bg-gray-200");
+      $(".bgdark").addClass("bg-light");
+      $(".bgf").removeClass("darkMode")
+
+>>>>>>> Aviv-hagag
 
       darkflag = 0;
     }

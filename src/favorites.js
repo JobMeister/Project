@@ -10,6 +10,7 @@ $(document).ready(function () {
 
   $("#darkBtn").click(function () {
     if (darkflag === 0) {
+<<<<<<< HEAD
       $("h1").addClass("whitetext");
       $("h5").addClass("whitetext");
       $("p").removeClass("text-black"); 
@@ -17,16 +18,39 @@ $(document).ready(function () {
       $("body").addClass("darkMode");
       $(".bgdark").removeClass("bg-light");
       $(".bgf").addClass("darkMode")
+=======
+        $(".loginbtn").removeClass("btn-outline-dark")
+        $(".loginbtn").addClass("bg-white")
+        $("h1").addClass("whitetext");
+        $("h3").removeClass("text-black");
+        $("h3").addClass("whitetext");
+        $("p").addClass("text-black"); 
+        $("body").addClass("darkMode");
+        $(".row").addClass("darkMode");
+        $(".bgdark").removeClass("bg-light");
+        $(".bgf").addClass("darkMode")
+>>>>>>> Aviv-hagag
      
 
       darkflag = 1;
     } else {
+<<<<<<< HEAD
       $("h1").removeClass("whitetext");
       $("h5").removeClass("whitetext");
       $("p").addClass("text-black"); 
       $("p").removeClass("whitetext");
       $("body").removeClass("darkMode");
       $("#body").removeClass("bg-gray-200");
+=======
+      $(".loginbtn").removeClass("bg-white")
+      $(".loginbtn").addClass("btn-outline-dark")
+      $("h1").removeClass("whitetext");
+      $("h3").removeClass("whitetext");
+      $("h3").addClass("text-black");
+      $("p").removeClass("text-black"); 
+      $("body").removeClass("darkMode");
+      $(".row").removeClass("darkMode");
+>>>>>>> Aviv-hagag
       $(".bgdark").addClass("bg-light");
       $(".bgf").removeClass("darkMode")
 

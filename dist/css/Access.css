@@ -1,9 +1,16 @@
 
 
+<<<<<<< HEAD
 img {
   width: 25px;
   border-radius: 50px;
   float: left;
+=======
+.accessClass img {
+  width: 25px;
+   border-radius: 50px; 
+  float: left; 
+>>>>>>> Aviv-hagag
 }
 
 .bg-gray-200 {
@@ -44,10 +51,17 @@ color: #111;
 a:hover .access{
   opacity: .9;
 }
+<<<<<<< HEAD
 button {
   top:10px;
 
 }
+=======
+/* button {
+  top:10px;
+
+} */
+>>>>>>> Aviv-hagag
 a {
   text-decoration: none;
 }
@@ -104,25 +118,39 @@ a {
 
 .largeFont{
     font-size: 22px;
+<<<<<<< HEAD
   
 }
 .mediumFont{
     font-size: 16px;
   
+=======
+}
+.mediumFont{
+    font-size: 16px;
+>>>>>>> Aviv-hagag
 }
 .largerH{
     font-size: 70px;
 }
 .largerH2{
+<<<<<<< HEAD
   font-size: 50px;
+=======
+  font-size: 40px;
+>>>>>>> Aviv-hagag
 }
 .largerH3{
   font-size: 27px;
 }
 .widthAccess { 
+<<<<<<< HEAD
 
     width: 120px !important;
 
+=======
+    width: 120px !important;
+>>>>>>> Aviv-hagag
 }
 
 .buttonAccess {

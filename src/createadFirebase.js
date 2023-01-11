@@ -28,6 +28,10 @@ const adColRef = collection(db,'Ads');
 
 const auth = getAuth();
 let allUsers = [];
+<<<<<<< HEAD
+=======
+var timeStamps= new Date().toLocaleDateString();
+>>>>>>> Aviv-hagag
 let logEmail,logCompany;
 
 const docAllusers = collection(db,'users')
@@ -63,7 +67,12 @@ adForm.addEventListener('submit', (e) => {
     title:adForm.title.value,
     accepted:false,
     viewsCount:0,
+<<<<<<< HEAD
 
+=======
+    Date: timeStamps,
+    
+>>>>>>> Aviv-hagag
   }).then(() =>{
     alert("Success");
     location.href="employeer.html"
