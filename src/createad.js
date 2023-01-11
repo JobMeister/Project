@@ -3,16 +3,7 @@
 let flag = 0;
 let darkflag = 0;
 let textflag = 0;
-var input = document.querySelector('input'); // get the input element
-input.addEventListener('input', resizeInput); // bind the "resizeInput" callback on "input" event
 
-
-function resizeInput() {
-    this.style.height = 20 + "ch";
-}
-function resizeInput2() {
-    this.style.height = 5 + "ch";
-}
 $(document).ready(function () {
   $("#accessMenu").hide();
 
@@ -46,7 +37,7 @@ $(document).ready(function () {
       // $("body").addClass("mediumFont");
         $(".navG").addClass("mediumFont");
         textflag = 1;
-        resizeInput.call(input); // immediately call the function
+
 
 
 
@@ -57,7 +48,7 @@ $(document).ready(function () {
         $("h1").removeClass("largerH");
         $("body").removeClass("largeFont");
         $(".navG").removeClass("mediumFont");
-        resizeInput2.call(input); // immediately call the function
+
 
         textflag = 0;
     }

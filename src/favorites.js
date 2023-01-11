@@ -10,23 +10,28 @@ $(document).ready(function () {
 
   $("#darkBtn").click(function () {
     if (darkflag === 0) {
-      $("h1").addClass("whitetext");
-      $("h5").addClass("whitetext");
-      $("p").removeClass("text-black"); 
-      $("p").addClass("whitetext");
-      $("body").addClass("darkMode");
-      $(".bgdark").removeClass("bg-light");
-      $(".bgf").addClass("darkMode")
+        $(".loginbtn").removeClass("btn-outline-dark")
+        $(".loginbtn").addClass("bg-white")
+        $("h1").addClass("whitetext");
+        $("h3").removeClass("text-black");
+        $("h3").addClass("whitetext");
+        $("p").addClass("text-black"); 
+        $("body").addClass("darkMode");
+        $(".row").addClass("darkMode");
+        $(".bgdark").removeClass("bg-light");
+        $(".bgf").addClass("darkMode")
      
 
       darkflag = 1;
     } else {
+      $(".loginbtn").removeClass("bg-white")
+      $(".loginbtn").addClass("btn-outline-dark")
       $("h1").removeClass("whitetext");
-      $("h5").removeClass("whitetext");
-      $("p").addClass("text-black"); 
-      $("p").removeClass("whitetext");
+      $("h3").removeClass("whitetext");
+      $("h3").addClass("text-black");
+      $("p").removeClass("text-black"); 
       $("body").removeClass("darkMode");
-      $("#body").removeClass("bg-gray-200");
+      $(".row").removeClass("darkMode");
       $(".bgdark").addClass("bg-light");
       $(".bgf").removeClass("darkMode")
 
