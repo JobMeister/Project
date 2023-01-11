@@ -117,7 +117,7 @@ getDocs(adColRef)
             (Ads[index].accepted == true
               ? "<small class='text-success'>מאושר ✔</small>"
               : "<small class='text-danger'>ממתין לאישור</small>") +
-            "<small class='text-muted'>לפני שעה</small></div></div></div></div>"
+            "<small class='text-muted'>"+Ads[index].Date+"</small></div></div></div></div>"
         );
       }
     }

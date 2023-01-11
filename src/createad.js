@@ -11,19 +11,21 @@ $(document).ready(function () {
   $("#darkBtn").click(function () {
     if (darkflag === 0) {
       $("h1").addClass("whitetext"); 
-      $("h4").addClass("whitetext");
+      $("h5").addClass("whitetext");
       $("body").addClass("darkMode");
-      $(".footS").removeClass("bg-light");
       $(".bgdark").removeClass("bg-light");
-
+      $(".bgf").addClass("darkMode")
+     
 
       darkflag = 1;
     } else {
       $("h1").removeClass("whitetext");
-      $("h4").removeClass("whitetext");
+      $("h5").removeClass("whitetext");
       $("body").removeClass("darkMode");
-      $(".footS").addClass("bg-light");
+      $("#body").removeClass("bg-gray-200");
       $(".bgdark").addClass("bg-light");
+      $(".bgf").removeClass("darkMode")
+
 
       darkflag = 0;
     }

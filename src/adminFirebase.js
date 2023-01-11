@@ -146,7 +146,7 @@ getDocs(msgColRef)
         var countmsg='';
         texttitle += "דוח הודעות"+"\n\n";
         pdf.setFontSize(28); //sets the title font size to 20
-        pdf.text(200, 20, texttitle,{align: "right"}); //displays the title
+        pdf.text(100, 20, texttitle,{align: "center"}); //displays the title
         countmsg += "כמות מודעות - "+Messages.length+"\n\n";
         pdf.setFontSize(14); //sets the title font size to 20
         pdf.text(200, 30, countmsg,{align: "right"}); //displays the title
@@ -224,8 +224,8 @@ getDocs(adColRef)
         var countAds='';
         texttitle += "דוח מודעות"+"\n\n";
         pdf2.setFontSize(28); //sets the title font size to 20
-        pdf2.text(200, 20, texttitle,{align: "right"}); //displays the title
-        countAds += "כמות מודעות-"+Ads.length+"\n\n";
+        pdf2.text(100, 20, texttitle,{align: "center"}); //displays the title
+        countAds += "כמות מודעות - "+Ads.length+"\n\n";
         pdf2.setFontSize(14); //sets the title font size to 20
         pdf2.text(200, 30, countAds,{align: "right"}); //displays the title
         pdf2.setFontSize(12); //sets the regular text font size to 12
@@ -240,8 +240,12 @@ getDocs(adColRef)
             text += "מיקום: " + Ads[index].location + '\n';
             text += "אחוז המשרה: " + Ads[index].percent + '\n';
             text += "כמות צפיות במודעה: " + Ads[index].viewsCount + '\n';
-            text += "אימייל של מפרסם המודעה: ";
             textE += Ads[index].emailofemployer + '\n\n';
+            if(Ads[index].accepted==false) 
+              text += "סטטוס: המודעה אינה מאושרת" +'\n';
+            else 
+              text += "סטטוס: המודעה מאושרת" +'\n';
+            text += "אימייל של מפרסם המודעה: ";
             var chunks = pdf2.splitTextToSize(text, pdf2.internal.pageSize.width - 40);
             chunks.forEach(function(chunk) {
                 pdf2.text(200, y, chunk,{align: "right"});

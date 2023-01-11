@@ -28,6 +28,7 @@ const adColRef = collection(db,'Ads');
 
 const auth = getAuth();
 let allUsers = [];
+var timeStamps= new Date().toLocaleDateString();
 let logEmail,logCompany;
 
 const docAllusers = collection(db,'users')
@@ -63,7 +64,8 @@ adForm.addEventListener('submit', (e) => {
     title:adForm.title.value,
     accepted:false,
     viewsCount:0,
-
+    Date: timeStamps,
+    
   }).then(() =>{
     alert("Success");
     location.href="employeer.html"

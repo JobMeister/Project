@@ -8,21 +8,29 @@ $(document).ready(function () {
   $("#accessMenu").hide();
 
 
+  
   $("#darkBtn").click(function () {
     if (darkflag === 0) {
-      $("h1").addClass("whitetext"); 
-      $("h5").addClass("whitetext");
-      $("body").addClass("darkMode");
-      $(".bgdark").removeClass("bg-light");
-      $(".bgf").addClass("darkMode")
+
+        $("h1").addClass("whitetext");
+        $("h3").removeClass("text-black");
+        $("h3").addClass("whitetext");
+        $("p").addClass("text-black"); 
+        $("body").addClass("darkMode");
+        $(".row").addClass("darkMode");
+        $(".bgdark").removeClass("bg-light");
+        $(".bgf").addClass("darkMode")
      
 
       darkflag = 1;
     } else {
+
       $("h1").removeClass("whitetext");
-      $("h5").removeClass("whitetext");
+      $("h3").removeClass("whitetext");
+      $("h3").addClass("text-black");
+      $("p").removeClass("text-black"); 
       $("body").removeClass("darkMode");
-      $("#body").removeClass("bg-gray-200");
+      $(".row").removeClass("darkMode");
       $(".bgdark").addClass("bg-light");
       $(".bgf").removeClass("darkMode")
 
