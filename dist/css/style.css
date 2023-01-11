@@ -9,9 +9,15 @@
 .back-to-top {
   position: fixed;
   display: none;
-  right: 30px;
-  z-index: 99;
+  right: 20px; 
+  bottom:20px;
+  z-index: 99; 
 }
+
+/* .back-to-top .sticky-bottom {
+  bottom:100px;
+  transition: 0.5s;
+} */
 
 h4,
 h5,
@@ -415,17 +421,26 @@ input::placeholder {
   background-color: rgb(255, 255, 255);
 }
 
-img {
+/* img {
   width: 25px;
   /* border-radius: 50px; */
-  float: left;
+  /* float: left;
+} */ 
+
+#imgAbout {
+  width:400px;
+  /* position:absolute; */
+  top:30px;
+  border-radius: 35px;
 }
 
-.darkMode {
+/* .darkMode {
   background-color: #111;
   color: #eee;
+} */
+.whitetext{
+  color: #eee;
 }
-
 .whiteMode {
   background-color: #eee;
   color: #111;
@@ -449,7 +464,7 @@ img {
   height: 20px;
   width: 20px;
 }
-.buttonAccess {
+/* .buttonAccess {
   position: fixed;
   right: 14px;
   top: 150px;
@@ -481,19 +496,19 @@ img {
   color: white;
   width: 140px;
 }
-.widthAccess {
+/* .widthAccess {
   width: 140px;
-}
+} */
 
-a:hover .access {
+/* a:hover .access {
   opacity: 0.9;
-}
+} */
 /* notifc menu */
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap");
 * {
   padding: 0px;
   margin: 0px;
-}
+} */
 
 .icon {
   cursor: pointer;
@@ -575,3 +590,10 @@ a:hover .access {
   color: #aaa;
   font-size: 12px;
 }
+
+/* .card .card-body{
+background:#F2F8FE;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(3.1px);
+-webkit-backdrop-filter: blur(3.1px);
+} */

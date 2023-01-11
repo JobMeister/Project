@@ -8,14 +8,16 @@ $(document).ready(function () {
   $("#accessMenu").hide();
 
 
+  
   $("#darkBtn").click(function () {
     if (darkflag === 0) {
-        $(".loginbtn").removeClass("btn-outline-dark")
-        $(".loginbtn").addClass("bg-white")
+
         $("h1").addClass("whitetext");
+        $("h3").removeClass("text-black");
+        $("h3").addClass("whitetext");
         $("h5").addClass("whitetext");
-        $("p").removeClass("text-black"); 
-        $("p").addClass("whitetext");
+        $("p").addClass("text-black"); 
+        $("body").addClass("darkMode");
         $(".row").addClass("darkMode");
         $(".bgdark").removeClass("bg-light");
         $(".bgf").addClass("darkMode")
@@ -23,17 +25,17 @@ $(document).ready(function () {
 
       darkflag = 1;
     } else {
-      $(".loginbtn").removeClass("bg-white")
-      $(".loginbtn").addClass("btn-outline-dark")
+
       $("h1").removeClass("whitetext");
+      $("h3").removeClass("whitetext");
       $("h5").removeClass("whitetext");
-      $("p").addClass("text-black"); 
-      $("p").removeClass("whitetext");
+      $("h3").addClass("text-black");
+      $("p").removeClass("text-black"); 
+      $("body").removeClass("darkMode");
       $(".row").removeClass("darkMode");
-      $("#body").removeClass("bg-gray-200");
       $(".bgdark").addClass("bg-light");
       $(".bgf").removeClass("darkMode")
-
+      $("#body").removeClass("bg-gray-200")
 
       darkflag = 0;
     }
@@ -43,8 +45,6 @@ $(document).ready(function () {
     if (textflag === 0) {
       $("p").addClass("largeFont");
       $("h1").addClass("largerH");
-      $("h2").addClass("largerH2");
-      $("h4").addClass("largerH2");
       // $("body").addClass("mediumFont");
       $(".navG").addClass("mediumFont");
 
@@ -52,8 +52,6 @@ $(document).ready(function () {
     } else {
       $("p").removeClass("largeFont");
       $("h1").removeClass("largerH");
-      $("h2").removeClass("largerH2");
-      $("h4").removeClass("largerH2");
       $("body").removeClass("largeFont");
       $(".navG").removeClass("mediumFont");
 
@@ -71,7 +69,7 @@ $(document).ready(function () {
       flag = 0;
     }
 
-    $("#accessMenu").toggle("drop");
+    // $("#accessMenu").toggle("drop");
     return false;
   });
 

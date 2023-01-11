@@ -3,7 +3,8 @@ import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'fireb
 import{getAuth, onAuthStateChanged } from 'firebase/auth'
 
 import {} from './main' 
- 
+import {} from './index' 
+
 
     
 const firebaseConfig = {

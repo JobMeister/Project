@@ -2,6 +2,7 @@ import { initializeApp } from 'firebase/app'
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
 import{getAuth, onAuthStateChanged } from 'firebase/auth'
 
+import {} from './about'
 import {} from './main'
 import {} from './admin'
 
@@ -26,7 +27,7 @@ const db = getFirestore(app);
 
 const colRef = collection(db,'Data');
 
-
+//v
 var oldData;
 
 

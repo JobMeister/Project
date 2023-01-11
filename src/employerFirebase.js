@@ -20,20 +20,21 @@ const firebaseConfig = {
   appId: "1:51579629977:web:eae8590655f4e102e2e308",
   measurementId: "G-W33GWTB6JB",
 };
-
 // init firebase
 const app = initializeApp(firebaseConfig);
 
 // init services
 const db = getFirestore(app);
 const auth = getAuth();
+$("#box").hide();
 let logEmail;
 let allUsers = [];
 let usernumber, useremail, userfirstname, userlastname;
 let flag = 0;
 let darkflag = 0;
 let textflag = 0;
-
+let sended = [];
+let userNotifCount = 0;
 // onAuthStateChanged(auth,(user)=>{
 //   console.log("User status changed",user);
 
@@ -44,12 +45,14 @@ let textflag = 0;
 
 const adColRef = collection(db, "Ads");
 const docAllusers = collection(db, "users");
+const sendLinks = collection(db, "Sendedlinks");
 getDocs(docAllusers).then((snapshot) => {
   snapshot.docs.forEach((doc) => {
     allUsers.push({ ...doc.data(), id: doc.id });
   });
   let userq = allUsers.length;
   console.log(allUsers);
+
   for (let index = 0; index < userq; index++) {
     if (allUsers[index].email == logEmail) {
       useremail = allUsers[index].email;
@@ -58,9 +61,10 @@ getDocs(docAllusers).then((snapshot) => {
     }
   }
   document.querySelector("#welcometext").innerHTML =
-  "<p id=welcometext class='lead text-muted'>ברוך הבא "+userfirstname+", הנה המודעות שפירסמת באתרנו</p>"
+    "<p id=welcometext class='lead text-muted'>ברוך הבא " +
+    userfirstname +
+    ", הנה המודעות שפירסמת באתרנו</p>";
 });
-
 
 onAuthStateChanged(auth, (user) => {
   console.log("User status changed", user);
@@ -84,6 +88,7 @@ logoutButton.addEventListener("click", () => {
 });
 
 var adSize;
+var countAds = 0;
 getDocs(adColRef)
   .then((snapshot) => {
     let Ads = [];
@@ -95,6 +100,7 @@ getDocs(adColRef)
     for (let index = 0; index < adSize; index++) {
       let indexR = index + 1;
       if (Ads[index].emailofemployer == useremail) {
+        countAds++;
         $("#try1").append(
           "<div class='col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
             Ads[index].imgid +
@@ -110,13 +116,82 @@ getDocs(adColRef)
             (Ads[index].accepted == true
               ? "<small class='text-success'>מאושר ✔</small>"
               : "<small class='text-danger'>ממתין לאישור</small>") +
-            "<small class='text-muted'>לפני שעה</small></div></div></div></div>"
+            "<small class='text-muted'>"+Ads[index].Date +"</small></div></div></div></div>"
         );
       }
     }
+    document.querySelector("#adC").innerHTML = countAds;
+    getDocs(sendLinks).then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        sended.push({ ...doc.data(), id: doc.id });
+      });
+      console.log(sended);
+      
+      let sendedLength = sended.length;
+      console.log(sended);
+      for (let f = 0; f < sendedLength; f++) {
+        if (sended[f].emailofemployer == logEmail) {
+          userNotifCount++;
+        }
+      }
+      if (userNotifCount > 0) {
+        document.querySelector(".circlebell").innerHTML = userNotifCount;
+        // $("#bellnotif").append(
+        //   "<span class='circlebell position-absolute start-150 translate-middle badge rounded-pill bg-danger'>"+userNotifCount+"</span>"
+        // );
+      }
+    });
+    $(document).ready(function () {
+      var down = false;
+      $("#bell").click(function (e) {
+        var color = $(this).text();
+        if (down) {
+          // alert("check");
+          // $(".added1").hide();
+          $("#box").toggle("drop");
+          $("#box").css("height", "0px");
+          $("#box").css("opacity", "0");
+          // $(".added1").remove();
+          down = false;
+        } else {
+          $(".added1").remove();
+          $("#box").toggle();
+          $("#box").css("height", "auto");
+          $("#box").css("opacity", "1");
+          down = true;
+        }
+        console.log("checkbell");
+        let sendedLength = sended.length;
+        console.log(sendedLength);
+        let userNotifCount1 = 0;
+        // const buttonBell = document.getElementById("bell");
+        for (let i = 0; i < sendedLength; i++) {
+          if (sended[i].emailofemployer == useremail) {
+            userNotifCount1++;
+            console.log("checkit" + i);
+            console.log(sended[i].downloadLink);
+            $("#box").append(
+              "<div class='added1 notifications-item'> <img src='/dist/img/occpics/occ" +
+                Ads[i].imgid +
+                ".jpeg' alt='img'> <div class='text mx-2'><h4>המשתמש " +
+                sended[i].nameOfsender +
+                " הגיש קורות חיים למשרתך</h4   <p><a href=" +
+                sended[i].downloadLink +
+                "> לחץ כאן על מנת להוריד</a></p> </div> </div>"
+            );
+            "/dist/img/occpics/occ" + Ads[i].imgid + ".jpeg";
+          }
+          document.querySelector("#notifcount").innerHTML = userNotifCount1;
+        }
+
+        // }
+        return false;
+      });
+    });
     for (let index = 0; index < adSize; index++) {
       const buttonE = document.getElementById("delbtn" + index);
       const buttonE2 = document.getElementById("view" + index);
+
       if (buttonE) {
         buttonE.addEventListener("click", function () {
           console.log("yougay");
@@ -149,12 +224,16 @@ getDocs(adColRef)
               ? "<small class='text-success'>אושר ופורסם באתרנו ✔</small>"
               : "<small class='text-danger'>ממתין לאישור האדמין </small>";
           document.querySelector("#Mreq").innerHTML = Ads[index].req;
+          document.querySelector("#Mviews").innerHTML =
+            Ads[index].viewsCount + " <i class='fa-regular fa-eye'></i>";
           document.querySelector("#Mdep").innerHTML = Ads[index].dep;
           document.querySelector("#Mpercent").innerHTML = Ads[index].percent;
           document.querySelector("#Mimg").src =
             "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
         });
       }
+
+      // });
     }
   })
   .catch((err) => {
@@ -207,21 +286,4 @@ $("#acessability").click(function () {
 
   $("#accessMenu").toggle("drop");
   return false;
-});
-
-$(document).ready(function () {
-  var down = false;
-
-  $("#bell").click(function (e) {
-    var color = $(this).text();
-    if (down) {
-      $("#box").css("height", "0px");
-      $("#box").css("opacity", "0");
-      down = false;
-    } else {
-      $("#box").css("height", "auto");
-      $("#box").css("opacity", "1");
-      down = true;
-    }
-  });
 });
