@@ -1174,11 +1174,11 @@ progress {
     -webkit-transition: opacity .35s;
     
   }
-  #darkMode{
+  /* #darkMode{
     position: relative; right: -70px; top:40px;
     height: 20px;
     width: 20px;
-  }
+  } */
   .buttonAccess {
     position:fixed; right: 14px; top: 150px;
     text-decoration: none;
@@ -1193,6 +1193,14 @@ progress {
     overflow: hidden
   }
   #accessMenu{
+    position: fixed;bottom: 710px;
+    right: 25px;
+    background-color: #d2d0d0;
+    border-radius: 25px;
+    border-color: #000;
+    border-width: 40px;
+    height: 80px;
+    width: 120px;
     /* position: fixed; right: 240px; top:164px;
     background-color: #d2d0d0;
     border-radius: 25px;
@@ -1200,23 +1208,23 @@ progress {
     border-width: 4px;
     height: 350px;
     width: 450px; */
-    position: fixed; right: 240px; top:164px;
+    /* position: fixed; right: 240px; top:164px;
     background-color: #d2d0d0;
     border-radius: 25px;
     border-color: #000;
     border-width: 40px;
     height: 80px;
-    width: 176px;
+    width: 120px; */
   }
   
   #acessability:hover {
     color: white;
-    width: 180px;
+    width: 140px;
     
   }
   .widthAccess {
 
-    width: 180px;
+    width: 140px;
 
   }
 

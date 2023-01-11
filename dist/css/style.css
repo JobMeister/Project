@@ -421,11 +421,13 @@ img {
   float: left;
 }
 
-.darkMode {
+/* .darkMode {
   background-color: #111;
   color: #eee;
+} */
+.whitetext{
+  color: #eee;
 }
-
 .whiteMode {
   background-color: #eee;
   color: #111;
@@ -449,7 +451,7 @@ img {
   height: 20px;
   width: 20px;
 }
-.buttonAccess {
+/* .buttonAccess {
   position: fixed;
   right: 14px;
   top: 150px;
@@ -481,19 +483,19 @@ img {
   color: white;
   width: 140px;
 }
-.widthAccess {
+/* .widthAccess {
   width: 140px;
-}
+} */
 
-a:hover .access {
+/* a:hover .access {
   opacity: 0.9;
-}
+} */
 /* notifc menu */
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap");
 * {
   padding: 0px;
   margin: 0px;
-}
+} */
 
 .icon {
   cursor: pointer;

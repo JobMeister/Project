@@ -31,6 +31,7 @@ $(document).ready(function () {
     } else {
       $("#body").addClass("bg-gray-200");
       $("p").addClass("bg-white");
+      $("p").addClass("border-dark");
       $("#body").removeClass("darkMode");
       $("#pagesDark").removeClass("text-white");
       $("#adminDark").removeClass("text-white");
