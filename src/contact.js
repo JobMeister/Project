@@ -26,6 +26,9 @@ $(document).ready(function () {
 
   $("#darkBtn").click(function () {
     if (darkflag === 0) {
+      $("#navbarCollapse").addClass("darkMode");
+      $(".navbar").addClass("darkMode");
+      $(".nav-item").addClass("whitetext");
       $("h1").addClass("whitetext"); 
       $("h4").addClass("whitetext");
       $("body").addClass("darkMode");
@@ -41,6 +44,9 @@ $(document).ready(function () {
 
       darkflag = 1;
     } else {
+      $("#navbarCollapse").removeClass("darkMode");
+      $(".navbar").removeClass("darkMode");
+      $(".nav-item").removeClass("whitetext");
       $("h1").removeClass("whitetext");
       $("h4").removeClass("whitetext");
       $("body").removeClass("darkMode");

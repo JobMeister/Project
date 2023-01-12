@@ -10,21 +10,22 @@ $(document).ready(function () {
 
   $("#darkBtn").click(function () {
     if (darkflag === 0) {
+      $("#navbarCollapse").addClass("darkMode");
+      $(".navbar").addClass("darkMode");
+      $(".nav-item").addClass("whitetext");
       $("h1").addClass("whitetext"); 
       $("h5").addClass("whitetext");
       $("body").addClass("darkMode");
       $(".bgdark").removeClass("bg-light");
       $(".bgf").addClass("darkMode")
-
-      $("#navbarCollapse").addClass("darkMode");
-      $(".container-fluid").addClass("darkMode");
-      $(".navbar").addClass("darkMode");
-      $(".nav-item").removeClass("darkMode");
-      $(".nav-item").addClass("whitetext");
-     
+      $(".container-xxl").removeClass("bg-light");
 
       darkflag = 1;
     } else {
+      $(".container-xxl").addClass("bg-light");
+      $("#navbarCollapse").removeClass("darkMode");
+      $(".navbar").removeClass("darkMode");
+      $(".nav-item").removeClass("whitetext");
       $("h1").removeClass("whitetext");
       $("h5").removeClass("whitetext");
       $("body").removeClass("darkMode");

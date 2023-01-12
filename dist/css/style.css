@@ -14,6 +14,18 @@
   z-index: 99; 
 }
 
+#nav1{
+  display: none;
+}
+
+#nav2{
+  display: none;
+}
+
+#nav3{
+  display: none;
+}
+
 /* .back-to-top .sticky-bottom {
   bottom:100px;
   transition: 0.5s;

@@ -22,9 +22,10 @@ background-color: #eee;
 color: #111;
 
 }
-.whitetext {
-  color: #eee !important; 
+.whitetext{
+  color: white !important;
 }
+
 .access {
   font-size: .8em;
   font-family: 'Oswald', sans-serif;

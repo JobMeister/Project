@@ -34,7 +34,6 @@ let flag = 0;
 let darkflag = 0;
 let textflag = 0;
 let sended = [];
-let userNotifCount = 0;
 // onAuthStateChanged(auth,(user)=>{
 //   console.log("User status changed",user);
 
@@ -116,7 +115,9 @@ getDocs(adColRef)
             (Ads[index].accepted == true
               ? "<small class='text-success'>מאושר ✔</small>"
               : "<small class='text-danger'>ממתין לאישור</small>") +
-            "<small class='text-muted'>"+Ads[index].Date +"</small></div></div></div></div>"
+            "<small class='text-muted'>" +
+            Ads[index].Date +
+            "</small></div></div></div></div>"
         );
       }
     }
@@ -126,19 +127,20 @@ getDocs(adColRef)
         sended.push({ ...doc.data(), id: doc.id });
       });
       console.log(sended);
-      
+      let userNotifCount = 0;
       let sendedLength = sended.length;
-      console.log(sended);
       for (let f = 0; f < sendedLength; f++) {
-        if (sended[f].emailofemployer == logEmail) {
+        if (sended[f].emailofemployer == useremail) {
           userNotifCount++;
+          console.log("check");
         }
       }
       if (userNotifCount > 0) {
-        document.querySelector(".circlebell").innerHTML = userNotifCount;
-        // $("#bellnotif").append(
-        //   "<span class='circlebell position-absolute start-150 translate-middle badge rounded-pill bg-danger'>"+userNotifCount+"</span>"
-        // );
+        $("#bellnotif").append(
+          "<span class='circlebell position-absolute start-150 translate-middle badge rounded-pill bg-danger'>" +
+            userNotifCount +
+            "</span>"
+        );
       }
     });
     $(document).ready(function () {
@@ -151,7 +153,7 @@ getDocs(adColRef)
           $("#box").toggle("drop");
           $("#box").css("height", "0px");
           $("#box").css("opacity", "0");
-          // $(".added1").remove();
+          $(".added1").remove();
           down = false;
         } else {
           $(".added1").remove();
@@ -164,22 +166,32 @@ getDocs(adColRef)
         let sendedLength = sended.length;
         console.log(sendedLength);
         let userNotifCount1 = 0;
-        // const buttonBell = document.getElementById("bell");
+
         for (let i = 0; i < sendedLength; i++) {
-          if (sended[i].emailofemployer == useremail) {
+          if (sended[i].emailofemployer === useremail) {
             userNotifCount1++;
             console.log("checkit" + i);
             console.log(sended[i].downloadLink);
             $("#box").append(
               "<div class='added1 notifications-item'> <img src='/dist/img/occpics/occ" +
-                Ads[i].imgid +
+                sended[i].imgid +
                 ".jpeg' alt='img'> <div class='text mx-2'><h4>המשתמש " +
                 sended[i].nameOfsender +
                 " הגיש קורות חיים למשרתך</h4   <p><a href=" +
                 sended[i].downloadLink +
-                "> לחץ כאן על מנת להוריד</a></p> </div> </div>"
+                "> לחץ כאן על מנת להוריד</a> </p> </div><i id='notidelete" +
+                i +
+                "' class='mt-4 mx-3 fa-regular fa-trash-can'></i> </div>"
             );
-            "/dist/img/occpics/occ" + Ads[i].imgid + ".jpeg";
+            const buttonDeleteNotfi = document.getElementById("notidelete" + i);
+            if (buttonDeleteNotfi) {
+              buttonDeleteNotfi.addEventListener("click", function () {
+                var docDelNotfi = doc(db, "Sendedlinks", sended[i].id);
+                deleteDoc(docDelNotfi).then(() => {
+                  location.reload();
+                });
+              });
+            }
           }
           document.querySelector("#notifcount").innerHTML = userNotifCount1;
         }
@@ -294,50 +306,50 @@ getDocs(adColRef)
     console.log(err.message);
   });
 
-// $("#darkBtn").click(function () {
-//   if (darkflag === 0) {
-//     $("#body").addClass("darkMode");
-//     $("#body").removeClass("bg-gray-200");
-//     $("#divDark").addClass("text-white");
-//     $("#adminDark").addClass("text-white");
+$("#darkBtn").click(function () {
+  if (darkflag === 0) {
+    $("#body").addClass("darkMode");
+    $("#body").removeClass("bg-gray-200");
+    $("#divDark").addClass("text-white");
+    $("#adminDark").addClass("text-white");
 
-//     darkflag = 1;
-//   } else {
-//     $("#body").addClass("bg-gray-200");
-//     $("#body").removeClass("darkMode");
-//     $("#divDark").removeClass("text-white");
-//     $("#adminDark").removeClass("text-white");
-//     darkflag = 0;
-//   }
-// });
+    darkflag = 1;
+  } else {
+    $("#body").addClass("bg-gray-200");
+    $("#body").removeClass("darkMode");
+    $("#divDark").removeClass("text-white");
+    $("#adminDark").removeClass("text-white");
+    darkflag = 0;
+  }
+});
 
-// $("#largeFont").click(function () {
-//   if (textflag === 0) {
-//     $("p").addClass("largeFont");
-//     $("h1").addClass("largerH");
-//     $("body").addClass("largeFont");
-//     $(".navG").addClass("mediumFont");
+$("#largeFont").click(function () {
+  if (textflag === 0) {
+    $("p").addClass("largeFont");
+    $("h1").addClass("largerH");
+    $("body").addClass("largeFont");
+    $(".navG").addClass("mediumFont");
 
-//     textflag = 1;
-//   } else {
-//     $("p").removeClass("largeFont");
-//     $("h1").removeClass("largerH");
-//     $("body").removeClass("largeFont");
-//     $(".navG").removeClass("mediumFont");
+    textflag = 1;
+  } else {
+    $("p").removeClass("largeFont");
+    $("h1").removeClass("largerH");
+    $("body").removeClass("largeFont");
+    $(".navG").removeClass("mediumFont");
 
-//     textflag = 0;
-//   }
-// });
+    textflag = 0;
+  }
+});
 
-// $("#acessability").click(function () {
-//   if (flag === 0) {
-//     $("#acessability").addClass("widthAccess");
-//     flag = 1;
-//   } else {
-//     $("#acessability").removeClass("widthAccess");
-//     flag = 0;
-//   }
+$("#acessability").click(function () {
+  if (flag === 0) {
+    $("#acessability").addClass("widthAccess");
+    flag = 1;
+  } else {
+    $("#acessability").removeClass("widthAccess");
+    flag = 0;
+  }
 
-//   $("#accessMenu").toggle("drop");
-//   return false;
-// });
+  $("#accessMenu").toggle("drop");
+  return false;
+});
