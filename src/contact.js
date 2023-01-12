@@ -29,6 +29,8 @@ $(document).ready(function () {
       $("h1").addClass("whitetext"); 
       $("h4").addClass("whitetext");
       $("body").addClass("darkMode");
+      $(".container-fluid").addClass("darkMode");
+
       $(".footS").removeClass("bg-light");
      
       $("#navbarCollapse").addClass("darkMode");
@@ -43,7 +45,8 @@ $(document).ready(function () {
       $("h4").removeClass("whitetext");
       $("body").removeClass("darkMode");
       $(".footS").addClass("bg-light");
-      
+      $(".container-fluid").removeClass("darkMode");
+
       $("#navbarCollapse").removeClass("darkMode");
       $(".navbar").removeClass("darkMode");
       $(".nav-item").removeClass("darkMode");

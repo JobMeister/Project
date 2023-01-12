@@ -19,10 +19,9 @@ $(document).ready(function () {
       $("#bgHead").removeClass("bg-light");
 
       $("p").removeClass("bg-light");
-      
+       
     //   $("#body").removeClass("bg-gray-200");
-      
-
+        
       darkflag = 1;
     } else {
       $("h1").removeClass("whitetext");

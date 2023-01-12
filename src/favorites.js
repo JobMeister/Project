@@ -47,8 +47,8 @@ $(document).ready(function () {
 
       darkflag = 0;
     }
-  });
-
+  }); 
+ 
   $("#largeFont").click(function () {
     if (textflag === 0) {
       $("p").addClass("largeFont");

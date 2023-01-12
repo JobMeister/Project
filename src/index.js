@@ -26,7 +26,7 @@ $(document).ready(function () {
         $(".nav-item").addClass("whitetext");
 
      
-
+ 
       darkflag = 1;
     } else {
       $(".loginbtn").removeClass("bg-white")
