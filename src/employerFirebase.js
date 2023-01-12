@@ -294,50 +294,50 @@ getDocs(adColRef)
     console.log(err.message);
   });
 
-$("#darkBtn").click(function () {
-  if (darkflag === 0) {
-    $("#body").addClass("darkMode");
-    $("#body").removeClass("bg-gray-200");
-    $("#divDark").addClass("text-white");
-    $("#adminDark").addClass("text-white");
+// $("#darkBtn").click(function () {
+//   if (darkflag === 0) {
+//     $("#body").addClass("darkMode");
+//     $("#body").removeClass("bg-gray-200");
+//     $("#divDark").addClass("text-white");
+//     $("#adminDark").addClass("text-white");
 
-    darkflag = 1;
-  } else {
-    $("#body").addClass("bg-gray-200");
-    $("#body").removeClass("darkMode");
-    $("#divDark").removeClass("text-white");
-    $("#adminDark").removeClass("text-white");
-    darkflag = 0;
-  }
-});
+//     darkflag = 1;
+//   } else {
+//     $("#body").addClass("bg-gray-200");
+//     $("#body").removeClass("darkMode");
+//     $("#divDark").removeClass("text-white");
+//     $("#adminDark").removeClass("text-white");
+//     darkflag = 0;
+//   }
+// });
 
-$("#largeFont").click(function () {
-  if (textflag === 0) {
-    $("p").addClass("largeFont");
-    $("h1").addClass("largerH");
-    $("body").addClass("largeFont");
-    $(".navG").addClass("mediumFont");
+// $("#largeFont").click(function () {
+//   if (textflag === 0) {
+//     $("p").addClass("largeFont");
+//     $("h1").addClass("largerH");
+//     $("body").addClass("largeFont");
+//     $(".navG").addClass("mediumFont");
 
-    textflag = 1;
-  } else {
-    $("p").removeClass("largeFont");
-    $("h1").removeClass("largerH");
-    $("body").removeClass("largeFont");
-    $(".navG").removeClass("mediumFont");
+//     textflag = 1;
+//   } else {
+//     $("p").removeClass("largeFont");
+//     $("h1").removeClass("largerH");
+//     $("body").removeClass("largeFont");
+//     $(".navG").removeClass("mediumFont");
 
-    textflag = 0;
-  }
-});
+//     textflag = 0;
+//   }
+// });
 
-$("#acessability").click(function () {
-  if (flag === 0) {
-    $("#acessability").addClass("widthAccess");
-    flag = 1;
-  } else {
-    $("#acessability").removeClass("widthAccess");
-    flag = 0;
-  }
+// $("#acessability").click(function () {
+//   if (flag === 0) {
+//     $("#acessability").addClass("widthAccess");
+//     flag = 1;
+//   } else {
+//     $("#acessability").removeClass("widthAccess");
+//     flag = 0;
+//   }
 
-  $("#accessMenu").toggle("drop");
-  return false;
-});
+//   $("#accessMenu").toggle("drop");
+//   return false;
+// });

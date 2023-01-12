@@ -31,6 +31,11 @@ $(document).ready(function () {
       $("body").addClass("darkMode");
       $(".footS").removeClass("bg-light");
      
+      $("#navbarCollapse").addClass("darkMode");
+      $(".navbar").addClass("darkMode");
+      $(".nav-item").removeClass("darkMode");
+      $(".nav-item").addClass("whitetext");
+
 
       darkflag = 1;
     } else {
@@ -39,6 +44,11 @@ $(document).ready(function () {
       $("body").removeClass("darkMode");
       $(".footS").addClass("bg-light");
       
+      $("#navbarCollapse").removeClass("darkMode");
+      $(".navbar").removeClass("darkMode");
+      $(".nav-item").removeClass("darkMode");
+      $(".nav-item").removeClass("whitetext");
+
 
       darkflag = 0;
     }

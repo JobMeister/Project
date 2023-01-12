@@ -10,13 +10,18 @@ $(document).ready(function () {
     if (darkflag === 0) {
       $("h1").addClass("whitetext")  
 
+      $("#navbarCollapse").addClass("darkMode");
+      $(".navbar").addClass("darkMode");
+      $(".nav-item").removeClass("darkMode");
+      $(".nav-item").addClass("whitetext");
+
       $("body").addClass("darkMode");
       $("#bgHead").removeClass("bg-light");
 
       $("p").removeClass("bg-light");
       
     //   $("#body").removeClass("bg-gray-200");
-     
+      
 
       darkflag = 1;
     } else {
@@ -27,6 +32,11 @@ $(document).ready(function () {
       
       $("#RealAbout").removeClass("bg-light");
       
+      $("#navbarCollapse").removeClass("darkMode");
+      $(".navbar").removeClass("darkMode");
+      $(".nav-item").removeClass("darkMode");
+      $(".nav-item").removeClass("whitetext");
+
       darkflag = 0;
     }
   });
