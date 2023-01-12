@@ -3,12 +3,36 @@ let flag = 0;
 let darkflag = 0;
 let textflag = 0;
 
+const Box_work1= document.getElementById('div-E');
+const Box_work2= document.getElementById('div-WS');
+
+function DisplayDivBySelector(val) {
+  if(val==1) {
+      if(Box_work2.style.display == 'block') {
+          Box_work2.style.display = 'none';
+      }
+      Box_work1.style.display = 'block';
+  }
+  else if(val==2){
+      if(Box_work1.style.display == 'block') {
+          Box_work1.style.display = 'none';
+      }
+      Box_work2.style.display = 'block';
+  }
+  else {
+      Box_work1.style.display = 'none';
+      Box_work2.style.display = 'none';
+  }
+}
+
 $(document).ready(function () {
   $("#accessMenu").hide();
 
-
   $("#darkBtn").click(function () {
     if (darkflag === 0) {
+      $("#navbarCollapse").addClass("darkMode");
+      $(".navbar").addClass("darkMode");
+      $(".nav-item").addClass("whitetext");
         $(".loginbtn").removeClass("btn-outline-dark")
         $(".loginbtn").addClass("bg-white")
         $("h1").addClass("whitetext");
@@ -21,10 +45,12 @@ $(document).ready(function () {
         $(".bgf").addClass("darkMode")
         $("body").addClass("darkMode");
 
-     
 
       darkflag = 1;
     } else {
+      $("#navbarCollapse").removeClass("darkMode");
+      $(".navbar").removeClass("darkMode");
+      $(".nav-item").removeClass("whitetext");
       $(".loginbtn").removeClass("bg-white")
       $(".loginbtn").addClass("btn-outline-dark")
       $("h1").removeClass("whitetext");
@@ -77,31 +103,8 @@ $(document).ready(function () {
     $("#accessMenu").toggle("drop");
     return false;
   });
-
 });
 
- 
 
 
-const Box_work1= document.getElementById('div-E');
-const Box_work2= document.getElementById('div-WS');
-
-function DisplayDivBySelector(val) {
-    if(val==1) {
-        if(Box_work2.style.display == 'block') {
-            Box_work2.style.display = 'none';
-        }
-        Box_work1.style.display = 'block';
-    }
-    else if(val==2){
-        if(Box_work1.style.display == 'block') {
-            Box_work1.style.display = 'none';
-        }
-        Box_work2.style.display = 'block';
-    }
-    else {
-        Box_work1.style.display = 'none';
-        Box_work2.style.display = 'none';
-    }
-}
 

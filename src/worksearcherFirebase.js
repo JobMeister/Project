@@ -445,10 +445,13 @@ getDocs(adColRef).then((snapshot) => {
             console.log(Ads[adsNum].emailofemployer);
             const addSendLinks=collection(db,'Sendedlinks');
                   addDoc(addSendLinks,{
-                    emailofemployer:Ads[adsNum].emailofemployer,
-                    idOfAds:Ads[adsNum].id,
-                    nameOfsender: logEmail,
+                    emailofemployer: Ads[adsNum].emailofemployer,
+                    idOfAds: Ads[adsNum].id,
+                    nameOfsender: userfirstname,
                     downloadLink: linkU,
+                    emailOfSender: logEmail,
+                    imgid: Ads[adsNum].imgid,
+
                   }).then (()=>{
                     console.log("הקורות חיים הועברו למעסיק");
                   })

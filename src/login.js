@@ -10,6 +10,9 @@ $(document).ready(function () {
 
   $("#darkBtn").click(function () {
     if (darkflag === 0) {
+      $("#navbarCollapse").addClass("darkMode");
+      $(".navbar").addClass("darkMode");
+      $(".nav-item").addClass("whitetext");
         $(".loginbtn").removeClass("btn-outline-dark")
         $(".loginbtn").addClass("bg-white")
         $("h1").addClass("whitetext");
@@ -23,6 +26,9 @@ $(document).ready(function () {
 
       darkflag = 1;
     } else {
+      $("#navbarCollapse").removeClass("darkMode");
+      $(".navbar").removeClass("darkMode");
+      $(".nav-item").removeClass("whitetext");
       $(".loginbtn").removeClass("bg-white")
       $(".loginbtn").addClass("btn-outline-dark")
       $("h1").removeClass("whitetext");
