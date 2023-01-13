@@ -7,10 +7,6 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
-<<<<<<< HEAD
-/******/ 	"use strict";
-/******/ 	
-=======
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/@firebase/auth/dist/esm2017/index-c6def6da.js":
@@ -85,7 +81,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ (() => {
 
-eval("\n// function loginSuccses(form) {\n//         let x=Number(localStorage.getItem(\"keynumber\"));\n//         for (let i = 0; i <=x; i++) { \n//           if(form.username.value===localStorage.getItem(\"email\"+i) && form.password.value===localStorage.getItem(\"password\"+i)) {\n//                 alert (\"Login successfully\"); \n//                 window.location = \"admin.html\"; // Redirecting to other page.\n//                 return true;\n//           }\n//       }\n//         if(form.username.value === \"Admin\" && form.password.value === \"12345\"){\n//             alert (\"Login successfully\"); \n//             window.location = \"admin.html\"; // Redirecting to other page.\n//             return true;\n//           }\n//           else{\n//             document.querySelector(\"#Alert_massage\").innerHTML=\"Wrong password/username\";\n//             return false;\n//           }\n// }\n\n\n//# sourceURL=webpack://project/./src/login.js?");
+eval("\n\nlet flag = 0;\nlet darkflag = 0;\nlet textflag = 0;\n\n$(document).ready(function () {\n  $(\"#accessMenu\").hide();\n\n\n  $(\"#darkBtn\").click(function () {\n    if (darkflag === 0) {\n      $(\"#navbarCollapse\").addClass(\"darkMode\");\n      $(\".navbar\").addClass(\"darkMode\");\n      $(\".nav-item\").addClass(\"whitetext\");\n        $(\".loginbtn\").removeClass(\"btn-outline-dark\")\n        $(\".loginbtn\").addClass(\"bg-white\")\n        $(\"h1\").addClass(\"whitetext\");\n        $(\"h5\").addClass(\"whitetext\");\n        $(\"p\").removeClass(\"text-black\"); \n        $(\"p\").addClass(\"whitetext\");\n        $(\".row\").addClass(\"darkMode\");\n        $(\".bgdark\").removeClass(\"bg-light\");\n        $(\".bgf\").addClass(\"darkMode\")\n     \n\n      darkflag = 1;\n    } else {\n      $(\"#navbarCollapse\").removeClass(\"darkMode\");\n      $(\".navbar\").removeClass(\"darkMode\");\n      $(\".nav-item\").removeClass(\"whitetext\");\n      $(\".loginbtn\").removeClass(\"bg-white\")\n      $(\".loginbtn\").addClass(\"btn-outline-dark\")\n      $(\"h1\").removeClass(\"whitetext\");\n      $(\"h5\").removeClass(\"whitetext\");\n      $(\"p\").addClass(\"text-black\"); \n      $(\"p\").removeClass(\"whitetext\");\n      $(\".row\").removeClass(\"darkMode\");\n      $(\"#body\").removeClass(\"bg-gray-200\");\n      $(\".bgdark\").addClass(\"bg-light\");\n      $(\".bgf\").removeClass(\"darkMode\")\n\n\n      darkflag = 0;\n    }\n  });\n\n  $(\"#largeFont\").click(function () {\n    if (textflag === 0) {\n      $(\"p\").addClass(\"largeFont\");\n      $(\"h1\").addClass(\"largerH\");\n      $(\"h2\").addClass(\"largerH2\");\n      $(\"h4\").addClass(\"largerH2\");\n      // $(\"body\").addClass(\"mediumFont\");\n      $(\".navG\").addClass(\"mediumFont\");\n\n      textflag = 1;\n    } else {\n      $(\"p\").removeClass(\"largeFont\");\n      $(\"h1\").removeClass(\"largerH\");\n      $(\"h2\").removeClass(\"largerH2\");\n      $(\"h4\").removeClass(\"largerH2\");\n      $(\"body\").removeClass(\"largeFont\");\n      $(\".navG\").removeClass(\"mediumFont\");\n\n      textflag = 0;\n    }\n  });\n\n  $(\"#acessability\").click(function () {\n    if (flag === 0) {\n      $(\"#acessability\").addClass(\"widthAccess\");\n      \n      flag = 1;\n    } else {\n      $(\"#acessability\").removeClass(\"widthAccess\");\n      flag = 0;\n    }\n\n    $(\"#accessMenu\").toggle(\"drop\");\n    return false;\n  });\n\n  \n\n \n});\n\n//# sourceURL=webpack://project/./src/login.js?");
 
 /***/ }),
 
@@ -342,7 +338,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = __webpack_require__("./src/loginFirebase.js");
->>>>>>> Tomer
 /******/ 	
 /******/ })()
 ;

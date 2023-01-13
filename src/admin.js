@@ -17,6 +17,17 @@ $(document).ready(function () {
   $("#darkBtn").click(function () {
     if (darkflag === 0) {
       $("#body").addClass("darkMode");
+<<<<<<< HEAD
+=======
+      $("p").removeClass("bg-white");
+      $(".buttonadmin").removeClass("btn-outline-dark");
+      $(".buttonadmin").addClass("btn btn-outline-white");
+      $(".buttonadmin2").removeClass("btn-outline-dark");
+      $(".buttonadmin2").addClass("btn btn-outline-white");
+      $("#editNow").removeClass("btn btn-outline-dark");
+      $("#editNow").addClass("btn btn-outline-white");
+      $("p").removeClass("border-dark");
+>>>>>>> Aviv-hagag
       $("#body").removeClass("bg-gray-200");
       $("#pagesDark").addClass("text-white");
       $("#adminDark").addClass("text-white");
@@ -24,9 +35,23 @@ $(document).ready(function () {
       darkflag = 1;
     } else {
       $("#body").addClass("bg-gray-200");
+<<<<<<< HEAD
       $("#body").removeClass("darkMode");
       $("#pagesDark").removeClass("text-white");
       $("#adminDark").removeClass("text-white");
+=======
+      $("p").addClass("bg-white");
+      $("p").addClass("border-dark");
+      $("#body").removeClass("darkMode");
+      $("#pagesDark").removeClass("text-white");
+      $("#adminDark").removeClass("text-white");
+      $(".buttonadmin").removeClass("btn-outline-white");
+      $(".buttonadmin").addClass("btn btn-outline-dark");
+      $(".buttonadmin2").removeClass("btn-outline-white");
+      $(".buttonadmin2").addClass("btn btn-outline-dark");
+      $("#editNow").removeClass("btn btn-outline-white");
+      $("#editNow").addClass("btn btn-outline-dark");
+>>>>>>> Aviv-hagag
       darkflag = 0;
     }
   });
@@ -35,7 +60,7 @@ $(document).ready(function () {
     if (textflag === 0) {
       $("p").addClass("largeFont");
       $("h1").addClass("largerH");
-      $("body").addClass("largeFont");
+      // $("body").addClass("mediumFont");
       $(".navG").addClass("mediumFont");
 
       textflag = 1;

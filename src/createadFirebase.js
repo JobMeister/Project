@@ -1,11 +1,23 @@
-import { initializeApp } from 'firebase/app'
-import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore'
-import{getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
+import { initializeApp } from "firebase/app";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 
+import {} from "./main";
+import {} from "./createad";
 
+<<<<<<< HEAD
 import {} from './main' 
 import {} from './createad' 
     
+=======
+>>>>>>> Aviv-hagag
 const firebaseConfig = {
   apiKey: "AIzaSyDoC94Xlt0BHfsH_zLp8562xsKMW49mv8s",
   authDomain: "job-meister.firebaseapp.com",
@@ -13,19 +25,102 @@ const firebaseConfig = {
   storageBucket: "job-meister.appspot.com",
   messagingSenderId: "51579629977",
   appId: "1:51579629977:web:eae8590655f4e102e2e308",
-  measurementId: "G-W33GWTB6JB"
+  measurementId: "G-W33GWTB6JB",
 };
 
 // init firebase
-const app = initializeApp(firebaseConfig)
+const app = initializeApp(firebaseConfig);
 
 // init services
 const db = getFirestore(app);
 
 // collection ref
+$("#box").hide();
+const adColRef = collection(db, "Ads");
+const sendLinks = collection(db, "Sendedlinks");
+const auth = getAuth();
+let allUsers = [];
+var timeStamps = new Date().toLocaleDateString();
+let logEmail, logCompany, userfirstname;
+let sended = [];
+const docAllusers = collection(db, "users");
+getDocs(docAllusers).then((snapshot) => {
+  snapshot.docs.forEach((doc) => {
+    allUsers.push({ ...doc.data(), id: doc.id });
+  });
+  let userq = allUsers.length;
+  console.log(allUsers);
+  for (let index = 0; index < userq; index++) {
+    if (allUsers[index].email == logEmail) {
+      logCompany = allUsers[index].Company;
+      userfirstname = allUsers[index].firstname;
+    }
+  }
+  document.querySelector("#welcometext").innerHTML =
+    "<h1 id=welcometext>שלום " + userfirstname + ", צור מודעה חדשה</h1>";
+  getDocs(sendLinks).then((snapshot) => {
+    snapshot.docs.forEach((doc) => {
+      sended.push({ ...doc.data(), id: doc.id });
+    });
+    console.log(sended);
+    let userNotifCount = 0;
+    let sendedLength = sended.length;
+    for (let f = 0; f < sendedLength; f++) {
+      if (sended[f].emailofemployer == logEmail) {
+        userNotifCount++;
+        console.log("check");
+      }
+    }
+    if (userNotifCount > 0) {
+      $("#bellnotif").append(
+        "<span class='circlebell position-absolute start-150 translate-middle badge rounded-pill bg-danger'>" +
+          userNotifCount +
+          "</span>"
+      );
+    }
+  });
+  $(document).ready(function () {
+    var down = false;
+    $("#bell").click(function (e) {
+      var color = $(this).text();
+      if (down) {
+        // alert("check");
+        // $(".added1").hide();
+        $("#box").toggle("drop");
+        $("#box").css("height", "0px");
+        $("#box").css("opacity", "0");
+        $(".added1").remove();
+        down = false;
+      } else {
+        $(".added1").remove();
+        $("#box").toggle();
+        $("#box").css("height", "auto");
+        $("#box").css("opacity", "1");
+        down = true;
+      }
+      console.log("checkbell");
+      let sendedLength = sended.length;
+      console.log(sendedLength);
+      let userNotifCount1 = 0;
 
-const adColRef = collection(db,'Ads');
+      for (let i = 0; i < sendedLength; i++) {
+        if (sended[i].emailofemployer === logEmail) {
+          userNotifCount1++;
+          console.log("checkit" + i);
+          console.log(sended[i].downloadLink);
+          $("#box").append(
+            "<div class='added1 notifications-item'> <img src='/dist/img/occpics/occ" +
+              sended[i].imgid +
+              ".jpeg' alt='img'> <div class='text mx-2'><h4>המשתמש " +
+              sended[i].nameOfsender +
+              " הגיש קורות חיים למשרתך</h4   <p><a href=" +
+              sended[i].downloadLink +
+              "> לחץ כאן על מנת להוריד</a> </p> </div><i id='notidelete" +
+              i +
+              "' class='mt-4 mx-3 fa-regular fa-trash-can'></i> </div>"
+          );
 
+<<<<<<< HEAD
 const auth = getAuth();
 let allUsers = [];
 let logEmail,logCompany,userfirstname;
@@ -45,10 +140,30 @@ getDocs(docAllusers).then((snapshot) => {
   }
   document.querySelector("#welcometext").innerHTML =
     "<h1 id=welcometext>שלום " +userfirstname +", צור מודעה חדשה</h1>";
+=======
+          const buttonDeleteNotfi = document.getElementById("notidelete" + i);
+          if (buttonDeleteNotfi) {
+            buttonDeleteNotfi.addEventListener("click", function () {
+              var docDelNotfi = doc(db, "Sendedlinks", sended[i].id);
+              deleteDoc(docDelNotfi).then(() => {
+                location.reload();
+              });
+            });
+          }
+        }
+        document.querySelector("#notifcount").innerHTML = userNotifCount1;
+      }
+
+      // }
+      return false;
+    });
+  });
+>>>>>>> Aviv-hagag
 });
 
 // sending data messaages
 
+<<<<<<< HEAD
 const adForm = document.querySelector('.adF')
 adForm.addEventListener('submit', (e) => {
   e.preventDefault()
@@ -75,6 +190,34 @@ adForm.addEventListener('submit', (e) => {
 })
 function whichnumber(x){
   switch(x){
+=======
+const adForm = document.querySelector(".adF");
+adForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // add new info to firebase messages
+  addDoc(adColRef, {
+    company: logCompany,
+    emailofemployer: logEmail,
+    des: adForm.desc.value,
+    location: adForm.Adloc.value,
+    percent: adForm.MainOccupation.value,
+    dep: adForm.MainOccupation1.value,
+    imgid: whichnumber(adForm.MainOccupation1.value),
+    req: adForm.reqs.value,
+    title: adForm.title.value,
+    accepted: false,
+    viewsCount: 0,
+    Date: timeStamps,
+    
+  }).then(() => {
+    alert("Success");
+    location.href = "employeer.html";
+  });
+});
+function whichnumber(x) {
+  switch (x) {
+>>>>>>> Aviv-hagag
     case "אבטחה,שמירה ובטחון":
       return 1;
     case "אומנות בידור ומדיה":
@@ -82,14 +225,22 @@ function whichnumber(x){
     case "אופנה וטקסטיל":
       return 3;
     case "בניין,בינוי ושיכון":
+<<<<<<< HEAD
         return 4;
+=======
+      return 4;
+>>>>>>> Aviv-hagag
     case "בתי קפה,מסעדות ואירועים":
       return 5;
     case "הוראה,חינוך והדרכה":
       return 6;
     case "הנדסה":
       return 7;
+<<<<<<< HEAD
     case "חשמל ואלקטרוניקה" :
+=======
+    case "חשמל ואלקטרוניקה":
+>>>>>>> Aviv-hagag
       return 8;
     case "יופי,טיפוח וספא":
       return 9;
@@ -97,8 +248,13 @@ function whichnumber(x){
       return 10;
     case "ייצור ותעשייה":
       return 11;
+<<<<<<< HEAD
     case"כספים וכלכלה":
     return 12;
+=======
+    case "כספים וכלכלה":
+      return 12;
+>>>>>>> Aviv-hagag
     case "מדעי החברה":
       return 13;
     case "מחסנאות":
@@ -108,14 +264,20 @@ function whichnumber(x){
     case "מערכות מידע":
       return 16;
     case "משאבי אנוש":
+<<<<<<< HEAD
         return 17; 
     case"משפטים":
+=======
+      return 17;
+    case "משפטים":
+>>>>>>> Aviv-hagag
       return 18;
     case "נדל״ן":
       return 19;
     case "נהגים ושליחים":
       return 20;
     case "סטונדטים":
+<<<<<<< HEAD
         return 21;
     case"ספורט,כושר ואורח חיים":
         return 22; 
@@ -155,3 +317,42 @@ const logoutButton = document.querySelector('.logoutBtn')
       location.href="index.html"
     }
   })
+=======
+      return 21;
+    case "ספורט,כושר ואורח חיים":
+      return 22;
+    case "רכב ומכונאות":
+      return 23;
+    case "רפואה":
+      return 24;
+    case "שירות לקוחות":
+      return 25;
+    case "תוכנה":
+      return 26;
+    case "תיירות ומלונאות":
+      return 27;
+  }
+}
+
+const logoutButton = document.querySelector(".logoutBtn");
+logoutButton.addEventListener("click", () => {
+  signOut(auth)
+    .then(() => {
+      alert("signout");
+      location.href = "index.html";
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+});
+
+onAuthStateChanged(auth, (user) => {
+  console.log("User status changed", user);
+  if (user != null) {
+    logEmail = user.email;
+  }
+  if (user == null) {
+    location.href = "index.html";
+  }
+});
+>>>>>>> Aviv-hagag
