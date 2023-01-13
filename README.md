@@ -3,7 +3,7 @@
 
 ## Description
 This project is a job searching platform where users can search and apply for jobs, as well as create and post job listings. It utilizes npm, webpack, jsPdf, and Node.js.
-
+![alt text](https://user-images.githubusercontent.com/114755882/212302685-2fecbe79-157d-4bf9-b20c-a30d5260b06b.png)
 ## Installation
 1. Clone the repository: `git clone https://github.com/JobMeister/Project-1.git`
 2. install Node.js
