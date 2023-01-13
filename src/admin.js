@@ -17,11 +17,6 @@ $(document).ready(function () {
   $("#darkBtn").click(function () {
     if (darkflag === 0) {
       $("#body").addClass("darkMode");
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> Danielarvili
       $("p").removeClass("bg-white");
       $(".buttonadmin").removeClass("btn-outline-dark");
       $(".buttonadmin").addClass("btn btn-outline-white");
@@ -30,10 +25,6 @@ $(document).ready(function () {
       $("#editNow").removeClass("btn btn-outline-dark");
       $("#editNow").addClass("btn btn-outline-white");
       $("p").removeClass("border-dark");
-<<<<<<< HEAD
->>>>>>> Aviv-hagag
-=======
->>>>>>> Danielarvili
       $("#body").removeClass("bg-gray-200");
       $("#pagesDark").addClass("text-white");
       $("#adminDark").addClass("text-white");
@@ -41,14 +32,6 @@ $(document).ready(function () {
       darkflag = 1;
     } else {
       $("#body").addClass("bg-gray-200");
-<<<<<<< HEAD
-<<<<<<< HEAD
-      $("#body").removeClass("darkMode");
-      $("#pagesDark").removeClass("text-white");
-      $("#adminDark").removeClass("text-white");
-=======
-=======
->>>>>>> Danielarvili
       $("p").addClass("bg-white");
       $("p").addClass("border-dark");
       $("#body").removeClass("darkMode");
@@ -60,10 +43,6 @@ $(document).ready(function () {
       $(".buttonadmin2").addClass("btn btn-outline-dark");
       $("#editNow").removeClass("btn btn-outline-white");
       $("#editNow").addClass("btn btn-outline-dark");
-<<<<<<< HEAD
->>>>>>> Aviv-hagag
-=======
->>>>>>> Danielarvili
       darkflag = 0;
     }
   });

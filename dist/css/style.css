@@ -433,22 +433,6 @@ input::placeholder {
   background-color: rgb(255, 255, 255);
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-img {
-  width: 25px;
-  /* border-radius: 50px; */
-  float: left;
-}
-
-.darkMode {
-  background-color: #111;
-  color: #eee;
-}
-
-=======
-=======
->>>>>>> Danielarvili
 /* img {
   width: 25px;
   /* border-radius: 50px; */
@@ -469,10 +453,6 @@ img {
 .whitetext{
   color: #eee;
 }
-<<<<<<< HEAD
->>>>>>> Aviv-hagag
-=======
->>>>>>> Danielarvili
 .whiteMode {
   background-color: #eee;
   color: #111;
@@ -496,15 +476,7 @@ img {
   height: 20px;
   width: 20px;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-.buttonAccess {
-=======
 /* .buttonAccess {
->>>>>>> Aviv-hagag
-=======
-/* .buttonAccess {
->>>>>>> Danielarvili
   position: fixed;
   right: 14px;
   top: 150px;
@@ -536,18 +508,6 @@ img {
   color: white;
   width: 140px;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-.widthAccess {
-  width: 140px;
-}
-
-a:hover .access {
-  opacity: 0.9;
-}
-=======
-=======
->>>>>>> Danielarvili
 /* .widthAccess {
   width: 140px;
 } */
@@ -555,24 +515,12 @@ a:hover .access {
 /* a:hover .access {
   opacity: 0.9;
 } */
-<<<<<<< HEAD
->>>>>>> Aviv-hagag
-=======
->>>>>>> Danielarvili
 /* notifc menu */
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap");
 * {
   padding: 0px;
   margin: 0px;
-<<<<<<< HEAD
-<<<<<<< HEAD
-}
-=======
 } */
->>>>>>> Aviv-hagag
-=======
-} */
->>>>>>> Danielarvili
 
 .icon {
   cursor: pointer;
@@ -654,20 +602,10 @@ a:hover .access {
   color: #aaa;
   font-size: 12px;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> Danielarvili
 
 /* .card .card-body{
 background:#F2F8FE;
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(3.1px);
 -webkit-backdrop-filter: blur(3.1px);
-<<<<<<< HEAD
 } */
->>>>>>> Aviv-hagag
-=======
-} */
->>>>>>> Danielarvili

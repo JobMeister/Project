@@ -12,15 +12,7 @@ import {
 } from "firebase/firestore";
 import { getAuth, signOut, onAuthStateChanged, reload } from "firebase/auth";
 import {} from "./main";
-<<<<<<< HEAD
-<<<<<<< HEAD
-import {} from "./createad";
-=======
 import {} from "./worksearcher";
->>>>>>> Aviv-hagag
-=======
-import {} from "./worksearcher";
->>>>>>> Danielarvili
 
 const firebaseConfig = {
   apiKey: "AIzaSyDoC94Xlt0BHfsH_zLp8562xsKMW49mv8s",
@@ -48,23 +40,7 @@ let allSaveAdslength=[];
 let flagAds =[true];
 console.log(flagAds);
 let usernumber, useremail, userfirstname, userlastname;
-<<<<<<< HEAD
-<<<<<<< HEAD
-// console.log(Userid);
 
-// onAuthStateChanged(auth,(user)=>{
-//   console.log("User status changed",user);
-
-//   if(user==null) {
-//     location.href="404.html"
-//   }
-// })
-=======
-
->>>>>>> Aviv-hagag
-=======
-
->>>>>>> Danielarvili
 
 const adColRef = collection(db, "Ads");
 const docAllusers = collection(db, "users");
@@ -82,15 +58,7 @@ getDocs(docAllusers).then((snapshot) => {
     }
   }
   document.querySelector("#welcometext").innerHTML =
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "<p id=welcometext class='h2 mb-4 mb-md-5 text-black text-center mt-3'>שלום  " +
-=======
     "<h3 id=welcometext class='h2 mb-4 mb-md-5 text-black text-center mt-3'>שלום  " +
->>>>>>> Aviv-hagag
-=======
-    "<h3 id=welcometext class='h2 mb-4 mb-md-5 text-black text-center mt-3'>שלום  " +
->>>>>>> Danielarvili
     userfirstname +
     ", חפש את המשרה המועדפת עלייך</p>";
 });
@@ -171,106 +139,42 @@ getDocs(adColRef).then((snapshot) => {
         // }
         if (Thum != "0" && Loc != "0" && Per != "0") {
           flag = 1;
-<<<<<<< HEAD
-<<<<<<< HEAD
-          alert("flag=" + flag);
-=======
           // alert("flag=" + flag);
->>>>>>> Aviv-hagag
-=======
-          // alert("flag=" + flag);
->>>>>>> Danielarvili
           flagStart = 1;
           Running1();
         } else if (Thum != "0" && Loc != "0" && Per == "0") {
           flag = 2;
-<<<<<<< HEAD
-<<<<<<< HEAD
-          alert("flag=" + flag);
-=======
           // alert("flag=" + flag);
->>>>>>> Aviv-hagag
-=======
-          // alert("flag=" + flag);
->>>>>>> Danielarvili
           flagStart = 1;
           Running1();
         } else if (Thum != "0" && Loc == "0" && Per != "0") {
           flag = 3;
-<<<<<<< HEAD
-<<<<<<< HEAD
-          alert("flag=" + flag);
-=======
           // alert("flag=" + flag);
->>>>>>> Aviv-hagag
-=======
-          // alert("flag=" + flag);
->>>>>>> Danielarvili
           flagStart = 1;
           Running1();
         } else if (Thum == "0" && Loc != "0" && Per != "0") {
           flag = 4;
-<<<<<<< HEAD
-<<<<<<< HEAD
-          alert("flag=" + flag);
-=======
           // alert("flag=" + flag);
->>>>>>> Aviv-hagag
-=======
-          // alert("flag=" + flag);
->>>>>>> Danielarvili
           flagStart = 1;
           Running1();
         } else if (Thum != "0" && Loc == "0" && Per == "0") {
           flag = 5;
-<<<<<<< HEAD
-<<<<<<< HEAD
-          alert("flag=" + flag);
-=======
           // alert("flag=" + flag);
->>>>>>> Aviv-hagag
-=======
-          // alert("flag=" + flag);
->>>>>>> Danielarvili
           flagStart = 1;
           Running1();
         } else if (Thum == "0" && Loc != "0" && Per == "0") {
           flag = 6;
-<<<<<<< HEAD
-<<<<<<< HEAD
-          alert("flag=" + flag);
-=======
           // alert("flag=" + flag);
->>>>>>> Aviv-hagag
-=======
-          // alert("flag=" + flag);
->>>>>>> Danielarvili
           flagStart = 1;
           Running1();
         } else if (Thum == "0" && Loc == "0" && Per != "0") {
           flag = 7;
-<<<<<<< HEAD
-<<<<<<< HEAD
-          alert("flag=" + flag);
-=======
           // alert("flag=" + flag);
->>>>>>> Aviv-hagag
-=======
-          // alert("flag=" + flag);
->>>>>>> Danielarvili
           flagStart = 1;
           Running1();
         } else {
           flag = 0;
-<<<<<<< HEAD
-<<<<<<< HEAD
-          alert("flag=" + flag);
-=======
           // alert("flag=" + flag);
->>>>>>> Aviv-hagag
-=======
-          // alert("flag=" + flag);
->>>>>>> Danielarvili
           flagStart = 1;
           Running1();
         }
@@ -281,14 +185,7 @@ getDocs(adColRef).then((snapshot) => {
     }
     function Running1() {
       $(".Added").remove();
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
       let counterView=0
->>>>>>> Aviv-hagag
-=======
-      let counterView=0
->>>>>>> Danielarvili
       for (let index = 0; index < adSize; index++) {
         console.log(flag);
         switch (flag) {
@@ -303,15 +200,7 @@ getDocs(adColRef).then((snapshot) => {
                   Ads[index].des +
                   "</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='view" +
                   index +
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalWS'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
-=======
                   "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalWS'>צפה</button></div><small class='text-muted'>" +Ads[index].Date +"</small></div></div></div></div>"
->>>>>>> Aviv-hagag
-=======
-                  "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalWS'>צפה</button></div><small class='text-muted'>" +Ads[index].Date +"</small></div></div></div></div>"
->>>>>>> Danielarvili
               );
             }
             console.log("case0");
@@ -332,15 +221,7 @@ getDocs(adColRef).then((snapshot) => {
                   Ads[index].des +
                   "</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='view" +
                   index +
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalWS'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
-=======
                   "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalWS'>צפה</button></div><small class='text-muted'>" +Ads[index].Date +"</small></div></div></div></div>"
->>>>>>> Aviv-hagag
-=======
-                  "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalWS'>צפה</button></div><small class='text-muted'>" +Ads[index].Date +"</small></div></div></div></div>"
->>>>>>> Danielarvili
               );
             }
             console.log("case1");
@@ -463,24 +344,11 @@ getDocs(adColRef).then((snapshot) => {
            if (buttonE2) {
             buttonE2.addEventListener("click", function () {
               if(allSavedAds) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-               for (let i= 0; i < allSaveAdslength[0]; i++) {
-                     allSavedAds.splice(i);
-                   }
-                  }
-=======
-=======
->>>>>>> Danielarvili
                   for (let i= 0; i < allSaveAdslength[0]; i++) {
                       allSavedAds.splice(i);
                    }
                   }
               document.getElementById("cvDiv").style.display = "none";
-<<<<<<< HEAD
->>>>>>> Aviv-hagag
-=======
->>>>>>> Danielarvili
               document.querySelector("#WStitle").innerHTML = Ads[index].title;
               if (Ads[index].company == null) {
                 document.querySelector("#WScompany").innerHTML = "חסוי";
@@ -507,24 +375,11 @@ getDocs(adColRef).then((snapshot) => {
                   snapshot.docs.forEach((doc) => {
                     allSavedAds.push({ ...doc.data(), id: doc.id });
                   });
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  let SaveAdsQ = allSavedAds.length;
-                  allSaveAdslength[0] = allSavedAds.length;
-                  console.log(allSavedAds);
-                  for (let i= 0; i < SaveAdsQ; i++) {
-=======
-=======
->>>>>>> Danielarvili
                   console.log(allSavedAds);
                   let SaveAdsQ = allSavedAds.length;
                   allSaveAdslength[0] = allSavedAds.length;
                   for (let i= 0; i < SaveAdsQ; i++) {
                     console.log(allSavedAds[i]);
-<<<<<<< HEAD
->>>>>>> Aviv-hagag
-=======
->>>>>>> Danielarvili
                     if (allSavedAds[i].Saveremail == logEmail) {
                       console.log(Ads[index].id);
                       console.log(allSavedAds[i].idOfAds);
@@ -590,15 +445,6 @@ getDocs(adColRef).then((snapshot) => {
             console.log(Ads[adsNum].emailofemployer);
             const addSendLinks=collection(db,'Sendedlinks');
                   addDoc(addSendLinks,{
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    emailofemployer:Ads[adsNum].emailofemployer,
-                    idOfAds:Ads[adsNum].id,
-                    nameOfsender: logEmail,
-                    downloadLink: linkU,
-=======
-=======
->>>>>>> Danielarvili
                     emailofemployer: Ads[adsNum].emailofemployer,
                     idOfAds: Ads[adsNum].id,
                     nameOfsender: userfirstname,
@@ -606,10 +452,6 @@ getDocs(adColRef).then((snapshot) => {
                     emailOfSender: logEmail,
                     imgid: Ads[adsNum].imgid,
 
-<<<<<<< HEAD
->>>>>>> Aviv-hagag
-=======
->>>>>>> Danielarvili
                   }).then (()=>{
                     console.log("הקורות חיים הועברו למעסיק");
                   })
@@ -625,15 +467,7 @@ getDocs(adColRef).then((snapshot) => {
   .catch((err) => {
     console.log(err.message);
   });
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
 //checking email input is currect 
->>>>>>> Aviv-hagag
-=======
-//checking email input is currect 
->>>>>>> Danielarvili
   function validURL(str) {
     var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
       '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name

@@ -3,31 +3,13 @@ import {
   getFirestore,
   collection,
   getDocs,
-<<<<<<< HEAD
-<<<<<<< HEAD
-  addDoc,
-=======
   addDoc, 
->>>>>>> Aviv-hagag
-=======
-  addDoc, 
->>>>>>> Danielarvili
   deleteDoc,
   doc,
 } from "firebase/firestore";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
-<<<<<<< HEAD
-<<<<<<< HEAD
-import {} from "./main";
-import {} from "./createad";
-=======
 import {} from "./favorites";
 import {} from "./main";
->>>>>>> Aviv-hagag
-=======
-import {} from "./favorites";
-import {} from "./main";
->>>>>>> Danielarvili
 
 const firebaseConfig = {
   apiKey: "AIzaSyDoC94Xlt0BHfsH_zLp8562xsKMW49mv8s",
@@ -51,15 +33,7 @@ let usernumber, useremail, userfirstname, userlastname;
 let flag = 0;
 let darkflag = 0;
 let textflag = 0;
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
 let adCount=0;
->>>>>>> Aviv-hagag
-=======
-let adCount=0;
->>>>>>> Danielarvili
 // onAuthStateChanged(auth,(user)=>{
 //   console.log("User status changed",user);
 
@@ -128,16 +102,8 @@ getDocs(adColRef).then((snapshot) => {
       for (let index = 0; index < adSize; index++) {
         for (let i= 0; i < SaveAdsQ; i++) {
             if (Ads[index].accepted == true && Ads[index].id==allSavedAds[i].idOfAds && allSavedAds[i].Saveremail == logEmail) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
               document.querySelector("#adC").innerHTML = adCount++;
               adCount++;
->>>>>>> Aviv-hagag
-=======
-              document.querySelector("#adC").innerHTML = adCount++;
-              adCount++;
->>>>>>> Danielarvili
               $("#try1").append(
                 "<div class='Added col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
                   Ads[index].imgid +
@@ -147,15 +113,7 @@ getDocs(adColRef).then((snapshot) => {
                   Ads[index].des +
                   "</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='view" +
                   index +
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalF'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
-=======
                   "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalF'>צפה</button></div><small class='text-muted'>" +Ads[index].Date +"</small></div></div></div></div>"
->>>>>>> Aviv-hagag
-=======
-                  "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalF'>צפה</button></div><small class='text-muted'>" +Ads[index].Date +"</small></div></div></div></div>"
->>>>>>> Danielarvili
               );
             }
           }
