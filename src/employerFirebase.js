@@ -34,7 +34,6 @@ let flag = 0;
 let darkflag = 0;
 let textflag = 0;
 let sended = [];
-
 // onAuthStateChanged(auth,(user)=>{
 //   console.log("User status changed",user);
 
@@ -116,7 +115,9 @@ getDocs(adColRef)
             (Ads[index].accepted == true
               ? "<small class='text-success'>מאושר ✔</small>"
               : "<small class='text-danger'>ממתין לאישור</small>") +
-            "<small class='text-muted'>לפני שעה</small></div></div></div></div>"
+            "<small class='text-muted'>" +
+            Ads[index].Date +
+            "</small></div></div></div></div>"
         );
       }
     }
@@ -162,26 +163,35 @@ getDocs(adColRef)
           down = true;
         }
         console.log("checkbell");
-
         let sendedLength = sended.length;
         console.log(sendedLength);
         let userNotifCount1 = 0;
-        // const buttonBell = document.getElementById("bell");
+
         for (let i = 0; i < sendedLength; i++) {
-          if (sended[i].emailofemployer == useremail) {
+          if (sended[i].emailofemployer === useremail) {
             userNotifCount1++;
             console.log("checkit" + i);
             console.log(sended[i].downloadLink);
             $("#box").append(
               "<div class='added1 notifications-item'> <img src='/dist/img/occpics/occ" +
-                Ads[i].imgid +
+                sended[i].imgid +
                 ".jpeg' alt='img'> <div class='text mx-2'><h4>המשתמש " +
                 sended[i].nameOfsender +
-                " הגיש קורות חיים למשרתך</h4   <p><a href=https://" +
+                " הגיש קורות חיים למשרתך</h4   <p><a href=" +
                 sended[i].downloadLink +
-                "> לחץ כאן על מנת לראות פרטים</a></p> </div> </div>"
+                "> לחץ כאן על מנת להוריד</a> </p> </div><i id='notidelete" +
+                i +
+                "' class='mt-4 mx-3 fa-regular fa-trash-can'></i> </div>"
             );
-            "/dist/img/occpics/occ" + Ads[i].imgid + ".jpeg";
+            const buttonDeleteNotfi = document.getElementById("notidelete" + i);
+            if (buttonDeleteNotfi) {
+              buttonDeleteNotfi.addEventListener("click", function () {
+                var docDelNotfi = doc(db, "Sendedlinks", sended[i].id);
+                deleteDoc(docDelNotfi).then(() => {
+                  location.reload();
+                });
+              });
+            }
           }
           document.querySelector("#notifcount").innerHTML = userNotifCount1;
         }
@@ -241,51 +251,3 @@ getDocs(adColRef)
   .catch((err) => {
     console.log(err.message);
   });
-
-$("#darkBtn").click(function () {
-  if (darkflag === 0) {
-    $("#body").addClass("darkMode");
-    $("#body").removeClass("bg-gray-200");
-    $("#divDark").addClass("text-white");
-    $("#adminDark").addClass("text-white");
-
-    darkflag = 1;
-  } else {
-    $("#body").addClass("bg-gray-200");
-    $("#body").removeClass("darkMode");
-    $("#divDark").removeClass("text-white");
-    $("#adminDark").removeClass("text-white");
-    darkflag = 0;
-  }
-});
-
-$("#largeFont").click(function () {
-  if (textflag === 0) {
-    $("p").addClass("largeFont");
-    $("h1").addClass("largerH");
-    $("body").addClass("largeFont");
-    $(".navG").addClass("mediumFont");
-
-    textflag = 1;
-  } else {
-    $("p").removeClass("largeFont");
-    $("h1").removeClass("largerH");
-    $("body").removeClass("largeFont");
-    $(".navG").removeClass("mediumFont");
-
-    textflag = 0;
-  }
-});
-
-$("#acessability").click(function () {
-  if (flag === 0) {
-    $("#acessability").addClass("widthAccess");
-    flag = 1;
-  } else {
-    $("#acessability").removeClass("widthAccess");
-    flag = 0;
-  }
-
-  $("#accessMenu").toggle("drop");
-  return false;
-});

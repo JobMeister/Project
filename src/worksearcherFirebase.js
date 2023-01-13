@@ -456,6 +456,7 @@ getDocs(adColRef)
               nameOfsender: userfirstname,
               downloadLink: linkU,
               emailOfSender: logEmail,
+              imgid: Ads[adsNum].imgid,
             }).then(() => {
               console.log("הקורות חיים הועברו למעסיק");
             });
