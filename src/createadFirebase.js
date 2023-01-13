@@ -13,11 +13,14 @@ import {} from "./main";
 import {} from "./createad";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import {} from './main' 
 import {} from './createad' 
     
 =======
 >>>>>>> Aviv-hagag
+=======
+>>>>>>> Danielarvili
 const firebaseConfig = {
   apiKey: "AIzaSyDoC94Xlt0BHfsH_zLp8562xsKMW49mv8s",
   authDomain: "job-meister.firebaseapp.com",
@@ -121,6 +124,7 @@ getDocs(docAllusers).then((snapshot) => {
           );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const auth = getAuth();
 let allUsers = [];
 let logEmail,logCompany,userfirstname;
@@ -141,6 +145,8 @@ getDocs(docAllusers).then((snapshot) => {
   document.querySelector("#welcometext").innerHTML =
     "<h1 id=welcometext>שלום " +userfirstname +", צור מודעה חדשה</h1>";
 =======
+=======
+>>>>>>> Danielarvili
           const buttonDeleteNotfi = document.getElementById("notidelete" + i);
           if (buttonDeleteNotfi) {
             buttonDeleteNotfi.addEventListener("click", function () {
@@ -158,11 +164,15 @@ getDocs(docAllusers).then((snapshot) => {
       return false;
     });
   });
+<<<<<<< HEAD
 >>>>>>> Aviv-hagag
+=======
+>>>>>>> Danielarvili
 });
 
 // sending data messaages
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 const adForm = document.querySelector('.adF')
 adForm.addEventListener('submit', (e) => {
@@ -191,6 +201,8 @@ adForm.addEventListener('submit', (e) => {
 function whichnumber(x){
   switch(x){
 =======
+=======
+>>>>>>> Danielarvili
 const adForm = document.querySelector(".adF");
 adForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -217,7 +229,10 @@ adForm.addEventListener("submit", (e) => {
 });
 function whichnumber(x) {
   switch (x) {
+<<<<<<< HEAD
 >>>>>>> Aviv-hagag
+=======
+>>>>>>> Danielarvili
     case "אבטחה,שמירה ובטחון":
       return 1;
     case "אומנות בידור ומדיה":
@@ -226,10 +241,14 @@ function whichnumber(x) {
       return 3;
     case "בניין,בינוי ושיכון":
 <<<<<<< HEAD
+<<<<<<< HEAD
         return 4;
 =======
       return 4;
 >>>>>>> Aviv-hagag
+=======
+      return 4;
+>>>>>>> Danielarvili
     case "בתי קפה,מסעדות ואירועים":
       return 5;
     case "הוראה,חינוך והדרכה":
@@ -237,10 +256,14 @@ function whichnumber(x) {
     case "הנדסה":
       return 7;
 <<<<<<< HEAD
+<<<<<<< HEAD
     case "חשמל ואלקטרוניקה" :
 =======
     case "חשמל ואלקטרוניקה":
 >>>>>>> Aviv-hagag
+=======
+    case "חשמל ואלקטרוניקה":
+>>>>>>> Danielarvili
       return 8;
     case "יופי,טיפוח וספא":
       return 9;
@@ -249,12 +272,17 @@ function whichnumber(x) {
     case "ייצור ותעשייה":
       return 11;
 <<<<<<< HEAD
+<<<<<<< HEAD
     case"כספים וכלכלה":
     return 12;
 =======
     case "כספים וכלכלה":
       return 12;
 >>>>>>> Aviv-hagag
+=======
+    case "כספים וכלכלה":
+      return 12;
+>>>>>>> Danielarvili
     case "מדעי החברה":
       return 13;
     case "מחסנאות":
@@ -265,18 +293,24 @@ function whichnumber(x) {
       return 16;
     case "משאבי אנוש":
 <<<<<<< HEAD
+<<<<<<< HEAD
         return 17; 
     case"משפטים":
 =======
       return 17;
     case "משפטים":
 >>>>>>> Aviv-hagag
+=======
+      return 17;
+    case "משפטים":
+>>>>>>> Danielarvili
       return 18;
     case "נדל״ן":
       return 19;
     case "נהגים ושליחים":
       return 20;
     case "סטונדטים":
+<<<<<<< HEAD
 <<<<<<< HEAD
         return 21;
     case"ספורט,כושר ואורח חיים":
@@ -318,6 +352,8 @@ const logoutButton = document.querySelector('.logoutBtn')
     }
   })
 =======
+=======
+>>>>>>> Danielarvili
       return 21;
     case "ספורט,כושר ואורח חיים":
       return 22;
@@ -355,4 +391,7 @@ onAuthStateChanged(auth, (user) => {
     location.href = "index.html";
   }
 });
+<<<<<<< HEAD
 >>>>>>> Aviv-hagag
+=======
+>>>>>>> Danielarvili
