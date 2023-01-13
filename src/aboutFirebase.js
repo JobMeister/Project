@@ -9,10 +9,10 @@ import {
 } from "firebase/firestore";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 
-import {} from './main'
-import {} from './admin'
+import {} from "./main";
+import {} from "./admin";
+import {} from "./about";
 
-    
 const firebaseConfig = {
   apiKey: "AIzaSyDoC94Xlt0BHfsH_zLp8562xsKMW49mv8s",
   authDomain: "job-meister.firebaseapp.com",
@@ -31,9 +31,11 @@ const db = getFirestore(app);
 const auth = getAuth();
 // collection ref
 
-const colRef = collection(db,'Data');
-
-
+const colRef = collection(db, "Data");
+const docAllusers = collection(db, "users");
+const nav1= document.getElementById('nav1');
+const nav2= document.getElementById('nav2');
+const nav3= document.getElementById('nav3');
 var oldData;
 let logEmail;
 let allUsers = [];
