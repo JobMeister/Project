@@ -9,6 +9,7 @@ This project is a job searching platform where users can search and apply for jo
 2. install Node.js
 3. Install dependencies: `npm install`
 4. Build the project: `npm run build`
+5. For Unit test: `npm i jest` , `npm i jsDom` , `npm i jquery-mockjax`
 
 ## Usage
 1. Start the server: `npm start`
