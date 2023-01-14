@@ -1,8 +1,4 @@
-
-  
-
-// import {pic} from "./asifphotoRandom"
-
+"use strict";
 
   // Spinner
   var spinner = function () {
@@ -13,21 +9,18 @@
     }, 1);
   };
   spinner();
-  var images = ["asif1clear.png", "asif2clear.png", "asif3clear.png"];
 
   // asif random pages
   function pic() {
-   
-    return Math.floor(Math.random() * images.length)
-  }
-  
+    var images = ["asif1clear.png", "asif2clear.png", "asif3clear.png"];
+    // $(".asif").attr("img/", images[Math.floor(Math.random() * images.length)]);
     $(".asifpe").html(
       '<img class="asifke" src="img/' +
-       images[pic()] +
-        '">');
-  
-  
-  // pic();
+        images[Math.floor(Math.random() * images.length)] +
+        '">'
+    );
+  }
+  pic();
 
   // Sticky Navbar
   $(window).scroll(function () {
@@ -41,4 +34,3 @@
   // if (localStorage.getItem("About") !== null) {
   //   $("#RealAbout").html(localStorage.getItem("About"));
   // }
-

@@ -47,14 +47,11 @@ let textflag = 0;
     if (textflag === 0) {
       $("p").addClass("largeFont");
       $("h1").addClass("largerH");
-      $(".navG").addClass("mediumFont");
 
       textflag = 1;
     } else {
       $("p").removeClass("largeFont");
       $("h1").removeClass("largerH");
-      $("body").removeClass("largeFont");
-      $(".navG").removeClass("mediumFont");
 
       textflag = 0;
     }

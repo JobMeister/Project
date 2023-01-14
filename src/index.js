@@ -4,7 +4,6 @@ let flag = 0;
 let darkflag = 0;
 let textflag = 0;
 
-$(document).ready(function () {
   $("#accessMenu").hide();
 
 
@@ -80,4 +79,3 @@ $(document).ready(function () {
   
 
  
-});

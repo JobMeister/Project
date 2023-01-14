@@ -4,7 +4,6 @@ import{getAuth, onAuthStateChanged } from 'firebase/auth'
 
 import {} from './main' 
 import {} from './index' 
-import {} from "./asifphotoRandom"
 
 
     
