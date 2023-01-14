@@ -82,7 +82,7 @@ onAuthStateChanged(auth, (user) => {
             }
           }
         }
-       })
+       }) 
   } 
   else {
     nav1.style.display='block';

@@ -23,8 +23,8 @@ $(document).ready(function () {
         $(".row").addClass("darkMode");
         $(".bgdark").removeClass("bg-light");
         $(".bgf").addClass("darkMode")
-     
-
+        $("#divDark").removeClass("bg-light");
+        $(".footer").removeClass("bg-white");
       darkflag = 1;
     } else {
       $("#navbarCollapse").removeClass("darkMode");
@@ -40,12 +40,12 @@ $(document).ready(function () {
       $(".row").removeClass("darkMode");
       $(".bgdark").addClass("bg-light");
       $(".bgf").removeClass("darkMode")
-
-
+      $("#divDark").addClass("bg-light");
+      $(".footer").addClass("bg-white");
       darkflag = 0;
     }
-  }); 
- 
+  });
+
   $("#largeFont").click(function () {
     if (textflag === 0) {
       $("p").addClass("largeFont");

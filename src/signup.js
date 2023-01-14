@@ -45,15 +45,6 @@ $(document).ready(function () {
         $(".bgf").addClass("darkMode")
         $("body").addClass("darkMode");
 
-<<<<<<< HEAD
-        $("#navbarCollapse").addClass("darkMode");
-        $(".navbar").addClass("darkMode");
-        $(".nav-item").removeClass("darkMode");
-        $(".nav-item").addClass("whitetext");
-
-     
-=======
->>>>>>> Aviv-hagag
 
       darkflag = 1;
     } else {
@@ -71,11 +62,6 @@ $(document).ready(function () {
       $(".bgdark").addClass("bg-light");
       $(".bgdark").removeClass("darkMode");
       $(".bgf").removeClass("darkMode")
-
-      $("#navbarCollapse").removeClass("darkMode");
-      $(".navbar").removeClass("darkMode");
-      $(".nav-item").removeClass("darkMode");
-      $(".nav-item").removeClass("whitetext");
 
 
       darkflag = 0;

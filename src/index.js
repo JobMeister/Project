@@ -22,14 +22,8 @@ $(document).ready(function () {
         $("body").addClass("darkMode");
         $(".bgdark").removeClass("bg-light");
         $(".bgf").addClass("darkMode")
-
-        $("#navbarCollapse").addClass("darkMode");
-        $(".navbar").addClass("darkMode");
-        $(".nav-item").removeClass("darkMode");
-        $(".nav-item").addClass("whitetext");
-
      
- 
+
       darkflag = 1;
     } else {
       $("#navbarCollapse").removeClass("darkMode");
@@ -45,11 +39,6 @@ $(document).ready(function () {
       $("#body").removeClass("bg-gray-200");
       $(".bgdark").addClass("bg-light");
       $(".bgf").removeClass("darkMode")
-
-      $("#navbarCollapse").removeClass("darkMode");
-      $(".navbar").removeClass("darkMode");
-      $(".nav-item").removeClass("darkMode");
-      $(".nav-item").removeClass("whitetext");
 
 
       darkflag = 0;

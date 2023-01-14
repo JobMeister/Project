@@ -12,10 +12,10 @@ $(document).ready(function () {
   $("#reports").hide();
   $("#Confirm").hide();
   $("#NotConfirm").hide();
-  $("#deleteusers").hide();
+  $("#deleteusers").hide(); 
 
   $("#darkBtn").click(function () {
-    if (darkflag === 0) {
+    if (darkflag === 0) {  
       $("#body").addClass("darkMode");
       $("p").removeClass("bg-white");
       $(".buttonadmin").removeClass("btn-outline-dark");
@@ -32,6 +32,8 @@ $(document).ready(function () {
       darkflag = 1;
     } else {
       $("#body").addClass("bg-gray-200");
+      $("#RealAbout").removeClass("bg-white");
+
       $("p").addClass("bg-white");
       $("p").addClass("border-dark");
       $("#body").removeClass("darkMode");

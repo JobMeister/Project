@@ -9,6 +9,7 @@ import {
 } from "firebase/firestore";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import {} from "./main";
+import {} from "./emloyeer"
 import {} from "./createad";
 
 const firebaseConfig = {
@@ -60,9 +61,9 @@ getDocs(docAllusers).then((snapshot) => {
     }
   }
   document.querySelector("#welcometext").innerHTML =
-    "<p id=welcometext class='lead text-muted'>ברוך הבא " +
+    "<h2 id='welcometext' class='lead text-muted'>ברוך הבא " +
     userfirstname +
-    ", הנה המודעות שפירסמת באתרנו</p>";
+    ", הנה המודעות שפירסמת באתרנו</h2>";
 });
 
 onAuthStateChanged(auth, (user) => {
@@ -245,111 +246,9 @@ getDocs(adColRef)
         });
       }
 
-      $(document).ready(function () {
-        var down = false;
-
-        $("#bell").click(function (e) {
-          var color = $(this).text();
-          if (down) {
-            $("#box").css("height", "0px");
-            $("#box").css("opacity", "0");
-            down = false;
-          } else {
-            $("#box").css("height", "auto");
-            $("#box").css("opacity", "1");
-            down = true;
-          }
-          console.log("checkbell");
-          let sendedLength = sended.length;
-          console.log(sendedLength);
-          let userNotifCount = 0;
-          // for (let i = 0; i < sendedLength; i++) {
-          if (sended[index].emailofemployer == useremail) {
-            userNotifCount++;
-            console.log("chgeckit" + index);
-            $("#box").append(
-              "<div id='added2' class='added2 notifications-item' data-bs-toggle='modal' data-bs-target='#modalNoti'> <img src='/dist/img/occpics/occ" +
-                Ads[index].imgid +
-                ".jpeg' alt='img'> <div class='text mx-2'><h6>המשתמש " +
-                sended[index].nameOfsender +
-                " הגיש קורות חיים למשרתך</h6<p> לחץ כאן על מנת לראות פרטים</p> </div></div>"
-            );
-            "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
-            // if (notfimodal) {
-            //   document.querySelector("#Mnotfirst").innerHTML = 0;
-            //   document.querySelector("#Mnotlast").innerHTML = 0;
-            //   document.querySelector("#Mnotage").innerHTML = 0;
-            //   document.querySelector("#Mnotgender").innerHTML = 0;
-            //   document.querySelector("#Mnotocc").innerHTML = 0;
-            //   document.querySelector("#Mnotemail").innerHTML =
-            //     sended[index].emailOfSender;
-            //   document.querySelector("#Mnotlink").innerHTML =
-            //     sended[index].downloadLink;
-            //   document.querySelector("#Mnotimg").src =
-            //     "/dist/img/occpics/occ" + Ads[index].imgid + ".jpeg";
-            // }
-          }
-          $("#Added2").remove();
-          $(".Added2").remove();
-          $("#bell").click(function () {
-            $("#box").removeClass(".added");
-          });
-          document.querySelector("#notifcount").innerHTML = userNotifCount;
-          // }
-        });
-      });
-      
       // });
     }
   })
   .catch((err) => {
     console.log(err.message);
   });
-
-$("#darkBtn").click(function () {
-  if (darkflag === 0) {
-    $("#body").addClass("darkMode");
-    $("#body").removeClass("bg-gray-200");
-    $("#divDark").addClass("text-white");
-    $("#adminDark").addClass("text-white");
-
-    darkflag = 1;
-  } else {
-    $("#body").addClass("bg-gray-200");
-    $("#body").removeClass("darkMode");
-    $("#divDark").removeClass("text-white");
-    $("#adminDark").removeClass("text-white");
-    darkflag = 0;
-  }
-});
-
-$("#largeFont").click(function () {
-  if (textflag === 0) {
-    $("p").addClass("largeFont");
-    $("h1").addClass("largerH");
-    $("body").addClass("largeFont");
-    $(".navG").addClass("mediumFont");
-
-    textflag = 1;
-  } else {
-    $("p").removeClass("largeFont");
-    $("h1").removeClass("largerH");
-    $("body").removeClass("largeFont");
-    $(".navG").removeClass("mediumFont");
-
-    textflag = 0;
-  }
-});
-
-$("#acessability").click(function () {
-  if (flag === 0) {
-    $("#acessability").addClass("widthAccess");
-    flag = 1;
-  } else {
-    $("#acessability").removeClass("widthAccess");
-    flag = 0;
-  }
-
-  $("#accessMenu").toggle("drop");
-  return false;
-});

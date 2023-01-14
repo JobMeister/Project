@@ -512,7 +512,7 @@ getDocs(usersColRef).then((snapshot) => {
         const docDel = doc(db, "users", ids[index]);
         deleteDoc(docDel);
         alert("user deleted");
-      });
+      }); 
     }
   }
 });
