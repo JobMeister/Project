@@ -4,7 +4,7 @@ let flag = 0;
 let darkflag = 0;
 let textflag = 0;
 
-$(document).ready(function () {
+
   $("#welcome").show();
   $("#admin_msg").hide();
   $("#editdiv").hide();
@@ -12,18 +12,18 @@ $(document).ready(function () {
   $("#reports").hide();
   $("#Confirm").hide();
   $("#NotConfirm").hide();
-  $("#deleteusers").hide();
+  $("#deleteusers").hide(); 
 
   $("#darkBtn").click(function () {
-    if (darkflag === 0) {
+    if (darkflag === 0) {  
       $("#body").addClass("darkMode");
       $("p").removeClass("bg-white");
       $(".buttonadmin").removeClass("btn-outline-dark");
-      $(".buttonadmin").addClass("btn btn-outline-white");
+      $(".buttonadmin").addClass("btn-outline-white");
       $(".buttonadmin2").removeClass("btn-outline-dark");
-      $(".buttonadmin2").addClass("btn btn-outline-white");
-      $("#editNow").removeClass("btn btn-outline-dark");
-      $("#editNow").addClass("btn btn-outline-white");
+      $(".buttonadmin2").addClass("btn-outline-white");
+      $("#editNow").removeClass("btn-outline-dark");
+      $("#editNow").addClass("btn-outline-white");
       $("p").removeClass("border-dark");
       $("#body").removeClass("bg-gray-200");
       $("#pagesDark").addClass("text-white");
@@ -32,17 +32,19 @@ $(document).ready(function () {
       darkflag = 1;
     } else {
       $("#body").addClass("bg-gray-200");
+      $("#RealAbout").removeClass("bg-white");
+
       $("p").addClass("bg-white");
       $("p").addClass("border-dark");
       $("#body").removeClass("darkMode");
       $("#pagesDark").removeClass("text-white");
       $("#adminDark").removeClass("text-white");
       $(".buttonadmin").removeClass("btn-outline-white");
-      $(".buttonadmin").addClass("btn btn-outline-dark");
+      $(".buttonadmin").addClass("btn-outline-dark");
       $(".buttonadmin2").removeClass("btn-outline-white");
-      $(".buttonadmin2").addClass("btn btn-outline-dark");
-      $("#editNow").removeClass("btn btn-outline-white");
-      $("#editNow").addClass("btn btn-outline-dark");
+      $(".buttonadmin2").addClass("btn-outline-dark");
+      $("#editNow").removeClass("btn-outline-white");
+      $("#editNow").addClass("btn-outline-dark");
       darkflag = 0;
     }
   });
@@ -156,7 +158,7 @@ $(document).ready(function () {
 
   var NewText =
     "JobMeister הוא פלטפורמת הדרושים הטובה ביותר של ישראל וזאת בזכות מערכת התאמת מועמד למעסיק הטובה ביותר. מטרת האתר היא לעזור למועמדים מכלל תחומי התעסוקה למצוא את העבודה הטובה והמתאימה להם, ובמקביל לעזור למעסיקים למצוא במהירות ויעילות את העובדים הטובים והמתאימים ביותר.";
-});
+
 // editB.click( function() {
 //   NewText = $("#Newtext").val();
 //   localStorage.setItem("About", NewText);

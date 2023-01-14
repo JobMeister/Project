@@ -4,9 +4,6 @@ let flag = 0;
 let darkflag = 0;
 let textflag = 0;
 
-$(document).ready(function () {
-  $("#accessMenu").hide();
-
 
   $("#darkBtn").click(function () {
     if (darkflag === 0) {
@@ -18,12 +15,13 @@ $(document).ready(function () {
         $("h1").addClass("whitetext");
         $("h3").removeClass("text-black");
         $("h3").addClass("whitetext");
-        $("p").addClass("text-black"); 
+        $("h5").addClass("whitetext");
+        $("p").addClass("text-white"); 
         $("body").addClass("darkMode");
         $(".row").addClass("darkMode");
         $(".bgdark").removeClass("bg-light");
         $(".bgf").addClass("darkMode")
-     
+        $(".card").addClass("bg-dark");
 
       darkflag = 1;
     } else {
@@ -35,12 +33,13 @@ $(document).ready(function () {
       $("h1").removeClass("whitetext");
       $("h3").removeClass("whitetext");
       $("h3").addClass("text-black");
-      $("p").removeClass("text-black"); 
+      $("h5").removeClass("whitetext");
+      $("p").removeClass("text-white"); 
       $("body").removeClass("darkMode");
       $(".row").removeClass("darkMode");
       $(".bgdark").addClass("bg-light");
       $(".bgf").removeClass("darkMode")
-
+      $(".card").removeClass("bg-dark");
 
       darkflag = 0;
     }
@@ -82,7 +81,3 @@ $(document).ready(function () {
     return false;
   });
 
-  
-
- 
-});
