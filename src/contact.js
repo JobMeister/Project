@@ -20,7 +20,6 @@ let flag = 0;
 let darkflag = 0;
 let textflag = 0;
 
-$(document).ready(function () {
   $("#accessMenu").hide();
 
 
@@ -83,32 +82,3 @@ $(document).ready(function () {
   });
 
   
-
- 
-});
-
-
-var x = Number(localStorage.getItem("num_of_msg"));    
-var i;
-if(x == null || i ==0) i =0;
-else i=x;
-
-$("#Send").click(function(){
-    Get_msg(i);
-    i++;
-});
-
-function Get_msg(i){
-    // var a = new contact($("#name").val(),$("#email").val(),$("#subject").val(),$("#message").val());
-
-    localStorage.setItem("Client " + i + " name", $("#name").val());
-    localStorage.setItem("Client " + i + " email", $("#email").val());
-    localStorage.setItem("Client " + i + " subject", $("#subject").val());
-    localStorage.setItem("Client " + i + " message", $("#message").val());
-    
-    localStorage.setItem("num_of_msg",i+1);
-};
-
-
-
-
