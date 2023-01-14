@@ -153,6 +153,7 @@ adForm.addEventListener("submit", (e) => {
     accepted: false,
     viewsCount: 0,
     Date: timeStamps,
+    
   }).then(() => {
     alert("Success");
     location.href = "employeer.html";

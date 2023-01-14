@@ -8,8 +8,8 @@ import {
   doc,
 } from "firebase/firestore";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import {} from "./favorites";
 import {} from "./main";
-import {} from "./createad";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDoC94Xlt0BHfsH_zLp8562xsKMW49mv8s",
@@ -107,8 +107,7 @@ getDocs(adColRef)
             Ads[index].id == allSavedAds[i].idOfAds &&
             allSavedAds[i].Saveremail == logEmail
           ) {
-            document.querySelector("#adC").innerHTML = adCount++;
-            adCount++;
+            document.querySelector("#adC").innerHTML = ++adCount;
             $("#try1").append(
               "<div class='Added col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
                 Ads[index].imgid +
@@ -118,7 +117,9 @@ getDocs(adColRef)
                 Ads[index].des +
                 "</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='view" +
                 index +
-                "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalF'>צפה</button></div><small class='text-muted'>לפני שעה</small></div></div></div></div>"
+                "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalF'>צפה</button></div><small class='text-muted'>" +
+                Ads[index].Date +
+                "</small></div></div></div></div>"
             );
           }
         }
@@ -155,13 +156,13 @@ getDocs(adColRef)
 $("#darkBtn").click(function () {
   if (darkflag === 0) {
     $("#body").addClass("darkMode");
-    $("#body").removeClass("bg-gray-200");
+    // $("#body").removeClass("bg-gray-200");
     $("#divDark").addClass("text-white");
     $("#adminDark").addClass("text-white");
-
+    $("#adminDark").addClass("bg-light");
     darkflag = 1;
   } else {
-    $("#body").addClass("bg-gray-200");
+    // $("#body").addClass("bg-gray-200");
     $("#body").removeClass("darkMode");
     $("#divDark").removeClass("text-white");
     $("#adminDark").removeClass("text-white");

@@ -12,7 +12,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import {} from "./signup";
+// import {} from './signup'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDoC94Xlt0BHfsH_zLp8562xsKMW49mv8s",
@@ -49,12 +49,19 @@ signUpForm.addEventListener("submit", (e) => {
   const firstname = signUpForm.firstname.value;
   const lastname = signUpForm.lastname.value;
   const EmployerOrSearcher = signUpForm.EmployerOr.value;
+
   if (firstname != "" && lastname != "" && email != "" && password != "") {
     document.querySelector("#msg1").innerHTML = "";
     document.querySelector("#msg2").innerHTML = "";
     document.querySelector("#msg3").innerHTML = "";
     document.querySelector("#msg4").innerHTML = "";
-
+    if (password.length < 6) {
+      document.querySelector("#msg1").innerHTML = "";
+      document.querySelector("#msg2").innerHTML = "";
+      document.querySelector("#msg3").innerHTML = "";
+      document.querySelector("#msg4").innerHTML =
+        "אנא הכנס סיסמא באורך של 6 תווים לפחות!";
+    }
     if (EmployerOrSearcher == "1") {
       document.querySelector("#msg5").innerHTML = "";
       var Company = signUpForm.Company.value;
