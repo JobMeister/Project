@@ -25,6 +25,7 @@ function DisplayDivBySelector(val) {
   }
 }
 
+$("#accessMenu").hide();
 
   $("#darkBtn").click(function () {
     if (darkflag === 0) {
