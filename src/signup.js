@@ -25,8 +25,7 @@ function DisplayDivBySelector(val) {
   }
 }
 
-$(document).ready(function () {
-  $("#accessMenu").hide();
+$("#accessMenu").hide();
 
   $("#darkBtn").click(function () {
     if (darkflag === 0) {
@@ -103,8 +102,5 @@ $(document).ready(function () {
     $("#accessMenu").toggle("drop");
     return false;
   });
-});
-
-
 
 

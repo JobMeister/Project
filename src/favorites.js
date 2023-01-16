@@ -1,11 +1,7 @@
-
-
-
 let flag = 0;
 let darkflag = 0;
 let textflag = 0;
 
-$(document).ready(function () {
   $("#accessMenu").hide();
 
   $("#darkBtn").click(function () {
@@ -16,35 +12,32 @@ $(document).ready(function () {
       $(".loginbtn").removeClass("btn-outline-dark");
       $(".loginbtn").addClass("bg-white");
       $("h1").addClass("whitetext");
-      $("h3").removeClass("text-black");
-      $("h3").addClass("whitetext");
       $("p").addClass("text-white");
       $("body").addClass("darkMode");
-      $(".row").addClass("darkMode");
-      $(".bgdark").removeClass("bg-light");
-      $(".bgf").addClass("darkMode");
-      $("h2").addClass("whitetext");
+      $("#divDark").removeClass("bg-light");
       $(".card").addClass("bg-dark");
-
+      $(".footer").removeClass("bg-white");
+      $("h5").addClass("whitetext");
       darkflag = 1;
+      
     } else {
       $("#navbarCollapse").removeClass("darkMode");
       $(".navbar").removeClass("darkMode");
       $(".nav-item").removeClass("whitetext");
+
       $(".loginbtn").removeClass("bg-white");
       $(".loginbtn").addClass("btn-outline-dark");
-      $("h1").removeClass("whitetext");
-      $("h3").removeClass("whitetext");
-      $("h3").addClass("text-black");
+
+      $("h1").removeClass("whitetext"); 
       $("p").removeClass("text-white");
-      $("p").addClass("text-dark");
       $("body").removeClass("darkMode");
-      $(".row").removeClass("darkMode");
-      $(".bgdark").addClass("bg-light");
-      $(".bgf").removeClass("darkMode");
+      $("#divDark").addClass("bg-light");
+
       $(".card").removeClass("bg-dark");
-      $("card").addClass("bg-light");
-      $("h2").removeClass("whitetext");
+      $("h5").removeClass("whitetext");
+      $(".footer").addClass("bg-white");
+
+
       darkflag = 0;
     }
   });
@@ -77,7 +70,6 @@ $(document).ready(function () {
       flag = 0;
     }
 
-    // $("#accessMenu").toggle("drop");
+    $("#accessMenu").toggle("drop");
     return false;
   });
-});

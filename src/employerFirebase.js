@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import {} from "./main";
-import {} from "./emloyeer"
+import {} from "./emloyeer";
 import {} from "./createad";
 
 const firebaseConfig = {
@@ -122,7 +122,14 @@ getDocs(adColRef)
         );
       }
     }
-    document.querySelector("#adC").innerHTML = countAds;
+    if (countAds == 0) {
+      $("#non").append(
+        "<div class = 'd-flex justify-content-center'> <h3 dir='rtl'>זיהינו שעוד לא פירסמת מודעה באתרנו! תוכל ליצור מודעה חדשה <a href='createad.html'>כאן</a></h3></div><div class ='d-flex justify-content-center'> '<img class='d-flex justify-content-center' src='/dist/img/nonads.png' alt='nonads' style=' width: 50%;'</div>"
+      );
+    } else {
+      document.querySelector("#adC").innerHTML =
+        "כמות מודעות (" + countAds + ")";
+    }
     getDocs(sendLinks).then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         sended.push({ ...doc.data(), id: doc.id });

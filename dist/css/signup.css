@@ -41,8 +41,6 @@
 }
 .navbar {
   border-bottom: 0.1px solid rgb(184, 174, 174);
-  font-family:"Open Sans", sans-serif !important;
-  ;
 }
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link.active {
@@ -52,7 +50,7 @@
 .navbar .dropdown-toggle::after {
   border: none;
   content: "\f107";
-  font-family: "Noto Sans Hebrew", sans-serif ;
+  font-family: "Noto Sans Hebrew", sans-serif;
   font-weight: 900;
   vertical-align: middle;
   margin-left: 8px;

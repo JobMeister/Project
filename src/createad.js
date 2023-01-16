@@ -15,7 +15,7 @@ let textflag = 0;
       $("h1").addClass("whitetext"); 
       $("body").addClass("darkMode");
       $(".container-xxl").removeClass("bg-light");
-
+      $(".footer").removeClass("bg-white");
       darkflag = 1;
     } else {
       $(".container-xxl").addClass("bg-light");

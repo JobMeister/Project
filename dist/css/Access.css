@@ -5,9 +5,7 @@
    border-radius: 50px; 
   float: left; 
 }
-.blackbg{
-  background-color: #000 !important;
-}
+
 .bg-gray-200 {
   background-color: #f0f2f5 !important;
 }
@@ -164,7 +162,7 @@ a {
   width: 120px;
 }
 .text-black {
-  color: #000 !important;
+  color: #000;
 }
 .bg-gray-200 {
   background-color: #f0f2f5 !important;

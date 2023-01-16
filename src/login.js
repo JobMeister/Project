@@ -1,12 +1,8 @@
-
-
 let flag = 0;
 let darkflag = 0;
 let textflag = 0;
 
-$(document).ready(function () {
-  $("#accessMenu").hide();
-
+$("#accessMenu").hide();
 
   $("#darkBtn").click(function () {
     if (darkflag === 0) {
@@ -81,7 +77,3 @@ $(document).ready(function () {
     return false;
   });
 
-  
-
- 
-});

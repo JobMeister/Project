@@ -10,7 +10,7 @@ import {
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 
 import {} from "./main";
-import {} from "./admin";
+ import {} from "./admin";
 import {} from "./about";
 
 const firebaseConfig = {

@@ -33,6 +33,7 @@ let textflag = 0;
 
       $("#bgHead").addClass("bg-light");
       $("p").addClass("bg-light");
+      $("p").removeClass("bg-white");
       $("#RealAbout").removeClass("bg-white");
       
       darkflag = 0;

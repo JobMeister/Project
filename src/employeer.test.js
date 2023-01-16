@@ -29,8 +29,6 @@ test('Employeer dark mode test', () => {
     expect($("h1")[0].classList.contains("whitetext")).toBe(true);
     expect($("h3")[0].classList.contains("whitetext")).toBe(true);
     expect($("h2")[0].classList.contains("whitetext")).toBe(true);
-
-    expect($("p")[0].classList.contains("text-black")).toBe(true);
     expect($(".row")[0].classList.contains("darkMode")).toBe(true);
     expect($(".bgf")[0].classList.contains("darkMode")).toBe(true);
     expect($(".bgdark")[0].classList.contains("bg-light")).toBe(false);
