@@ -39,12 +39,14 @@ const password = signUpForm.password.value
 const firstname = signUpForm.firstname.value
 const lastname = signUpForm.lastname.value
 const EmployerOrSearcher = signUpForm.EmployerOr.value
-if(firstname!="" && lastname!="" && email!="" && password!="" ) {
+const passwordlength=password.length;
+console.log(passwordlength);
+if(firstname!="" && lastname!="" && email!="" && password!="" && passwordlength>=6) {
   document.querySelector("#msg1").innerHTML="";
   document.querySelector("#msg2").innerHTML="";
   document.querySelector("#msg3").innerHTML="";
   document.querySelector("#msg4").innerHTML="";
-  
+
     if(EmployerOrSearcher == '1') {
       document.querySelector("#msg5").innerHTML="";
       var Company = signUpForm.Company.value
@@ -121,6 +123,9 @@ else {
     document.querySelector("#msg2").innerHTML="";
     document.querySelector("#msg3").innerHTML="";
     document.querySelector("#msg4").innerHTML="אנא הכנס סיסמא";
+  }
+  else if(passwordlength<6) {
+      document.querySelector("#msg4").innerHTML="אורך הסיסמא אמור להיות מעל 6 תווים";
   }
 }
 })
