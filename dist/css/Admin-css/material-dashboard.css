@@ -1205,10 +1205,11 @@ progress {
     overflow: hidden
   }
   #accessMenu{
-    position: absolute;bottom: 660px;
+    position: fixed;
+    bottom: 550px;
     right: 25px;
     background-color: #d2d0d0;
-    border-radius: 25px;
+    /* border-radius: 25px; */
     border-color: #000;
     border-width: 40px;
     height: 80px;

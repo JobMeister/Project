@@ -5,7 +5,7 @@ let textflag = 0;
 
 
 
- 
+$("#accessMenu").hide();
 
   $("#darkBtn").click(function darkTest () {
     if (darkflag === 0) {
