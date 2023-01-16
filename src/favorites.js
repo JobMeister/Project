@@ -70,6 +70,6 @@ let textflag = 0;
       flag = 0;
     }
 
-    $("#accessMenu").toggle("drop");
+    // $("#accessMenu").toggle("drop");
     return false;
   });
