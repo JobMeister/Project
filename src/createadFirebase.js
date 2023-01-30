@@ -151,6 +151,7 @@ adForm.addEventListener("submit", (e) => {
     req: adForm.reqs.value,
     title: adForm.title.value,
     accepted: false,
+    status: true,
     viewsCount: 0,
     Date: timeStamps,
     

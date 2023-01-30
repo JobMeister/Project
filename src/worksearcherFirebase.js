@@ -190,7 +190,7 @@ getDocs(adColRef).then((snapshot) => {
         console.log(flag);
         switch (flag) {
           case 0:
-            if (Ads[index].accepted == true) {
+            if (Ads[index].accepted == true && Ads[index].status== true) {
               $("#try2").append(
                 "<div class='Added col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
                   Ads[index].imgid +
@@ -210,7 +210,7 @@ getDocs(adColRef).then((snapshot) => {
               Ads[index].accepted == true &&
               Ads[index].location == Loc &&
               Ads[index].dep == Thum &&
-              Ads[index].percent == Per
+              Ads[index].percent == Per  && Ads[index].status== true
             ) {
               $("#try2").append(
                 "<div class='Added col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
@@ -230,7 +230,7 @@ getDocs(adColRef).then((snapshot) => {
             if (
               Ads[index].accepted == true &&
               Ads[index].location == Loc &&
-              Ads[index].dep == Thum
+              Ads[index].dep == Thum  && Ads[index].status== true
             ) {
               $("#try2").append(
                 "<div class='Added col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
@@ -250,7 +250,7 @@ getDocs(adColRef).then((snapshot) => {
             if (
               Ads[index].accepted == true &&
               Ads[index].dep == Thum &&
-              Ads[index].percent == Per
+              Ads[index].percent == Per  && Ads[index].status== true
             ) {
               $("#try2").append(
                 "<div class='Added col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
@@ -270,7 +270,7 @@ getDocs(adColRef).then((snapshot) => {
             if (
               Ads[index].accepted == true &&
               Ads[index].location == Loc &&
-              Ads[index].percent == Per
+              Ads[index].percent == Per && Ads[index].status== true
             ) {
               $("#try2").append(
                 "<div class='Added col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
@@ -287,7 +287,7 @@ getDocs(adColRef).then((snapshot) => {
             console.log("case4");
             break;
           case 5:
-            if (Ads[index].accepted == true && Ads[index].dep == Thum) {
+            if (Ads[index].accepted == true && Ads[index].dep == Thum && Ads[index].status== true) {
               $("#try2").append(
                 "<div class='Added col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
                   Ads[index].imgid +
@@ -303,7 +303,7 @@ getDocs(adColRef).then((snapshot) => {
             console.log("case5");
             break;
           case 6:
-            if (Ads[index].accepted == true && Ads[index].location == Loc) {
+            if (Ads[index].accepted == true && Ads[index].location == Loc && Ads[index].status== true) {
               $("#try2").append(
                 "<div class='Added col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
                   Ads[index].imgid +
@@ -319,7 +319,7 @@ getDocs(adColRef).then((snapshot) => {
             console.log("case6");
             break;
           case 7:
-            if (Ads[index].accepted == true && Ads[index].percent == Per) {
+            if (Ads[index].accepted == true && Ads[index].percent == Per && Ads[index].status== true) {
               $("#try2").append(
                 "<div class='Added col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
                   Ads[index].imgid +

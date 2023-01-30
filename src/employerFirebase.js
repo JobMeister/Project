@@ -5,6 +5,7 @@ import {
   getDocs,
   addDoc,
   deleteDoc,
+  updateDoc,
   doc,
 } from "firebase/firestore";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
@@ -99,7 +100,7 @@ getDocs(adColRef)
     console.log(Ads);
     for (let index = 0; index < adSize; index++) {
       let indexR = index + 1;
-      if (Ads[index].emailofemployer == useremail) {
+      if (Ads[index].emailofemployer == useremail && Ads[index].status== true) {
         countAds++;
         $("#try1").append(
           "<div class='col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/dist/img/occpics/occ" +
@@ -214,23 +215,31 @@ getDocs(adColRef)
 
       if (buttonE) {
         buttonE.addEventListener("click", function () {
-          console.log("yougay");
           var buttonD = document.getElementById("YesDelete");
           if (buttonD) {
             buttonD.addEventListener("click", function () {
               console.log("the index is:", index);
               console.log(Ads[index]);
               var docDelAds = doc(db, "Ads", Ads[index].id);
-              deleteDoc(docDelAds).then(() => {
+              if(Ads[index].accepted == true ) {
+              updateDoc(docDelAds, {
+                status: false,
+              }).then(() => {
                 location.reload();
               });
-            });
+              }
+              else {
+                deleteDoc(docDelAds).then(() => {
+                  location.reload();
+                });
+              }
+              changeVariable(false);
+            })
           }
         });
       }
       if (buttonE2) {
         buttonE2.addEventListener("click", function () {
-          console.log("younotgay" + index);
           document.querySelector("#Mtitle").innerHTML = Ads[index].title;
           if (Ads[index].company == null) {
             document.querySelector("#Mcompany").innerHTML = "חסוי";

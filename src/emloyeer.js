@@ -1,6 +1,7 @@
 let flag = 0;
 let darkflag = 0;
 let textflag = 0;
+let testDel;
 
 $("#accessMenu").hide();
   $("#darkBtn").click(function () {
@@ -76,3 +77,8 @@ $("#accessMenu").hide();
     // $("#accessMenu").toggle("drop");
     return false;
   });
+
+  function changeVariable() {
+    testDel = false;
+  }
+  module.exports = { testDel, changeVariable };
