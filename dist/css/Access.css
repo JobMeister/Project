@@ -28,7 +28,7 @@ color: #111;
 
 .access {
   font-size: .8em;
-  font-family: 'Oswald', sans-serif;
+  font-family:"Open Sans", sans-serif !important;
   position: relative;
   right: -18px;
   overflow: hidden;
@@ -132,11 +132,13 @@ a {
     margin: 15px;
     color: white;
     width: 50px;
-    background-color: grey;
+    background-color: rgb(11, 120, 244);
     transition: width .35s;
     -webkit-transition: width .35s;
     overflow: hidden
+    
 }
+
 
 .position-absolute {
   position: absolute !important;
@@ -154,8 +156,8 @@ a {
   position: fixed;
   right: 25px;
   top: 214px;
-  background-color: #d2d0d0;
-  border-radius: 25px;
+  background-color: rgb(124, 179, 242);
+  border-radius: 0px;
   border-color: #000;
   border-width: 40px;
   height: 80px;

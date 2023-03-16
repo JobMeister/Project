@@ -4,6 +4,8 @@
 <head>
   <meta charset="utf-8" />
   <title>המודעות שלך</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <meta content="" name="keywords" />
   <meta content="" name="description" />
@@ -55,9 +57,9 @@
 
     <div class="icon mx-3" id="bell"> <i id="bellnotif" class="fa-regular fa-bell fa-xl alertBell"></i> </div>
 
-      
+
     <div class="notifications" dir="rtl" id="box">
-      <h2>התראות -  <span id="notifcount"> </span></h2>
+      <h2>התראות - <span id="notifcount"> </span></h2>
 
     </div>
 
@@ -67,7 +69,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <div class="navbar-nav ms-auto py-4 start -0 py-lg-0">
         <a href="contact.html" class="nav-item nav-link"><b>צור קשר</b></a>
-          <a href="about.html" class="nav-item nav-link"><b>אודות</b></a> 
+        <a href="about.html" class="nav-item nav-link"><b>אודות</b></a>
         <a href="createad.html" class="nav-item nav-link"><b>יצירת מודעה חדשה</b></a>
         <a href="employeer.html" class="nav-item nav-link"><b>המודעות שלך</b></a>
 
@@ -91,7 +93,7 @@
     <div class="container">
       <h1 class="jumbotron-heading">המודעות שלך</h1>
       <p id=welcometext class="lead text-muted"></p>
- 
+
     </div>
   </section>
 
@@ -101,7 +103,7 @@
   <div id="divDark" class="album py-5 bgdark bg-light">
 
 
-    <div class="container">
+    <div class="container" id="non">
       <h5 id="cardHeader" class="" dir="rtl"><b id="adC"></b></h5>
 
       <div id="try1" class="row" dir="rtl">
@@ -160,7 +162,7 @@
       </div>
     </div>
   </div>
- 
+
   <!-- Header End -->
 
   <!-- Footer Start -->
@@ -194,10 +196,11 @@
     </a>
     <div id="accessMenu">
 
-      <button id="darkBtn" type="button" name="dark_light" title="Toggle dark/light mode">Dark
+      <button class="btn whitetext border border-dark" id="darkBtn" type="button" name="dark_light"
+        title="Toggle dark/light mode">Dark
         Mode</button>
 
-      <button id="largeFont" type="button" title="Toggle font size mode">Text
+      <button class="btn whitetext border border-dark" id="largeFont" type="button" title="Toggle font size mode">Text
         size</button>
 
 
@@ -206,6 +209,7 @@
     </div>
 
   </div>
+
 
   <!-- Back to Top
   <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a> -->
