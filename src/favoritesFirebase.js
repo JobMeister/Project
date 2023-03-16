@@ -101,6 +101,7 @@ getDocs(adColRef)
       })
       let SaveAdsQ = allSavedAds.length
       for (let index = 0; index < adSize; index++) {
+<<<<<<< HEAD
         for (let i = 0; i < SaveAdsQ; i++) {
           if (
             Ads[index].accepted == true &&
@@ -134,6 +135,22 @@ getDocs(adColRef)
             } else {
               document.querySelector('#WScompany').innerHTML =
                 Ads[index].company
+=======
+        for (let i= 0; i < SaveAdsQ; i++) {
+            if (Ads[index].accepted == true && Ads[index].id==allSavedAds[i].idOfAds && allSavedAds[i].Saveremail == logEmail) {
+              document.querySelector("#adC").innerHTML = ++adCount;
+              $("#try1").append(
+                "<div class='Added col-md-4'> <div class='card mb-4 box-shadow'><img class='card-img-top' src='/img/occpics/occ" +
+                  Ads[index].imgid +
+                  ".jpeg' alt='Thumbnail [100%x225]' style='height: 225px; width: 100%; display: block;' data-holder-rendered='true'><div class='card-body'> <h5 id='cardHeader' dir='rtl'><b>" +
+                  Ads[index].title +
+                  "</b></h5> <p class='card-text' id='cardText' dir='rtl'>" +
+                  Ads[index].des +
+                  "</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><button id='view" +
+                  index +
+                  "' class='btn btn-sm btn-outline-secondary' data-bs-toggle='modal' data-bs-target='#modalF'>צפה</button></div><small class='text-muted'>" +Ads[index].Date +"</small></div></div></div></div>"
+              );
+>>>>>>> fba870e426f6efe633bc4dbe16c95fafb9882793
             }
             document.querySelector('#WSlocation').innerHTML =
               Ads[index].location
@@ -146,7 +163,33 @@ getDocs(adColRef)
           })
         }
       }
+<<<<<<< HEAD
     })
+=======
+    for (let index = 0; index < adSize; index++) {
+      const buttonE2 = document.getElementById("view" + index);
+      if (buttonE2) {
+        buttonE2.addEventListener("click", function () {
+          document.querySelector("#WStitle").innerHTML = Ads[index].title;
+          if (Ads[index].company == null) {
+            document.querySelector("#WScompany").innerHTML = "חסוי";
+          } 
+          else {
+            document.querySelector("#WScompany").innerHTML =
+              Ads[index].company;
+          }
+          document.querySelector("#WSlocation").innerHTML =
+            Ads[index].location;
+          document.querySelector("#WSdescribe").innerHTML = Ads[index].des;
+          document.querySelector("#WSreq").innerHTML = Ads[index].req;
+          document.querySelector("#WSdep").innerHTML = Ads[index].dep;
+          document.querySelector("#WSpercent").innerHTML = Ads[index].percent;
+          document.querySelector("#WSimg").src =
+            "/img/occpics/occ" + Ads[index].imgid + ".jpeg";
+        })
+      }
+    }
+>>>>>>> fba870e426f6efe633bc4dbe16c95fafb9882793
   })
 
   .catch((err) => {
