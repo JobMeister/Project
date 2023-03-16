@@ -103,7 +103,7 @@ getDocs(docAllusers).then((snapshot) => {
           console.log("checkit" + i);
           console.log(sended[i].downloadLink);
           $("#box").append(
-            "<div class='added1 notifications-item'> <img src='/dist/img/occpics/occ" +
+            "<div class='added1 notifications-item'> <img src='/img/occpics/occ" +
               sended[i].imgid +
               ".jpeg' alt='img'> <div class='text mx-2'><h4>המשתמש " +
               sended[i].nameOfsender +
