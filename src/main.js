@@ -1,8 +1,4 @@
-
-  
-
-
-  "use strict";
+"use strict";
 
   // Spinner
   var spinner = function () {
@@ -38,4 +34,3 @@
   // if (localStorage.getItem("About") !== null) {
   //   $("#RealAbout").html(localStorage.getItem("About"));
   // }
-
