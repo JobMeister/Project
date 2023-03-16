@@ -222,6 +222,7 @@ getDocs(adColRef)
         var textE = '';
         var texttitle ='';
         var countAds='';
+        let adsnum1=0,adsnum2=0,adsnum3=1;
         texttitle += "דוח מודעות"+"\n\n";
         pdf2.setFontSize(28); //sets the title font size to 20
         pdf2.text(100, 20, texttitle,{align: "center"}); //displays the title
@@ -241,16 +242,24 @@ getDocs(adColRef)
             text += "אחוז המשרה: " + Ads[index].percent + '\n';
             text += "כמות צפיות במודעה: " + Ads[index].viewsCount + '\n';
             textE += Ads[index].emailofemployer + '\n\n';
-            if(Ads[index].accepted==false) 
+            if(Ads[index].accepted==false) {
               text += "סטטוס: המודעה אינה מאושרת" +'\n';
-            else 
-              text += "סטטוס: המודעה מאושרת" +'\n';
+              adsnum2+=1;
+            }
+            else if(Ads[index].status==false) {
+              text += "סטטוס: המודעה נמחקה מהאתר" +'\n';
+              adsnum3+=1;
+            }
+            else {
+              text += "סטטוס: המודעה מאושרת ופעילה" +'\n';
+              adsnum1+=1;
+            }
             text += "אימייל של מפרסם המודעה: ";
             var chunks = pdf2.splitTextToSize(text, pdf2.internal.pageSize.width - 40);
             chunks.forEach(function(chunk) {
                 pdf2.text(200, y, chunk,{align: "right"});
                 y += lineHeight;
-                if (y > pdf2.internal.pageSize.height - lineHeight) {
+                if (y+20 > pdf2.internal.pageSize.height - lineHeight) {
                   pdf2.addPage();
                   y = 20;
               }
@@ -266,7 +275,10 @@ getDocs(adColRef)
             text =''; // reset text variable
             textE='';
           }
-
+          text += "מספר מודעות פעילות ומאושרות באתר: " + adsnum1 + '\n';
+          text += "מספר מודעות לא פעילות: " + adsnum2 + '\n';
+          text += "מספר מודעות שנמחקו: " + adsnum3 + '\n';
+          pdf2.text(200, y, text,{align: "right"});
         pdf2.save("ReportAds.pdf");
       }
       exportPDF2();
@@ -377,7 +389,7 @@ getDocs(adColRef).then((snapshot) => {
   for (let index = 0; index < size; index++) {
     let indexR = index + 1;
     ids[index] = ads[index].id;
-    if (ads[index].accepted === true) {
+    if (ads[index].accepted === true && ads[index].status==true) {
       $("#Confirm").append(
         "<p  class='border border-dark py-2 px-2 bg-white' >" +
           "<strong> ad number: " +
@@ -421,8 +433,10 @@ getDocs(adColRef).then((snapshot) => {
     if (ads[index].accepted === true) {
       const button = document.getElementById("delbtn" + index);
       button.addEventListener("click", function () {
-        const docDel = doc(db, "Ads", ids[index]);
-        deleteDoc(docDel);
+        const docUpd = doc(db, "Ads", ids[index]);
+        updateDoc(docUpd, {
+          status: false,
+          })
       });
     }
   }

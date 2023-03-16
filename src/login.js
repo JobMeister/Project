@@ -2,6 +2,7 @@ let flag = 0;
 let darkflag = 0;
 let textflag = 0;
 
+
 $("#accessMenu").hide();
 
   $("#darkBtn").click(function () {
@@ -77,3 +78,6 @@ $("#accessMenu").hide();
     return false;
   });
 
+
+
+  

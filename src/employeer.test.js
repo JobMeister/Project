@@ -5,6 +5,7 @@ global.document = document;
 global.window = document.defaultView;
 global.$ = require('jquery');
 
+
 describe('Employeer module', () => {
   beforeEach(() => {
     jest.resetModules();
@@ -67,3 +68,53 @@ test('Employeer dark mode test', () => {
 
 
 });
+
+describe('changeVariable', () => {
+  const {testDel,changeVariable } = require('./emloyeer.js');
+  it('should set testDel to false', () => {
+    changeVariable(false);
+    expect(testDel).toBeFalsy();
+  });
+});
+
+
+// describe('Test click event listener', () => {
+//   let buttonE;
+//   beforeEach(() => {
+//     buttonE = document.createElement('button');
+//     buttonE.id = 'YesDelete';
+//     document.body.appendChild(buttonE);
+//   });
+
+//   afterEach(() => {
+//     document.body.removeChild(buttonE);
+//   });
+
+//   it('should call the event listener when clicked', () => {
+//     const spy = jest.spyOn(buttonE, 'addEventListener');
+
+//     if (buttonE) {
+//       buttonE.addEventListener('click', function () {});
+
+//       expect(spy).toHaveBeenCalled();
+
+//       spy.mockRestore();
+//     }
+//   });
+
+//   it('should update the Ads status to false when clicked', () => {
+//     const index = 0;
+
+//     if (buttonE) {
+//       buttonE.addEventListener("click", function () {});
+
+//       var buttonD = document.getElementById("YesDelete");
+
+//       if (buttonD) {
+//         buttonD.addEventListener("click", function () {});
+
+//         expect(testDel).toBeFalsy();      
+//       }      
+//     }    
+//   });  
+// });
