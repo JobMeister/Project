@@ -1,6 +1,9 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "encoding": "^0.1.13",
+=======
+>>>>>>> 356a307c3c552bf125e7375b5834e208cd8c9800
     "firebase": "^9.15.0",
     "jquery-mockjax": "^2.6.0",
     "Jsdom": "npm:jsdom@^21.0.0",
@@ -26,7 +29,11 @@
   },
   "scripts": {
     "test": "jest",
+<<<<<<< HEAD
     "ready": "webpack"
+=======
+    "build": "webpack"
+>>>>>>> 356a307c3c552bf125e7375b5834e208cd8c9800
   },
   "repository": {
     "type": "git",
@@ -38,6 +45,10 @@
   "bugs": {
     "url": "https://github.com/tomere13/JobMeisterProject/issues"
   },
+<<<<<<< HEAD
   "homepage": "https://github.com/tomere13/JobMeisterProject#readme",
+=======
+  "homepage": "https://github.com/JobMeister/Project-1#readme",
+>>>>>>> 356a307c3c552bf125e7375b5834e208cd8c9800
   "description": "jobs"
 }

@@ -15,7 +15,11 @@ module.exports = {
     favorites: './src/favoritesFirebase.js',
   },
   output: {
+<<<<<<< HEAD
     path: path.resolve(__dirname, 'dist/bundles'),
+=======
+    path: path.resolve(__dirname, 'build'),
+>>>>>>> 356a307c3c552bf125e7375b5834e208cd8c9800
     filename: '[name].bundle.js',
   },
   watch: true,
